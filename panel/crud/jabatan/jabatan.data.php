@@ -16,7 +16,6 @@
 	<thead>
             <tr>
                 <th>No</th>
-		<th>Kode Jabatan</th>
 		<th>Nama Jabatan</th>
 		<th>Tunjangan Jabatan</th>
 		<th>Nominal Tabungan</th>
@@ -32,7 +31,6 @@
 		echo'
             <tr>
 		<td>'.$no.'</td>
-		<td>'.$objectdata->KODE_JABATAN.'</td>
 		<td>'.$objectdata->NAMA_JABATAN.'</td>
 		<td>Rp.'.number_format($objectdata->TUNJANGAN_JABATAN).',-</td>
 		<td>Rp.'.number_format($objectdata->NOMINAL_TABUNGAN).',-</td>

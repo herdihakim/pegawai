@@ -16,7 +16,6 @@
 	<thead>
             <tr>
 		<th>No</th>
-		<th>Kode Departemen</th>
 		<th>Nama Departemen</th>
 		<th>Aksi</th>
             </tr>
@@ -29,7 +28,6 @@
 		echo'
             <tr>
 		<td>'.$no.'</td>
-		<td>'.$objectdata->KODE_DEPARTEMEN.'</td>
 		<td>'.$objectdata->NAMA_DEPARTEMEN.'</td>
 		<td>
                     <a href="#dialog-departemen" id="'.$objectdata->KODE_DEPARTEMEN.'" alt="Ubah" title="Ubah" class="glyphicon ubah-departemen glyphicon-edit" data-toggle="modal"></a>&nbsp; 

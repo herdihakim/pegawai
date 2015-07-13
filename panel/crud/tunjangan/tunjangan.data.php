@@ -16,7 +16,6 @@
 	<thead>
             <tr>
                 <th>No</th>
-		<th>Kode Tunjangan</th>
 		<th>Nama Tunjangan</th>
 		<th>Nominal</th>
 		<th>Aksi</th>
@@ -30,7 +29,6 @@
 		echo'
             <tr>
 		<td>'.$no.'</td>
-		<td>'.$objectdata->KODE_MASTER_TUNJANGAN.'</td>
 		<td>'.$objectdata->NAMA_TUNJANGAN.'</td>
 		<td>Rp.'.number_format($objectdata->NOMINAL).',-</td>
 		<td>

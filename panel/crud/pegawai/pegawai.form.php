@@ -265,17 +265,12 @@
             });
         })
 	 .on('init.field.fv', function(e, data) {
-            // data.fv      --> The FormValidation instance
-            // data.field   --> The field name
-            // data.element --> The field element
 
             var $icon      = data.element.data('fv.icon'),
-                options    = data.fv.getOptions(),                      // Entire options
-                validators = data.fv.getOptions(data.field).validators; // The field validators
+                options    = data.fv.getOptions(), 
+                validators = data.fv.getOptions(data.field).validators; 
 
             if (validators.notEmpty && options.icon && options.icon.required) {
-                // The field uses notEmpty validator
-                // Add required icon
                 $icon.addClass(options.icon.required).show();
             }
         })
