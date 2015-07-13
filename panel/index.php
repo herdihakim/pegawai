@@ -63,14 +63,18 @@
 		$.ajax({
                     url: $form.attr('action'),
                     type: 'POST',
+					dataType: "json",
                     data: $form.serialize(),
                     success: function(html) {
-                        if(html=="false")    {
-                             $('#login-error').show();
-                            
-			}else{
-                           window.location="panel.php";
-			}
+                        if(html['cek']=='false'){
+								$('#login-error').show();
+								 setTimeout( function show(){
+									  $('#login-error').hide();
+								  }, 5000 );
+							}
+							if(html['cek']=='true'){
+								window.location='panel.php';
+							}
                     }
 		});
             })

@@ -116,10 +116,7 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="crud/menu/aplikasi.js"></script>
-	
-	<!--- Editor Table -->
-    <script type="text/javascript" src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-	
+
 	<!-- bootstrap -->
     <script src="bootstrap/docs/dist/js/bootstrap.min.js"></script>
 	 
