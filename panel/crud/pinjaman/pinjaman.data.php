@@ -31,13 +31,13 @@
             $querykasbon=mysql_query("SELECT * FROM kasbon_pegawai") or die (mysql_error());
             $no = 1;
             while($objectdata=mysql_fetch_object($querykasbon)){
-                $querypegawai=mysql_query("SELECT * FROM pegawai WHERE NIP_PEGAWAI=".$objectdata->NIP_PEGAWAI) or die (mysql_error());
+                $querypegawai=mysql_query("SELECT * FROM pegawai WHERE KODE_PEGAWAI=".$objectdata->NIP_PEGAWAI) or die (mysql_error());
 				$tampilpegawai=mysql_fetch_object($querypegawai);
                 echo'
             <tr>
 		<td>'.$no.'</td>
 		<td>'.$objectdata->KODE_KASBON.'</td>
-		<td>'.$objectdata->NIP_PEGAWAI.'</td>
+		<td>'.$tampilpegawai->NIP_PEGAWAI.'</td>
                 <td>'.$tampilpegawai->NAMA_PEGAWAI.'</td>
                 <td>'.$objectdata->TANGGAL.'</td>
                 <td>Rp. '.number_format($objectdata->NOMINAL).',-</td>

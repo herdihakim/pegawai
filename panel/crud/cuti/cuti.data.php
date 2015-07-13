@@ -31,13 +31,13 @@
             $querycuti=mysql_query("SELECT * FROM cuti") or die (mysql_error());
             $no = 1;
             while($objectdata=mysql_fetch_object($querycuti)){
-                $querypegawai=mysql_query("SELECT * FROM pegawai WHERE NIP_PEGAWAI=".$objectdata->NIP_PEGAWAI) or die (mysql_error());
+                $querypegawai=mysql_query("SELECT * FROM pegawai WHERE KODE_PEGAWAI=".$objectdata->NIP_PEGAWAI) or die (mysql_error());
 		$tampilpegawai=mysql_fetch_object($querypegawai);
                 echo'
             <tr>
 		<td>'.$no.'</td>
 		<td>'.$objectdata->KODE_CUTI.'</td>
-		<td>'.$objectdata->NIP_PEGAWAI.'</td>
+		<td>'.$tampilpegawai->NIP_PEGAWAI.'</td>
                 <td>'.$tampilpegawai->NAMA_PEGAWAI.'</td>
                 <td>'.$objectdata->KETERANGAN.'</td>
                 <td>'.$objectdata->TANGGAL_AWAL.'</td>
