@@ -31,8 +31,14 @@
     }
 ?>
 	
-<form class="form-horizontal petugasForm" id="petugasForm" action="crud/info/info.input.php" type="POST">
+<form class="form-horizontal infoForm" id="infoForm" action="crud/info/info.input.php" type="POST">
     <div class="modal-body">
+		<div class="form-group">
+				<label class="col-sm-3 control-label"></label>
+				<div class="col-sm-9">
+				<span><i class="glyphicon glyphicon-asterisk"></i> <strong style="color:red;">Wajib Di Isi</strong></span>
+				</div>
+		</div>
         <div class="form-group">
             <label for="NAMA_PERUSAHAAN" class="col-sm-3 control-label">  Perusahaan</label>
             <div class="col-sm-9">
@@ -92,7 +98,7 @@
 </form>
 <script type="text/javascript">
     $(document).ready(function() {
-	$('#petugasForm')
+	$('#infoForm')
 	
 	.on('success.form.fv', function(e) {
             e.preventDefault();
@@ -109,22 +115,82 @@
                 }
             });
         })
+		.on('init.field.fv', function(e, data) {
+
+				var $icon      = data.element.data('fv.icon'),
+					options    = data.fv.getOptions(), 
+					validators = data.fv.getOptions(data.field).validators; 
+
+				if (validators.notEmpty && options.icon && options.icon.required) {
+					$icon.addClass(options.icon.required).show();
+				}
+			})
 	.formValidation({
             message: 'This value is not valid',
             icon: {
+				required: 'glyphicon glyphicon-asterisk',
                 valid: 'glyphicon glyphicon-ok',
                 invalid: 'glyphicon glyphicon-remove',
                 validating: 'glyphicon glyphicon-refresh'
             },
             fields: {
-		NAMA_info: {
+				NAMA_PERUSAHAAN: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The is required'
+                        }
+                    }
+                },
+				EMAIL: {
                     validators: {
                         notEmpty: {
                             message: 'The is required'
                         },
-                        stringLength: {
-                            max: 50,
-                            message: 'The must be less than 50 characters'
+						regexp: {
+                            regexp: '^[^@\\s]+@([^@\\s]+\\.)+[^@\\s]+$',
+                            message: 'The value is not a valid email address'
+                        }
+                    }
+                },
+				PHONE_1: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The is required'
+                        }
+                    }
+                },
+				PHONE_2: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The is required'
+                        }
+                    }
+                },
+				KOTA: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The is required'
+                        }
+                    }
+                },
+				FAXIMILI: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The is required'
+                        }
+                    }
+                },
+				NEGARA: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The is required'
+                        }
+                    }
+                },
+				ALAMAT: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The is required'
                         }
                     }
                 },

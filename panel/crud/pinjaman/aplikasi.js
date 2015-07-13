@@ -1,6 +1,7 @@
 (function($) {
     $(document).ready(function(e) {
 	var id = 0;
+	var logo1 = logo;
 	var main = "crud/pinjaman/pinjaman.data.php";
 
 	$("#data-pinjaman").load(main);
@@ -10,9 +11,9 @@
             id = this.id;
 			
             if(id != 0) {
-		$("#myModalLabel").html("<img alt='Brand' src='logo/logo.png' style='width:50px; height:50px;'/>&nbsp;&nbsp;&nbsp;Ubah Data KasBon");
+		$("#myModalLabel").html("<img alt='Brand' src='"+logo1+"' style='width:50px; height:50px;'/>&nbsp;&nbsp;&nbsp;Ubah Data KasBon");
             } else {
-		$("#myModalLabel").html("<img alt='Brand' src='logo/logo.png' style='width:50px; height:50px;'/>&nbsp;&nbsp;&nbsp;Tambah Data KasBon");
+		$("#myModalLabel").html("<img alt='Brand' src='"+logo1+"' style='width:50px; height:50px;'/>&nbsp;&nbsp;&nbsp;Tambah Data KasBon");
             }
 
             $.post(url, {id: id} ,function(data) {
@@ -22,7 +23,7 @@
 		
 	$('.import').live("click", function(){
             var url = "crud/pinjaman/import.form.php";
-            $("#myModalLabel").html("<img alt='Brand' src='logo/logo.png' style='width:50px; height:50px;'/>&nbsp;&nbsp;&nbsp;Import Data KasBon");
+            $("#myModalLabel").html("<img alt='Brand' src='"+logo1+"' style='width:50px; height:50px;'/>&nbsp;&nbsp;&nbsp;Import Data KasBon");
             $.post(url, "" ,function(data) {
 		$(".isiForm").html(data).show();
             });
@@ -44,7 +45,7 @@
 		
 	$('#dialog-pinjaman').on('hidden.bs.modal', function () {
             $("#data-pinjaman").load(main);
-            $("#myModalLabel").html("<img alt='Brand' src='logo/logo.png' style='width:50px; height:50px;'/>&nbsp;&nbsp;&nbsp;Tambah Data Pinjaman");
+            $("#myModalLabel").html("<img alt='Brand' src='"+logo1+"' style='width:50px; height:50px;'/>&nbsp;&nbsp;&nbsp;Tambah Data Pinjaman");
 	});
     });	
 }) (jQuery);

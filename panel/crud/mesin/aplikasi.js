@@ -1,6 +1,7 @@
 (function($) {
     $(document).ready(function(e) {
 	var id = 0;
+	var logo1 = logo;
 	var main = "crud/mesin/mesin.data.php";
 
 	$("#data-mesin").load(main);
@@ -10,9 +11,9 @@
             id = this.id;
 			
             if(id != 0) {
-		$("#myModalLabel").html("<img alt='Brand' src='logo/logo.png' style='width:50px; height:50px;'/>&nbsp;&nbsp;&nbsp;Ubah Data mesin");
+		$("#myModalLabel").html("<img alt='Brand' src='"+logo1+"' style='width:50px; height:50px;'/>&nbsp;&nbsp;&nbsp;Ubah Data mesin");
             } else {
-		$("#myModalLabel").html("<img alt='Brand' src='logo/logo.png' style='width:50px; height:50px;'/>&nbsp;&nbsp;&nbsp;Tambah Data mesin");
+		$("#myModalLabel").html("<img alt='Brand' src='"+logo1+"' style='width:50px; height:50px;'/>&nbsp;&nbsp;&nbsp;Tambah Data mesin");
             }
 
             $.post(url, {id: id} ,function(data) {
@@ -22,7 +23,7 @@
 		
 	$('.import').live("click", function(){
             var url = "crud/mesin/import.form.php";
-            $("#myModalLabel").html("<img alt='Brand' src='logo/logo.png' style='width:50px; height:50px;'/>&nbsp;&nbsp;&nbsp;Import Data mesin");
+            $("#myModalLabel").html("<img alt='Brand' src='"+logo1+"' style='width:50px; height:50px;'/>&nbsp;&nbsp;&nbsp;Import Data mesin");
             $.post(url, "" ,function(data) {
 		$(".isiForm").html(data).show();
             });
@@ -42,7 +43,7 @@
 		
 	$('#dialog-mesin').on('hidden.bs.modal', function () {
             $("#data-mesin").load(main);
-            $("#myModalLabel").html("<img alt='Brand' src='logo/logo.png' style='width:50px; height:50px;'/>&nbsp;&nbsp;&nbsp;Tambah Data mesin");
+            $("#myModalLabel").html("<img alt='Brand' src='"+logo1+"' style='width:50px; height:50px;'/>&nbsp;&nbsp;&nbsp;Tambah Data mesin");
 	});
     });
 }) (jQuery);

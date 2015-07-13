@@ -1,10 +1,14 @@
+<?php
+include_once "include/koneksi.php";
+$profil=mysql_fetch_object(mysql_query("SELECT * FROM profil_perusahaan"));
+?>
 <!DOCTYPE html>
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<meta name="viewport" content="width=1,initial-scale=1,user-scalable=1" />
-	<title>Lukstron Development</title>
-	<link rel="icon" href="logo.png">
+	<title><?php echo $profil->NAMA_PERUSAHAAN; ?></title>
+	<link rel="icon" href="<?php echo $profil->logo; ?>">
 	
 	<link href="css/font.css" rel="stylesheet" type="text/css">
 	<link rel="stylesheet" type="text/css" href="bootstrap/dist/css/bootstrap.min.css" />
@@ -25,8 +29,8 @@
 </head>
 <body>
     <section id="logo" style="padding: 30px 0 25px 0;">
-	<a href="#"><img src="logo.png" alt="" width="100" height="100"/></a>
-	<div style="width:100%;"><center><h2><strong>Lukstron Software Development</strong></h2></center></div>
+	<a href="#"><img src="<?php echo $profil->logo; ?>" alt="" width="100" height="100"/></a>
+	<div style="width:100%;"><center><h2><strong><?php echo $profil->NAMA_PERUSAHAAN; ?></strong></h2></center></div>
 	<div style="width:100%;"><center><h3><strong style="color:blue;">Login Panel Form</strong></h3></center></div>
     </section>
 	

@@ -7,6 +7,8 @@ error_reporting(0);
 		$datamachine=mysql_fetch_object($getmachine);
 		$ip=$datamachine->IP_ADDRESS;
 		$port=$datamachine->PORT_COM;
+		
+		$profil=mysql_fetch_object(mysql_query("SELECT * FROM profil_perusahaan"));
 		?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,9 +19,9 @@ error_reporting(0);
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../panel/logo.png">
+    <link rel="icon" href="../panel/<?php echo $profil->logo; ?>">
 
-    <title>Lukstron Development</title>
+    <title><?php echo $profil->NAMA_PERUSAHAAN; ?></title>
 	
     <!-- Bootstrap core CSS -->
     <link href="../panel/bootstrap/docs/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -50,9 +52,9 @@ error_reporting(0);
         <div class="container">
             <table width="120%">
                 <tr>
-                    <td class="col-sm-1" rowspan="2"><img alt="Brand" src="../panel/logo/logo.png" style="width:71px; height:71;"/></td>
+                    <td class="col-sm-1" rowspan="2"><img alt="Brand" src="../panel/<?php echo $profil->logo; ?>" style="width:71px; height:71;"/></td>
                     <td class="col-sm-12" style="border-bottom:1pt solid green;">
-                        <h3 style="color:#00b7ea;">Lukstron Software Development</h3>
+                        <h3 style="color:#00b7ea;"><?php echo $profil->NAMA_PERUSAHAAN; ?></h3>
                     </td>
 		</tr>
 		<tr>
@@ -70,6 +72,7 @@ error_reporting(0);
 	<center>
 <script>
 $(document).ready(function() {
+	
  	 $("#cek").load("../panel/include/cek_koneksi_mesin.php");
    var refreshId = setInterval(function() 
       {
@@ -203,7 +206,7 @@ $(document).ready(function() {
 						<div class="modal-content">
 						  <div class="modal-header">
 							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-							<h3 id="myModalLabel"><img alt='Brand' src='../panel/logo.png' style='width:50px; height:50px;'/>&nbsp;&nbsp;&nbsp;Data Gaji</h3>
+							<h3 id="myModalLabel"><img alt='Brand' src='../panel/<?php echo $profil->logo; ?>' style='width:50px; height:50px;'/>&nbsp;&nbsp;&nbsp;Data Gaji</h3>
 						  </div>
 						   <div class="modal-body">
        <div id="data-laporan" name="data-laporan" class="data-laporan"></div>
