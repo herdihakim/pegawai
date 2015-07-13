@@ -18,6 +18,7 @@
 	$FAXIMILI = $data['FAXIMILI'];
 	$ALAMAT = $data['ALAMAT'];
 	$NEGARA = $data['NEGARA'];
+	$logo = $data['logo'];
     } else {
 	$NAMA_PERUSAHAAN ="";
 	$EMAIL = "";
@@ -27,6 +28,7 @@
 	$FAXIMILI = "";
 	$ALAMAT ="";
 	$NEGARA ="";
+	$logo ="";
 	
     }
 ?>
@@ -89,6 +91,12 @@
 			<textarea class="form-control" id="ALAMAT" name="ALAMAT"  \><?php echo $ALAMAT; ?></textarea>
             </div>
 	</div>
+	<div class="form-group">
+            <label for="LOGO" class="col-sm-3 control-label">Logo</label>
+            <div class="col-sm-9">
+				<input type="file" class="form-control" accept="image/jpeg, image/png" id="logo" name="logo" placeholder="File Import" \>
+			</div>
+	</div>
 	
     </div>
     <div class="modal-footer">
@@ -102,16 +110,30 @@
 	
 	.on('success.form.fv', function(e) {
             e.preventDefault();
+			
+			var $form = $(e.target),
+            formData = new FormData(),
+            params   = $form.serializeArray(),
+            files    = $form.find('[name="logo"]')[0].files;
 
-            var $form = $(e.target),
-                fv    = $form.data('formValidation');
+            $.each(files, function(i, logo) {
+                formData.append('logo[]', logo);
+            });
 
+            $.each(params, function(i, val) {
+                formData.append(val.name, val.value);
+            });
+            
             $.ajax({
                 url: $form.attr('action'),
+		data: formData,
+                cache: false,
+                contentType: false,
+                processData: false,
                 type: 'POST',
-                data: $form.serialize(),
-                success: function() {
+                success: function(data) {
                     $('#dialog-info').modal('hide');
+					location.reload();
                 }
             });
         })
