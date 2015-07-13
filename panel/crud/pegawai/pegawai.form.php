@@ -302,9 +302,9 @@
 		},
                 STATUS_PERNIKAHAN: {
                     validators: {
-                        notEmpty: {
+                       /*  notEmpty: {
                             message: 'The is required'
-                        },
+                        }, */
                         stringLength: {
                             max: 50,
                             message: 'The must be less than 50 characters'
@@ -313,26 +313,26 @@
 		},
                 JUMLAH_ANAK: {
                     validators: {
-                        notEmpty: {
+                       /*  notEmpty: {
                             message: 'The is required'
-                        },
+                        }, */
                         numeric: {
                            message: 'The is numeric'
                         }
                     }
 		},
-                ALAMAT: {
+                /* ALAMAT: {
                     validators: {
                         notEmpty: {
                             message: 'The is required'
                         }
                     }
-		},
+		}, */
                 NOMOR_TELEPON: {
                     validators: {
-                        notEmpty: {
+                       /*  notEmpty: {
                             message: 'The is required'
-                        },
+                        }, */
                         stringLength: {
                             max: 20,
                             message: 'The must be less than 20 characters'
@@ -344,9 +344,9 @@
 		},
                 EMAIL: {
                     validators: {
-                        notEmpty: {
+                       /*  notEmpty: {
                             message: 'The is required'
-                        },
+                        }, */
 			regexp: {
                             regexp: '^[^@\\s]+@([^@\\s]+\\.)+[^@\\s]+$',
                             message: 'The value is not a valid email address'
