@@ -76,10 +76,20 @@
             <label for="TANGGAL_LAHIR" class="col-sm-3 control-label">Tanggal Lahir</label>
             <div class="col-sm-9">
                 <div class="input-group date" id="datePicker">
-                    <input type="text" class="form-control" id="TANGGAL_LAHIR" name="TANGGAL_LAHIR" value="<?php echo $TANGGAL_LAHIR; ?>" placeholder="Tanggal Lahir" readonly required><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+                    <input type="text" class="form-control" id="TANGGAL_LAHIR" name="TANGGAL_LAHIR" value="<?php echo $TANGGAL_LAHIR; ?>" placeholder="Tanggal Lahir" readonly ><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
                 </div>
             </div>
 	</div>
+	<div class="form-group">
+            <label for="jk" class="col-sm-3 control-label">Jenis Kelamin</label>
+            <div class="col-sm-9">
+            	<select name="JENIS_KELAMIN" class="form-control" id="JENIS_KELAMIN" style="width:100%">
+                    <option value="">Pilih Jenis Kelamin</option>
+                    <option value="laki-laki" <?php if($JENIS_KELAMIN=="laki-laki"){echo "selected='selected'";}?>>laki-laki</option>
+                    <option value="Perempuan" <?php if($JENIS_KELAMIN=="Perempuan"){echo "selected='selected'";}?>>Perempuan</option>
+                </select>
+            </div>
+	</div>	
 	<div class="form-group">
             <label for="AGAMA" class="col-sm-3 control-label">Agama</label>
             <div class="col-sm-9">
@@ -93,10 +103,14 @@
             </div>
 	</div>
 	<div class="form-group">
-            <label for="STATUS_PERNIKAHAN" class="col-sm-3 control-label">Pernikahan</label>
+            <label for="STATUS_PERNIKAHAN" class="col-sm-3 control-label">Status Pernikahan</label>
             <div class="col-sm-9">
-		<input type="text" class="form-control" value="<?php echo $STATUS_PERNIKAHAN; ?>" id="STATUS_PERNIKAHAN" name="STATUS_PERNIKAHAN" placeholder="Status Pernikahan"\>
-            </div>
+			 <select name="STATUS_PERNIKAHAN" class="form-control" id="STATUS_PERNIKAHAN" style="width:100%">
+                    <option value="">Pilih Status Pernikahan</option>
+                    <option value="Kawin" <?php if($STATUS_PERNIKAHAN=="Kawin"){echo "selected='selected'";}?>>Kawin</option>
+                    <option value="Belum Kawin" <?php if($STATUS_PERNIKAHAN=="Belum Kawin"){echo "selected='selected'";}?>>Belum Kawin</option>
+                </select>
+			</div>
 	</div>
 	<div class="form-group">
             <label for="JUMLAH_ANAK" class="col-sm-3 control-label">Jumlah Anak</label>
@@ -113,7 +127,7 @@
 	<div class="form-group">
             <label for="NOMOR_TELEPON" class="col-sm-3 control-label">No Telepon</label>
             <div class="col-sm-9">
-            	<input type="text" class="form-control" value="<?php echo $NOMOR_TELEPON; ?>" id="NOMOR_TELEPON" name="NOMOR_TELEPON" placeholder="Nomor Teleponr"\>
+            	<input type="text" class="form-control" value="<?php echo $NOMOR_TELEPON; ?>" id="NOMOR_TELEPON" name="NOMOR_TELEPON" placeholder="Nomor Telepon"\>
             </div>
 	</div>
 	<div class="form-group">
@@ -175,19 +189,13 @@
 	<div class="form-group">
             <label for="STATUS_PEGAWAI" class="col-sm-3 control-label">Status Pegawai</label>
             <div class="col-sm-9">
-            	<input type="text" class="form-control" value="<?php echo $STATUS_PEGAWAI; ?>" id="STATUS_PEGAWAI" name="STATUS_PEGAWAI" \>
-            </div>
-	</div>
-	<div class="form-group">
-            <label for="jk" class="col-sm-3 control-label">Jenis Kelamin</label>
-            <div class="col-sm-9">
-            	<select name="JENIS_KELAMIN" class="form-control" id="JENIS_KELAMIN" style="width:100%">
-                    <option value="">Pilih Jenis Kelamin</option>
-                    <option value="laki-laki" <?php if($JENIS_KELAMIN=="laki-laki"){echo "selected='selected'";}?>>laki-laki</option>
-                    <option value="Perempuan" <?php if($JENIS_KELAMIN=="Perempuan"){echo "selected='selected'";}?>>Perempuan</option>
+				<select name="STATUS_PEGAWAI" class="form-control" id="STATUS_PEGAWAI" style="width:100%">
+                    <option value="">Pilih Status Pegawai</option>
+                    <option value="Tetap" <?php if($STATUS_PEGAWAI=="Tetap"){echo "selected='selected'";}?>>Tetap</option>
+                    <option value="Kontrak" <?php if($STATUS_PEGAWAI=="Kontrak"){echo "selected='selected'";}?>>Kontrak</option>
                 </select>
-            </div>
-	</div>	
+			</div>
+	</div>
         <div class="form-group">
             <label for="foto" class="col-sm-3 control-label">Foto Pegawai</label>
             <div class="col-sm-9">
@@ -277,16 +285,16 @@
 		},
                 TEMPAT_LAHIR: {
                     validators: {
-                        notEmpty: {
+                        /* notEmpty: {
                             message: 'The is required'
-                        },
+                        }, */
                         stringLength: {
                             max: 50,
                             message: 'The must be less than 50 characters'
                         }
                     }
 		},
-		TANGGAL_LAHIR: {
+		/* TANGGAL_LAHIR: {
                     validators: {
                         notEmpty: {
                             message: 'The is required'
@@ -299,7 +307,7 @@
                             message: 'The is required'
                         }
                     }
-		},
+		}, */
                 STATUS_PERNIKAHAN: {
                     validators: {
                        /*  notEmpty: {
@@ -391,13 +399,13 @@
                         }
                     }
 		},
-                JENIS_KELAMIN: {
+                /* JENIS_KELAMIN: {
                     validators: {
                         notEmpty: {
                             message: 'The is required'
                         }
                     }
-		},
+		}, */
                 FOTO_PEGAWAI: {
                     validators: {
 			file: {
