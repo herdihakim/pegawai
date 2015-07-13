@@ -51,8 +51,8 @@
 		<td>'.$tampildepartemen->NAMA_DEPARTEMEN.'</td>
 		<td>'.$objectdata->NOMOR_TELEPON.'</td>
 		<td>
-                    <a href="#dialog-pegawai" id="'.$objectdata->NIP_PEGAWAI.'" alt="Ubah" title="Ubah" class="glyphicon ubah-pegawai glyphicon-edit" data-toggle="modal"></a>&nbsp; 
-                    <a href="#" id="'.$objectdata->NIP_PEGAWAI.'" alt="Hapus" title="Hapus" class="glyphicon hapus-pegawai glyphicon-trash"></a>
+                    <a href="#dialog-pegawai" id="'.$objectdata->KODE_PEGAWAI.'" alt="Ubah" title="Ubah" class="glyphicon ubah-pegawai glyphicon-edit" data-toggle="modal"></a>&nbsp; 
+                    <a href="#" id="'.$objectdata->KODE_PEGAWAI.'" alt="Hapus" title="Hapus" class="glyphicon hapus-pegawai glyphicon-trash"></a>
 		</td>
             </tr>';
 		$no++;

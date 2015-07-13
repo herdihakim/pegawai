@@ -5,7 +5,7 @@
     $id = $_POST['id'];
 
     $data = mysql_fetch_array(mysql_query("
-        SELECT * FROM pegawai WHERE NIP_PEGAWAI=".$id
+        SELECT * FROM pegawai WHERE KODE_PEGAWAI=".$id
     ));
 
     if($id> 0) { 
@@ -54,9 +54,16 @@
  <form class="form-horizontal petugasForm" id="petugasForm" action="crud/pegawai/pegawai.input.php" type="POST">
     <div class="modal-body">
 	<div class="form-group">
+            <label class="col-sm-3 control-label"></label>
+            <div class="col-sm-9">
+			<span><i class="glyphicon glyphicon-asterisk"></i> <strong style="color:red;">Wajib Di Isi</strong></span>
+            </div>
+	</div>
+	
+	<div class="form-group">
             <label for="NIP_PEGAWAI" class="col-sm-3 control-label">NIP</label>
             <div class="col-sm-9">
-			<input type="text" class="form-control" value="<?php echo $NIP_PEGAWAI; ?>" id="NIP_PEGAWAI" name="NIP_PEGAWAI" placeholder="NIP Pegawai" \>
+			<input type="text" class="form-control" value="<?php echo $NIP_PEGAWAI; ?>" id="NIP_PEGAWAI" name="NIP_PEGAWAI" placeholder="NIP Pegawai" required\>
             <input type="hidden" id="KODE_PEGAWAI" name="KODE_PEGAWAI" value="<?php echo $KODE_PEGAWAI; ?>" />
             </div>
 	</div>
@@ -219,7 +226,10 @@
             format: "yyyy-mm-dd",
             autoclose: true,
             todayHighlight: true
-	});
+	}).on('changeDate', function(e) {
+            // Revalidate the date field
+            $('#petugasForm').formValidation('revalidateField', 'TANGGAL_MASUK');
+        });
         $('#datePicker2').datepicker({
             format: "yyyy-mm-dd",
             autoclose: true,
@@ -248,14 +258,31 @@
                 contentType: false,
                 processData: false,
                 type: 'POST',
-                success: function() {
+                success: function(data) {
                     $('#dialog-pegawai').modal('hide');
+					//alert(data);
                 }
             });
+        })
+	 .on('init.field.fv', function(e, data) {
+            // data.fv      --> The FormValidation instance
+            // data.field   --> The field name
+            // data.element --> The field element
+
+            var $icon      = data.element.data('fv.icon'),
+                options    = data.fv.getOptions(),                      // Entire options
+                validators = data.fv.getOptions(data.field).validators; // The field validators
+
+            if (validators.notEmpty && options.icon && options.icon.required) {
+                // The field uses notEmpty validator
+                // Add required icon
+                $icon.addClass(options.icon.required).show();
+            }
         })
 	.formValidation({
             message: 'This value is not valid',
             icon: {
+				required: 'glyphicon glyphicon-asterisk',
                 valid: 'glyphicon glyphicon-ok',
                 invalid: 'glyphicon glyphicon-remove',
                 validating: 'glyphicon glyphicon-refresh'

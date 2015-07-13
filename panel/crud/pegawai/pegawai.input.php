@@ -3,15 +3,15 @@
 	include("../../include/zklib/zklib.php");
 					$getmachine=mysql_query("select * from mesin_absensi");
 					$datamachine=mysql_fetch_object($getmachine);
-					$ip=$datamachine->IP_ADDRESS;
+					/* $ip=$datamachine->IP_ADDRESS;
 					$port=$datamachine->PORT_COM;
 					$zk = new ZKLib("$ip", $port);
-					$ret = $zk->connect();
+					$ret = $zk->connect(); */
 					
 				
 // proses menghapus data mahasiswa
 if(isset($_POST['hapus'])) {
-	mysql_query("DELETE FROM pegawai WHERE NIP_PEGAWAI=".$_POST['hapus']);
+	mysql_query("DELETE FROM pegawai WHERE KODE_PEGAWAI=".$_POST['hapus']);
 } else {
     $KODE_PEGAWAI = $_POST['KODE_PEGAWAI'];
 	$NIP_PEGAWAI = $_POST['NIP_PEGAWAI'];
@@ -48,7 +48,7 @@ if(isset($_POST['hapus'])) {
 				   '$ALAMAT','$NOMOR_TELEPON','$KODE_JABATAN','$KODE_DEPARTEMEN','$GAJI_POKOK','$TANGGAL_MASUK','$TANGGAL_KELUAR',
 				   '$STATUS_PEGAWAI','$new_name','$JENIS_KELAMIN','$EMAIL')");
 				   $ID_PEGAWAI=mysql_insert_id();
-				   $zk->setUser($ID_PEGAWAI,$ID_PEGAWAI, $NAMA_PEGAWAI, '', LEVEL_USER);
+				   //$zk->setUser($ID_PEGAWAI,$ID_PEGAWAI, $NAMA_PEGAWAI, '', LEVEL_USER);
 					
                     if (!file_exists('../../foto')) {
 					mkdir('../../foto');
@@ -69,7 +69,7 @@ if(isset($_POST['hapus'])) {
 				   '$ALAMAT','$NOMOR_TELEPON','$KODE_JABATAN','$KODE_DEPARTEMEN','$GAJI_POKOK','$TANGGAL_MASUK','$TANGGAL_KELUAR',
 				   '$STATUS_PEGAWAI','','$JENIS_KELAMIN','$EMAIL')");	
 					$ID_PEGAWAI=mysql_insert_id();
-				    $zk->setUser($ID_PEGAWAI,$ID_PEGAWAI, $NAMA_PEGAWAI, '', LEVEL_USER);			   
+				    //$zk->setUser($ID_PEGAWAI,$ID_PEGAWAI, $NAMA_PEGAWAI, '', LEVEL_USER);			   
             }
                         
 		
@@ -83,11 +83,11 @@ if(isset($_POST['hapus'])) {
                     $ukuran=$_FILES['FOTO_PEGAWAI']['size'][$key];
                         
                     $new_name = $NIP_PEGAWAI.".".$ext;
-                    mysql_query("UPDATE pegawai SET NAMA_PEGAWAI = '$NAMA_PEGAWAI', TEMPAT_LAHIR = '$TEMPAT_LAHIR', TANGGAL_LAHIR = '$TANGGAL_LAHIR'
+                    mysql_query("UPDATE pegawai SET NIP_PEGAWAI = '$NIP_PEGAWAI',NAMA_PEGAWAI = '$NAMA_PEGAWAI', TEMPAT_LAHIR = '$TEMPAT_LAHIR', TANGGAL_LAHIR = '$TANGGAL_LAHIR'
 					, AGAMA = '$AGAMA', JUMLAH_ANAK = '$JUMLAH_ANAK', ALAMAT = '$ALAMAT', NOMOR_TELEPON = '$NOMOR_TELEPON', KODE_JABATAN = '$KODE_JABATAN'
 					, KODE_DEPARTEMEN = '$KODE_DEPARTEMEN', GAJI_POKOK = '$GAJI_POKOK', TANGGAL_MASUK = '$TANGGAL_MASUK', TANGGAL_KELUAR = '$TANGGAL_KELUAR'
-					, STATUS_PEGAWAI = '$STATUS_PEGAWAI', FOTO_PEGAWAI = '$new_name', JENIS_KELAMIN = '$JENIS_KELAMIN', EMAIL = '$EMAIL' WHERE NIP_PEGAWAI = '$NIP_PEGAWAI' ");
-					$zk->setUser($KODE_PEGAWAI,$KODE_PEGAWAI, $NAMA_PEGAWAI, '', LEVEL_USER);
+					, STATUS_PEGAWAI = '$STATUS_PEGAWAI', FOTO_PEGAWAI = '$new_name', JENIS_KELAMIN = '$JENIS_KELAMIN', EMAIL = '$EMAIL' WHERE KODE_PEGAWAI = '$KODE_PEGAWAI' ");
+					//$zk->setUser($KODE_PEGAWAI,$KODE_PEGAWAI, $NAMA_PEGAWAI, '', LEVEL_USER);
                     if (!file_exists('../../foto')) {
 					mkdir('../../foto');
                     }
@@ -102,11 +102,11 @@ if(isset($_POST['hapus'])) {
 							
 		}
             }else{
-			mysql_query("UPDATE pegawai SET NAMA_PEGAWAI = '$NAMA_PEGAWAI', TEMPAT_LAHIR = '$TEMPAT_LAHIR', TANGGAL_LAHIR = '$TANGGAL_LAHIR'
+			mysql_query("UPDATE pegawai SET NIP_PEGAWAI = '$NIP_PEGAWAI',NAMA_PEGAWAI = '$NAMA_PEGAWAI', TEMPAT_LAHIR = '$TEMPAT_LAHIR', TANGGAL_LAHIR = '$TANGGAL_LAHIR'
 					, AGAMA = '$AGAMA', JUMLAH_ANAK = '$JUMLAH_ANAK', ALAMAT = '$ALAMAT', NOMOR_TELEPON = '$NOMOR_TELEPON', KODE_JABATAN = '$KODE_JABATAN'
 					, KODE_DEPARTEMEN = '$KODE_DEPARTEMEN', GAJI_POKOK = '$GAJI_POKOK', TANGGAL_MASUK = '$TANGGAL_MASUK', TANGGAL_KELUAR = '$TANGGAL_KELUAR'
-					, STATUS_PEGAWAI = '$STATUS_PEGAWAI', JENIS_KELAMIN = '$JENIS_KELAMIN', EMAIL = '$EMAIL' WHERE NIP_PEGAWAI = '$NIP_PEGAWAI' ");
-					$zk->setUser($KODE_PEGAWAI,$KODE_PEGAWAI, $NAMA_PEGAWAI, '', LEVEL_USER);	
+					, STATUS_PEGAWAI = '$STATUS_PEGAWAI', JENIS_KELAMIN = '$JENIS_KELAMIN', EMAIL = '$EMAIL' WHERE KODE_PEGAWAI = '$KODE_PEGAWAI' ");
+					//$zk->setUser($KODE_PEGAWAI,$KODE_PEGAWAI, $NAMA_PEGAWAI, '', LEVEL_USER);	
             }
 	}
 }
