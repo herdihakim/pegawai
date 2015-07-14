@@ -10,7 +10,7 @@
     <meta name="author" content="">
     <link rel="icon" href="logo.png">
 
-    <title>Lukstron Development</title>
+    <title>Lukstron Development Site</title>
 	
     <!-- Bootstrap core CSS -->
     <link href="panel/bootstrap/docs/dist/css/bootstrap.min.css" rel="stylesheet">
