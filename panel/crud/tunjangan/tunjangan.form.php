@@ -22,6 +22,12 @@
 	
  <form class="form-horizontal tunjanganForm" id="tunjanganForm" action="crud/tunjangan/tunjangan.input.php" type="POST">
     <div class="modal-body">
+		<div class="form-group">
+				<label class="col-sm-3 control-label"></label>
+				<div class="col-sm-9">
+				<span><i class="glyphicon glyphicon-asterisk"></i> <strong style="color:red;">Wajib Di Isi</strong></span>
+				</div>
+		</div>
         <div class="form-group">
             <label for="NAMA_TUNJANGAN" class="col-sm-3 control-label"> Nama Tunjangan</label>
             <div class="col-sm-9">
@@ -59,9 +65,20 @@
                     }
                 });
             })
+			.on('init.field.fv', function(e, data) {
+
+				var $icon      = data.element.data('fv.icon'),
+					options    = data.fv.getOptions(), 
+					validators = data.fv.getOptions(data.field).validators; 
+
+				if (validators.notEmpty && options.icon && options.icon.required) {
+					$icon.addClass(options.icon.required).show();
+				}
+			})
             .formValidation({
                 message: 'This value is not valid',
                 icon: {
+					required: 'glyphicon glyphicon-asterisk',
                     valid: 'glyphicon glyphicon-ok',
                     invalid: 'glyphicon glyphicon-remove',
                     validating: 'glyphicon glyphicon-refresh'

@@ -11,7 +11,9 @@ function anti_injection($data){
 
 if (!ctype_alnum($username) OR !ctype_alnum($password))
 {
-    echo 'false';
+	header('Content-Type: application/json');
+	echo json_encode(array('cek' => 'false'));
+    //echo 'false';
 }
 else
 {
@@ -28,9 +30,13 @@ else
   	$_SESSION['KODE_PETUGAS']     	= $r['KODE_PETUGAS'];
 	$_SESSION['NAMA_PETUGAS']     	= $r['NAMA_PETUGAS'];
 	$_SESSION['EMAIL']              = $r['EMAIL'];
-        $_SESSION['USERNAME_LOGIN']     = $r['USERNAME_LOGIN'];
+    $_SESSION['USERNAME_LOGIN']     = $r['USERNAME_LOGIN'];
+	
+	header('Content-Type: application/json');
+	echo json_encode(array('cek' => 'true'));
     }else{
-        echo 'false';
+       header('Content-Type: application/json');
+		echo json_encode(array('cek' => 'false'));
     }	
 }
 ?>

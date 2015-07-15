@@ -27,6 +27,12 @@
 	
  <form class="form-horizontal cutiForm" id="cutiForm" action="crud/cuti/cuti.input.php" type="POST">
     <div class="modal-body">
+		<div class="form-group">
+				<label class="col-sm-3 control-label"></label>
+				<div class="col-sm-9">
+				<span><i class="glyphicon glyphicon-asterisk"></i> <strong style="color:red;">Wajib Di Isi</strong></span>
+				</div>
+		</div>
         <div class="form-group">
             <label for="NIP_PEGAWAI" class="col-sm-3 control-label"> Nama Pegawai</label>
             <div class="col-sm-9">
@@ -35,7 +41,7 @@
                     echo '<select id="NIP_PEGAWAI" name="NIP_PEGAWAI" style="width: 100%;" class="NIP_PEGAWAI form-control ">';  
                         echo '<option value="">Silahkan Pilih Pegawai</option>';  
 			while ($row = mysql_fetch_array($result)) {  
-                            echo '<option value="' . $row['NIP_PEGAWAI'] . '"';if($NIP_PEGAWAI==$row['NIP_PEGAWAI']){echo "selected='selected'";} echo'>'.$row['NIP_PEGAWAI'].' - '.$row['NAMA_PEGAWAI']. '</option>';  
+                            echo '<option value="' . $row['KODE_PEGAWAI'] . '"';if($NIP_PEGAWAI==$row['KODE_PEGAWAI']){echo "selected='selected'";} echo'>'.$row['NIP_PEGAWAI'].' - '.$row['NAMA_PEGAWAI']. '</option>';  
 			}  
                     echo '</select>';
 		?>
@@ -91,9 +97,20 @@
                     }
                 });
             })
+			.on('init.field.fv', function(e, data) {
+
+				var $icon      = data.element.data('fv.icon'),
+					options    = data.fv.getOptions(), 
+					validators = data.fv.getOptions(data.field).validators; 
+
+				if (validators.notEmpty && options.icon && options.icon.required) {
+					$icon.addClass(options.icon.required).show();
+				}
+			})
             .formValidation({
                 message: 'This value is not valid',
                 icon: {
+					required: 'glyphicon glyphicon-asterisk',
                     valid: 'glyphicon glyphicon-ok',
                     invalid: 'glyphicon glyphicon-remove',
                     validating: 'glyphicon glyphicon-refresh'

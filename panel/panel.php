@@ -5,6 +5,7 @@
     if(!isset($_SESSION['KODE_PETUGAS'])){
 	echo"<script>alert('Lakukan Login Terlebih Dahulu');window.location='index.php'</script>";
     }
+	$profil=mysql_fetch_object(mysql_query("SELECT * FROM profil_perusahaan"));
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,9 +16,9 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="logo.png">
+    <link rel="icon" href="<?php echo $profil->logo; ?>">
 
-    <title>Lukstron Development</title>
+    <title><?php echo $profil->NAMA_PERUSAHAAN; ?></title>
 	
     <!-- Bootstrap core CSS -->
     <link href="bootstrap/docs/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -81,9 +82,9 @@
         <div class="container">
             <table width="100%">
                 <tr>
-                    <td class="col-sm-1" rowspan="2"><img alt="Brand" src="logo/logo.png" style="width:75px; height:75;"/></td>
+                    <td class="col-sm-1" rowspan="2"><img alt="Brand" src="<?php echo $profil->logo; ?>" style="width:75px; height:75;"/></td>
                     <td class="col-sm-12" style="border-bottom:1pt solid green;">
-                        <h3 style="color:#00b7ea;">Lukstron Software Development</h3>
+                        <h3 style="color:#00b7ea;"><?php echo $profil->NAMA_PERUSAHAAN; ?></h3>
                     </td>
 		</tr>
 		<tr>
@@ -116,10 +117,7 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="crud/menu/aplikasi.js"></script>
-	
-	<!--- Editor Table -->
-    <script type="text/javascript" src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-	
+
 	<!-- bootstrap -->
     <script src="bootstrap/docs/dist/js/bootstrap.min.js"></script>
 	 

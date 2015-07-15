@@ -1,6 +1,7 @@
 (function($) {
     $(document).ready(function(e) {
 	var id = 0;
+	var logo1 = logo;
 	var main = "crud/hari_libur/hari_libur.data.php";
 
 	$("#data-hari_libur").load(main);
@@ -10,9 +11,9 @@
             id = this.id;
 			
             if(id != 0) {
-		$("#myModalLabel").html("<img alt='Brand' src='logo/logo.png' style='width:50px; height:50px;'/>&nbsp;&nbsp;&nbsp;Ubah Data Konfigurasi Penggajian");
+		$("#myModalLabel").html("<img alt='Brand' src='"+logo1+"' style='width:50px; height:50px;'/>&nbsp;&nbsp;&nbsp;Ubah Data Konfigurasi Penggajian");
             } else {
-		$("#myModalLabel").html("<img alt='Brand' src='logo/logo.png' style='width:50px; height:50px;'/>&nbsp;&nbsp;&nbsp;Tambah Data hari_libur");
+		$("#myModalLabel").html("<img alt='Brand' src='"+logo1+"' style='width:50px; height:50px;'/>&nbsp;&nbsp;&nbsp;Tambah Data hari_libur");
             }
 
             $.post(url, {id: id} ,function(data) {
@@ -22,7 +23,7 @@
 		
 	$('.import').live("click", function(){
             var url = "crud/hari_libur/import.form.php";
-            $("#myModalLabel").html("<img alt='Brand' src='logo/logo.png' style='width:50px; height:50px;'/>&nbsp;&nbsp;&nbsp;Import Data hari_libur");
+            $("#myModalLabel").html("<img alt='Brand' src='"+logo1+"' style='width:50px; height:50px;'/>&nbsp;&nbsp;&nbsp;Import Data hari_libur");
             $.post(url, "" ,function(data) {
 		$(".isiForm").html(data).show();
             });
@@ -42,7 +43,7 @@
 		
 	$('#dialog-hari_libur').on('hidden.bs.modal', function () {
             $("#data-hari_libur").load(main);
-            $("#myModalLabel").html("<img alt='Brand' src='logo/logo.png' style='width:50px; height:50px;'/>&nbsp;&nbsp;&nbsp;Tambah Data hari_libur");
+            $("#myModalLabel").html("<img alt='Brand' src='"+logo1+"' style='width:50px; height:50px;'/>&nbsp;&nbsp;&nbsp;Tambah Data hari_libur");
 	});
     });
 }) (jQuery);

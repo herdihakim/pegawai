@@ -3,6 +3,12 @@
  <form class="form-horizontal restoreForm" enctype="multipart/form-data" id="restoreForm" action="crud/restore/import.input.php" type="POST">
 	<div class="modal-body">
 		<div class="form-group">
+				<label class="col-sm-3 control-label"></label>
+				<div class="col-sm-9">
+				<span><i class="glyphicon glyphicon-asterisk"></i> <strong style="color:red;">Wajib Di Isi</strong></span>
+				</div>
+		</div>
+		<div class="form-group">
 			<label for="file" class="col-sm-3 control-label">File Import</label>
 			<div class="col-sm-9">
 				<input type="file" class="form-control" accept=".sql" id="file" name="file" placeholder="File Import" \>
@@ -25,7 +31,6 @@ $(document).ready(function() {
 	$('#restoreForm')
 	
 	.on('success.form.fv', function(e) {
-             // Prevent form submission
             e.preventDefault();
 			var $form = $(e.target),
                  formData = new FormData(),
@@ -33,8 +38,6 @@ $(document).ready(function() {
                 files    = $form.find('[name="file"]')[0].files;
 
 			 $.each(files, function(i, file) {
-                // Prefix the name of uploaded files with "uploadedFiles-"
-                // Of course, you can change it to any string
                 formData.append('file[]', file);
             });
 
@@ -42,8 +45,6 @@ $(document).ready(function() {
                 formData.append(val.name, val.value);
             });
 
-			//alert($form);
-            // Use Ajax to submit form data
             $.ajax({
                 url: $form.attr('action'),
 				data: formData,
@@ -51,18 +52,26 @@ $(document).ready(function() {
                 contentType: false,
                 processData: false,
                 type: 'POST',
-                //data: $form.serialize(),
                 success: function(result) {
-                    // ... Process the result ...
-					//alert(result);
 					$('#dialog-restore').modal('hide');
                 }
             });
 		   
         })
+		.on('init.field.fv', function(e, data) {
+
+				var $icon      = data.element.data('fv.icon'),
+					options    = data.fv.getOptions(), 
+					validators = data.fv.getOptions(data.field).validators; 
+
+				if (validators.notEmpty && options.icon && options.icon.required) {
+					$icon.addClass(options.icon.required).show();
+				}
+			})
 	.formValidation({
         message: 'This value is not valid',
         icon: {
+			required: 'glyphicon glyphicon-asterisk',
             valid: 'glyphicon glyphicon-ok',
             invalid: 'glyphicon glyphicon-remove',
             validating: 'glyphicon glyphicon-refresh'

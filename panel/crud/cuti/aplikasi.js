@@ -1,6 +1,7 @@
 (function($) {
     $(document).ready(function(e) {
 	var id = 0;
+	var logo1 = logo;
 	var main = "crud/cuti/cuti.data.php";
 
 	$("#data-cuti").load(main);
@@ -10,9 +11,9 @@
             id = this.id;
 			
             if(id != 0) {
-		$("#myModalLabel").html("<img alt='Brand' src='logo/logo.png' style='width:50px; height:50px;'/>&nbsp;&nbsp;&nbsp;Ubah Data Pengajuan Cuti");
+		$("#myModalLabel").html("<img alt='Brand' src='"+logo1+"' style='width:50px; height:50px;'/>&nbsp;&nbsp;&nbsp;Ubah Data Pengajuan Cuti");
             } else {
-		$("#myModalLabel").html("<img alt='Brand' src='logo/logo.png' style='width:50px; height:50px;'/>&nbsp;&nbsp;&nbsp;Tambah Data Pengajuan Cuti");
+		$("#myModalLabel").html("<img alt='Brand' src='"+logo1+"' style='width:50px; height:50px;'/>&nbsp;&nbsp;&nbsp;Tambah Data Pengajuan Cuti");
             }
 
             $.post(url, {id: id} ,function(data) {
@@ -22,7 +23,7 @@
 		
 	$('.import').live("click", function(){
             var url = "crud/cuti/import.form.php";
-            $("#myModalLabel").html("<img alt='Brand' src='logo/logo.png' style='width:50px; height:50px;'/>&nbsp;&nbsp;&nbsp;Import Data cuti");
+            $("#myModalLabel").html("<img alt='Brand' src='"+logo1+"' style='width:50px; height:50px;'/>&nbsp;&nbsp;&nbsp;Import Data cuti");
             $.post(url, "" ,function(data) {
 		$(".isiForm").html(data).show();
             });
@@ -44,7 +45,7 @@
 		
 	$('#dialog-cuti').on('hidden.bs.modal', function () {
             $("#data-cuti").load(main);
-            $("#myModalLabel").html("<img alt='Brand' src='logo/logo.png' style='width:50px; height:50px;'/>&nbsp;&nbsp;&nbsp;Tambah Data Pengajuan Cuti");
+            $("#myModalLabel").html("<img alt='Brand' src='"+logo1+"' style='width:50px; height:50px;'/>&nbsp;&nbsp;&nbsp;Tambah Data Pengajuan Cuti");
 	});
     });	
 }) (jQuery);

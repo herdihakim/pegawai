@@ -1,4 +1,8 @@
-<?php  //error_reporting(0);?>
+<?php  //error_reporting(0);
+	include_once "../panel/include/koneksi.php";
+
+	$profil=mysql_fetch_object(mysql_query("SELECT * FROM profil_perusahaan"));
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -8,9 +12,9 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="logo.png">
+    <link rel="icon" href="../panel/<?php echo $profil->logo; ?>">
 
-    <title>Lukstron Development</title>
+    <title><?php echo $profil->NAMA_PERUSAHAAN; ?></title>
 	
     <!-- Bootstrap core CSS -->
     <link href="../panel/bootstrap/docs/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -38,9 +42,9 @@
         <div class="container">
             <table width="100%">
                 <tr>
-                    <td class="col-sm-1" rowspan="2"><img alt="Brand" src="../panel/logo/logo.png" style="width:75px; height:75;"/></td>
+                    <td class="col-sm-1" rowspan="2"><img alt="Brand" src="../panel/<?php echo $profil->logo; ?>" style="width:75px; height:75;"/></td>
                     <td class="col-sm-12" style="border-bottom:1pt solid green;">
-                        <h3 style="color:#00b7ea;">Lukstron Software Development</h3>
+                        <h3 style="color:#00b7ea;"><?php echo $profil->NAMA_PERUSAHAAN; ?></h3>
                     </td>
 		</tr>
 		<tr>
@@ -56,6 +60,7 @@
 <center>
 <script>
 $(document).ready(function() {
+	
  	 $("#cek").load("../panel/include/cek_koneksi_mesin.php");
    var refreshId = setInterval(function() 
       {
@@ -150,7 +155,7 @@ $(document).ready(function() {
 						<div class="modal-content">
 						  <div class="modal-header">
 							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-							<h3 id="myModalLabel"><img alt='Brand' src='../panel/logo.png' style='width:50px; height:50px;'/>&nbsp;&nbsp;&nbsp;Informasi Pegawai</h3>
+							<h3 id="myModalLabel"><img alt='Brand' src='../panel/<?php echo $profil->logo; ?>' style='width:50px; height:50px;'/>&nbsp;&nbsp;&nbsp;Informasi Pegawai</h3>
 						  </div>
 
 <div id="isi-info" name="isi-info" class="isi-info"></div>

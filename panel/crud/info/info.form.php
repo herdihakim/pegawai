@@ -18,6 +18,7 @@
 	$FAXIMILI = $data['FAXIMILI'];
 	$ALAMAT = $data['ALAMAT'];
 	$NEGARA = $data['NEGARA'];
+	$logo = $data['logo'];
     } else {
 	$NAMA_PERUSAHAAN ="";
 	$EMAIL = "";
@@ -27,12 +28,19 @@
 	$FAXIMILI = "";
 	$ALAMAT ="";
 	$NEGARA ="";
+	$logo ="";
 	
     }
 ?>
 	
-<form class="form-horizontal petugasForm" id="petugasForm" action="crud/info/info.input.php" type="POST">
+<form class="form-horizontal infoForm" id="infoForm" action="crud/info/info.input.php" type="POST">
     <div class="modal-body">
+		<div class="form-group">
+				<label class="col-sm-3 control-label"></label>
+				<div class="col-sm-9">
+				<span><i class="glyphicon glyphicon-asterisk"></i> <strong style="color:red;">Wajib Di Isi</strong></span>
+				</div>
+		</div>
         <div class="form-group">
             <label for="NAMA_PERUSAHAAN" class="col-sm-3 control-label">  Perusahaan</label>
             <div class="col-sm-9">
@@ -83,6 +91,12 @@
 			<textarea class="form-control" id="ALAMAT" name="ALAMAT"  \><?php echo $ALAMAT; ?></textarea>
             </div>
 	</div>
+	<div class="form-group">
+            <label for="LOGO" class="col-sm-3 control-label">Logo</label>
+            <div class="col-sm-9">
+				<input type="file" class="form-control" accept="image/jpeg, image/png" id="logo" name="logo" placeholder="File Import" \>
+			</div>
+	</div>
 	
     </div>
     <div class="modal-footer">
@@ -92,39 +106,113 @@
 </form>
 <script type="text/javascript">
     $(document).ready(function() {
-	$('#petugasForm')
+	$('#infoForm')
 	
 	.on('success.form.fv', function(e) {
             e.preventDefault();
+			
+			var $form = $(e.target),
+            formData = new FormData(),
+            params   = $form.serializeArray(),
+            files    = $form.find('[name="logo"]')[0].files;
 
-            var $form = $(e.target),
-                fv    = $form.data('formValidation');
+            $.each(files, function(i, logo) {
+                formData.append('logo[]', logo);
+            });
 
+            $.each(params, function(i, val) {
+                formData.append(val.name, val.value);
+            });
+            
             $.ajax({
                 url: $form.attr('action'),
+		data: formData,
+                cache: false,
+                contentType: false,
+                processData: false,
                 type: 'POST',
-                data: $form.serialize(),
-                success: function() {
+                success: function(data) {
                     $('#dialog-info').modal('hide');
+					location.reload();
                 }
             });
         })
+		.on('init.field.fv', function(e, data) {
+
+				var $icon      = data.element.data('fv.icon'),
+					options    = data.fv.getOptions(), 
+					validators = data.fv.getOptions(data.field).validators; 
+
+				if (validators.notEmpty && options.icon && options.icon.required) {
+					$icon.addClass(options.icon.required).show();
+				}
+			})
 	.formValidation({
             message: 'This value is not valid',
             icon: {
+				required: 'glyphicon glyphicon-asterisk',
                 valid: 'glyphicon glyphicon-ok',
                 invalid: 'glyphicon glyphicon-remove',
                 validating: 'glyphicon glyphicon-refresh'
             },
             fields: {
-		NAMA_info: {
+				NAMA_PERUSAHAAN: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The is required'
+                        }
+                    }
+                },
+				EMAIL: {
                     validators: {
                         notEmpty: {
                             message: 'The is required'
                         },
-                        stringLength: {
-                            max: 50,
-                            message: 'The must be less than 50 characters'
+						regexp: {
+                            regexp: '^[^@\\s]+@([^@\\s]+\\.)+[^@\\s]+$',
+                            message: 'The value is not a valid email address'
+                        }
+                    }
+                },
+				PHONE_1: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The is required'
+                        }
+                    }
+                },
+				PHONE_2: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The is required'
+                        }
+                    }
+                },
+				KOTA: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The is required'
+                        }
+                    }
+                },
+				FAXIMILI: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The is required'
+                        }
+                    }
+                },
+				NEGARA: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The is required'
+                        }
+                    }
+                },
+				ALAMAT: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The is required'
                         }
                     }
                 },

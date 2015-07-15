@@ -11,10 +11,32 @@
 	$ALAMAT = $_POST['ALAMAT'];
 	$NEGARA = $_POST['NEGARA'];
 	
-	mysql_query("UPDATE profil_perusahaan SET NAMA_PERUSAHAAN = '$NAMA_PERUSAHAAN',EMAIL = '$EMAIL',PHONE_1 = '$PHONE_1' 
+	
+	
+   if($_FILES['logo']['name'][0]!=""){
+		foreach($_FILES['logo']['name'] as $key => $value){
+                    $name = $_FILES['logo']['name'][$key];
+                    $tmp  = $_FILES['logo']['tmp_name'][$key];
+                    $ext = pathinfo($name, PATHINFO_EXTENSION);
+                    $type=$_FILES['logo']['type'][$key];
+                    $ukuran=$_FILES['logo']['size'][$key];
+                        
+                    $new_name = "logo.".$ext;
+                   mysql_query("UPDATE profil_perusahaan SET NAMA_PERUSAHAAN = '$NAMA_PERUSAHAAN',EMAIL = '$EMAIL',PHONE_1 = '$PHONE_1' 
+						,PHONE_2 = '$PHONE_2',KOTA = '$KOTA',PHONE_2 = '$PHONE_2'
+						,FAXIMILI = '$FAXIMILI',ALAMAT = '$ALAMAT',NEGARA = '$NEGARA',logo = '$new_name' 
+
+						WHERE id = '$id' ");
+				   
+                    if(move_uploaded_file($tmp,'../../'.$new_name)){
+					   
+                    }
+							
+		}
+            }else{
+		mysql_query("UPDATE profil_perusahaan SET NAMA_PERUSAHAAN = '$NAMA_PERUSAHAAN',EMAIL = '$EMAIL',PHONE_1 = '$PHONE_1' 
 	,PHONE_2 = '$PHONE_2',KOTA = '$KOTA',PHONE_2 = '$PHONE_2',FAXIMILI = '$FAXIMILI',ALAMAT = '$ALAMAT',NEGARA = '$NEGARA' 
 
-	WHERE id = '$id' ");
-	
-   
+	WHERE id = '$id' ");	   
+            }
 ?>

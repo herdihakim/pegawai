@@ -1,6 +1,7 @@
 (function($) {
     $(document).ready(function(e) {
         var id = 0;
+		var logo1 = logo;
 	var main = "crud/pegawai/pegawai.data.php";
 
 	$("#data-pegawai").load(main);
@@ -10,9 +11,9 @@
             id = this.id;
 			
             if(id != 0) {
-		$("#myModalLabel").html("<img alt='Brand' src='logo.png' style='width:50px; height:50px;'/>&nbsp;&nbsp;&nbsp;Ubah Data pegawai");
+		$("#myModalLabel").html("<img alt='Brand' src='"+logo1+"' style='width:50px; height:50px;'/>&nbsp;&nbsp;&nbsp;Ubah Data pegawai");
             } else {
-		$("#myModalLabel").html("<img alt='Brand' src='logo.png' style='width:50px; height:50px;'/>&nbsp;&nbsp;&nbsp;Tambah Data pegawai");
+		$("#myModalLabel").html("<img alt='Brand' src='"+logo1+"' style='width:50px; height:50px;'/>&nbsp;&nbsp;&nbsp;Tambah Data pegawai");
             }
 
             $.post(url, {id: id} ,function(data) {
@@ -22,7 +23,7 @@
 		
 	$('.import').live("click", function(){
             var url = "crud/pegawai/import.form.php";
-            $("#myModalLabel").html("<img alt='Brand' src='logo.png' style='width:50px; height:50px;'/>&nbsp;&nbsp;&nbsp;Import Data pegawai");
+            $("#myModalLabel").html("<img alt='Brand' src='"+logo1+"' style='width:50px; height:50px;'/>&nbsp;&nbsp;&nbsp;Import Data pegawai");
             $.post(url, "" ,function(data) {
 		$(".isiForm").html(data).show();
             });
@@ -43,7 +44,7 @@
 		
 	$('#dialog-pegawai').on('hidden.bs.modal', function () {
             $("#data-pegawai").load(main);
-            $("#myModalLabel").html("<img alt='Brand' src='logo.png' style='width:50px; height:50px;'/>&nbsp;&nbsp;&nbsp;Tambah Data pegawai");
+            $("#myModalLabel").html("<img alt='Brand' src='"+logo1+"' style='width:50px; height:50px;'/>&nbsp;&nbsp;&nbsp;Tambah Data pegawai");
 	});
     });	
 }) (jQuery);

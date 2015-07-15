@@ -1,6 +1,7 @@
 <?php
     include_once "../../include/koneksi.php";
     session_start();
+	$profil=mysql_fetch_object(mysql_query("SELECT * FROM profil_perusahaan"));
 ?>
 <script>
     $(document).ready(function() {
@@ -42,7 +43,7 @@
     </div>
   </div>
 </div>
-
+<script>var logo='<?php echo $profil->logo; ?>';</script>
 <script src="crud/mesin/aplikasi.js"></script>
 
            
