@@ -3,8 +3,8 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 07 Jul 2015 pada 08.47
--- Versi Server: 5.6.20
+-- Generation Time: Jul 13, 2015 at 08:01 PM
+-- Server version: 5.6.20
 -- PHP Version: 5.5.15
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -23,7 +23,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `absensi`
+-- Table structure for table `absensi`
 --
 
 CREATE TABLE IF NOT EXISTS `absensi` (
@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `absensi` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=332 ;
 
 --
--- Dumping data untuk tabel `absensi`
+-- Dumping data for table `absensi`
 --
 
 INSERT INTO `absensi` (`KODE_ABSENSI`, `KODE_JAM_KERJA`, `NIP_PEGAWAI`, `TANGGAL`, `JAM_MASUK`, `JAM_KELUAR`) VALUES
@@ -135,7 +135,7 @@ INSERT INTO `absensi` (`KODE_ABSENSI`, `KODE_JAM_KERJA`, `NIP_PEGAWAI`, `TANGGAL
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `backup_data`
+-- Table structure for table `backup_data`
 --
 
 CREATE TABLE IF NOT EXISTS `backup_data` (
@@ -145,7 +145,7 @@ CREATE TABLE IF NOT EXISTS `backup_data` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=38 ;
 
 --
--- Dumping data untuk tabel `backup_data`
+-- Dumping data for table `backup_data`
 --
 
 INSERT INTO `backup_data` (`id_backup`, `tanggal`, `file`) VALUES
@@ -156,7 +156,7 @@ INSERT INTO `backup_data` (`id_backup`, `tanggal`, `file`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `cuti`
+-- Table structure for table `cuti`
 --
 
 CREATE TABLE IF NOT EXISTS `cuti` (
@@ -170,17 +170,17 @@ CREATE TABLE IF NOT EXISTS `cuti` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
--- Dumping data untuk tabel `cuti`
+-- Dumping data for table `cuti`
 --
 
 INSERT INTO `cuti` (`KODE_CUTI`, `NIP_PEGAWAI`, `KETERANGAN`, `TANGGAL_AWAL`, `TANGGAL_AKHIR`, `STATUS`, `KODE_PETUGAS`) VALUES
-(3, '6311239', 'cuti hamil2', '2015-06-21', '2015-06-30', 'Menunggu', 3),
-(4, '6311239', 'cuti Nikah', '2015-06-21', '2015-06-27', 'Menunggu', 3);
+(3, '1', 'cuti hamil2', '2015-06-21', '2015-06-30', 'Menunggu', 2),
+(4, '1', 'cuti Nikah', '2015-06-21', '2015-06-27', 'Menunggu', 2);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `departemen`
+-- Table structure for table `departemen`
 --
 
 CREATE TABLE IF NOT EXISTS `departemen` (
@@ -189,7 +189,7 @@ CREATE TABLE IF NOT EXISTS `departemen` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
 
 --
--- Dumping data untuk tabel `departemen`
+-- Dumping data for table `departemen`
 --
 
 INSERT INTO `departemen` (`KODE_DEPARTEMEN`, `NAMA_DEPARTEMEN`) VALUES
@@ -197,13 +197,12 @@ INSERT INTO `departemen` (`KODE_DEPARTEMEN`, `NAMA_DEPARTEMEN`) VALUES
 (2, 'KEUANGAN'),
 (3, 'TEKNOLOGI'),
 (7, 'MANAGER'),
-(8, 'GUDANG'),
-(9, '');
+(8, 'GUDANG');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `hari_libur`
+-- Table structure for table `hari_libur`
 --
 
 CREATE TABLE IF NOT EXISTS `hari_libur` (
@@ -213,7 +212,7 @@ CREATE TABLE IF NOT EXISTS `hari_libur` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
--- Dumping data untuk tabel `hari_libur`
+-- Dumping data for table `hari_libur`
 --
 
 INSERT INTO `hari_libur` (`ID`, `TAHUN`, `TANGGAL`) VALUES
@@ -224,7 +223,7 @@ INSERT INTO `hari_libur` (`ID`, `TAHUN`, `TANGGAL`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `jabatan`
+-- Table structure for table `jabatan`
 --
 
 CREATE TABLE IF NOT EXISTS `jabatan` (
@@ -237,7 +236,7 @@ CREATE TABLE IF NOT EXISTS `jabatan` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=17 ;
 
 --
--- Dumping data untuk tabel `jabatan`
+-- Dumping data for table `jabatan`
 --
 
 INSERT INTO `jabatan` (`KODE_JABATAN`, `NAMA_JABATAN`, `TUNJANGAN_JABATAN`, `TUNJANGAN_LAIN`, `NOMINAL_TABUNGAN`, `NOMINAL_UMT`) VALUES
@@ -250,7 +249,7 @@ INSERT INTO `jabatan` (`KODE_JABATAN`, `NAMA_JABATAN`, `TUNJANGAN_JABATAN`, `TUN
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `jam_kerja`
+-- Table structure for table `jam_kerja`
 --
 
 CREATE TABLE IF NOT EXISTS `jam_kerja` (
@@ -263,7 +262,7 @@ CREATE TABLE IF NOT EXISTS `jam_kerja` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
--- Dumping data untuk tabel `jam_kerja`
+-- Dumping data for table `jam_kerja`
 --
 
 INSERT INTO `jam_kerja` (`KODE_JAM_KERJA`, `KETERANGAN`, `JAM_DATANG`, `JAM_PULANG`, `KODE_MASUK`, `KODE_KELUAR`) VALUES
@@ -273,7 +272,7 @@ INSERT INTO `jam_kerja` (`KODE_JAM_KERJA`, `KETERANGAN`, `JAM_DATANG`, `JAM_PULA
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `kasbon_pegawai`
+-- Table structure for table `kasbon_pegawai`
 --
 
 CREATE TABLE IF NOT EXISTS `kasbon_pegawai` (
@@ -287,17 +286,17 @@ CREATE TABLE IF NOT EXISTS `kasbon_pegawai` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
--- Dumping data untuk tabel `kasbon_pegawai`
+-- Dumping data for table `kasbon_pegawai`
 --
 
 INSERT INTO `kasbon_pegawai` (`KODE_KASBON`, `NIP_PEGAWAI`, `TANGGAL`, `NOMINAL`, `KETERANGAN`, `STATUS`, `KODE_PETUGAS`) VALUES
-(2, '3311187', '2015-07-22', 250000, 'Pinjam', 'Hutang', 3),
-(3, '6311239', '2015-06-22', 50000, 'makan siang', 'Hutang', 3);
+(2, '1', '2015-07-22', 250000, 'Pinjam', 'Hutang', 2),
+(3, '1', '2015-06-22', 50000, 'makan siang', 'Hutang', 2);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `lembur`
+-- Table structure for table `lembur`
 --
 
 CREATE TABLE IF NOT EXISTS `lembur` (
@@ -312,7 +311,7 @@ CREATE TABLE IF NOT EXISTS `lembur` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `master_tunjangan`
+-- Table structure for table `master_tunjangan`
 --
 
 CREATE TABLE IF NOT EXISTS `master_tunjangan` (
@@ -322,7 +321,7 @@ CREATE TABLE IF NOT EXISTS `master_tunjangan` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
--- Dumping data untuk tabel `master_tunjangan`
+-- Dumping data for table `master_tunjangan`
 --
 
 INSERT INTO `master_tunjangan` (`KODE_MASTER_TUNJANGAN`, `NAMA_TUNJANGAN`, `NOMINAL`) VALUES
@@ -333,7 +332,7 @@ INSERT INTO `master_tunjangan` (`KODE_MASTER_TUNJANGAN`, `NAMA_TUNJANGAN`, `NOMI
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `mesin_absensi`
+-- Table structure for table `mesin_absensi`
 --
 
 CREATE TABLE IF NOT EXISTS `mesin_absensi` (
@@ -344,7 +343,7 @@ CREATE TABLE IF NOT EXISTS `mesin_absensi` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
--- Dumping data untuk tabel `mesin_absensi`
+-- Dumping data for table `mesin_absensi`
 --
 
 INSERT INTO `mesin_absensi` (`KODE_MESIN`, `NAMA_MESIN`, `IP_ADDRESS`, `PORT_COM`) VALUES
@@ -353,38 +352,38 @@ INSERT INTO `mesin_absensi` (`KODE_MESIN`, `NAMA_MESIN`, `IP_ADDRESS`, `PORT_COM
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `pegawai`
+-- Table structure for table `pegawai`
 --
 
 CREATE TABLE IF NOT EXISTS `pegawai` (
 `KODE_PEGAWAI` int(11) NOT NULL,
   `NIP_PEGAWAI` varchar(25) NOT NULL,
   `NAMA_PEGAWAI` varchar(100) NOT NULL,
-  `TEMPAT_LAHIR` varchar(50) NOT NULL,
-  `TANGGAL_LAHIR` date NOT NULL,
-  `AGAMA` varchar(50) NOT NULL,
-  `STATUS_PERNIKAHAN` varchar(50) NOT NULL,
-  `JUMLAH_ANAK` int(11) NOT NULL,
-  `ALAMAT` text NOT NULL,
-  `NOMOR_TELEPON` varchar(20) NOT NULL,
-  `KODE_JABATAN` int(11) NOT NULL,
-  `KODE_DEPARTEMEN` int(11) NOT NULL,
-  `GAJI_POKOK` int(11) NOT NULL,
-  `TANGGAL_MASUK` date NOT NULL,
+  `TEMPAT_LAHIR` varchar(50) DEFAULT NULL,
+  `TANGGAL_LAHIR` date DEFAULT NULL,
+  `AGAMA` varchar(50) DEFAULT NULL,
+  `STATUS_PERNIKAHAN` varchar(50) DEFAULT NULL,
+  `JUMLAH_ANAK` int(11) DEFAULT NULL,
+  `ALAMAT` text,
+  `NOMOR_TELEPON` varchar(20) DEFAULT NULL,
+  `KODE_JABATAN` int(11) DEFAULT NULL,
+  `KODE_DEPARTEMEN` int(11) DEFAULT NULL,
+  `GAJI_POKOK` int(11) DEFAULT NULL,
+  `TANGGAL_MASUK` date DEFAULT NULL,
   `TANGGAL_KELUAR` date DEFAULT NULL,
-  `STATUS_PEGAWAI` varchar(50) NOT NULL,
+  `STATUS_PEGAWAI` varchar(50) DEFAULT NULL,
   `FOTO_PEGAWAI` text,
-  `JENIS_KELAMIN` varchar(20) NOT NULL,
-  `EMAIL` varchar(100) NOT NULL
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+  `JENIS_KELAMIN` varchar(20) DEFAULT NULL,
+  `EMAIL` varchar(100) DEFAULT NULL
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
--- Dumping data untuk tabel `pegawai`
+-- Dumping data for table `pegawai`
 --
 
 INSERT INTO `pegawai` (`KODE_PEGAWAI`, `NIP_PEGAWAI`, `NAMA_PEGAWAI`, `TEMPAT_LAHIR`, `TANGGAL_LAHIR`, `AGAMA`, `STATUS_PERNIKAHAN`, `JUMLAH_ANAK`, `ALAMAT`, `NOMOR_TELEPON`, `KODE_JABATAN`, `KODE_DEPARTEMEN`, `GAJI_POKOK`, `TANGGAL_MASUK`, `TANGGAL_KELUAR`, `STATUS_PEGAWAI`, `FOTO_PEGAWAI`, `JENIS_KELAMIN`, `EMAIL`) VALUES
 (1, '6311239', 'Fajar Abby', 'Bandung', '1994-10-01', 'Islam', 'Menikah', 0, 'Komplek Margahayu raya', '08987898471', 15, 1, 4500000, '0000-00-00', '0000-00-00', 'Tetap', '123456.jpg', 'laki-laki', 'fajar@gmail.com'),
-(2, '3311187', 'Indra Ramadhan', 'Bandung', '1993-03-08', 'Islam', 'Belum Kawin', 0, 'Antapani', '08678577', 12, 3, 4000000, '2015-06-01', '0000-00-00', 'as', '', 'laki-laki', 'indra08031993@gmail.com'),
+(2, '3311187', 'Indra Ramadhan', 'Bandung', '1993-03-08', 'Islam', 'Belum Kawin', 0, 'Antapani', '08678577', 12, 3, 4000000, '2015-06-01', '0000-00-00', 'Tetap', '', 'laki-laki', 'indra08031993@gmail.com'),
 (3, '123456789', 'Fani MA', 'Bandung', '2015-07-04', 'Islam', 'Menikah', 10, 'Kiaracondong', '08981989111', 12, 1, 45000000, '2015-07-04', '2015-07-24', 'Tetap', '6311240.jpg', 'laki-laki', 'fani@gmail.com'),
 (4, '6311190', 'lpkia E', 'bandung', '2015-07-07', 'Islam', 'asd', 1, 'asd', '213123', 16, 1, 45, '2015-07-29', '0000-00-00', 'T', '', 'laki-laki', 'asd@gmail.com'),
 (5, '4354353', 'Lukman', 'Bandung', '2015-07-02', 'Islam', 'Kawin', 2, 'sekejati', '084325232', 16, 1, 5000000, '2015-07-01', '0000-00-00', 'Tetap', '4354353.jpg', 'laki-laki', 'lukman@gmail.com');
@@ -392,7 +391,7 @@ INSERT INTO `pegawai` (`KODE_PEGAWAI`, `NIP_PEGAWAI`, `NAMA_PEGAWAI`, `TEMPAT_LA
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `pengaturan_penggajian`
+-- Table structure for table `pengaturan_penggajian`
 --
 
 CREATE TABLE IF NOT EXISTS `pengaturan_penggajian` (
@@ -402,7 +401,7 @@ CREATE TABLE IF NOT EXISTS `pengaturan_penggajian` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
--- Dumping data untuk tabel `pengaturan_penggajian`
+-- Dumping data for table `pengaturan_penggajian`
 --
 
 INSERT INTO `pengaturan_penggajian` (`ID`, `PARAMETER`, `VALUE`) VALUES
@@ -415,7 +414,7 @@ INSERT INTO `pengaturan_penggajian` (`ID`, `PARAMETER`, `VALUE`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `penghargaan`
+-- Table structure for table `penghargaan`
 --
 
 CREATE TABLE IF NOT EXISTS `penghargaan` (
@@ -431,7 +430,7 @@ CREATE TABLE IF NOT EXISTS `penghargaan` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `petugas`
+-- Table structure for table `petugas`
 --
 
 CREATE TABLE IF NOT EXISTS `petugas` (
@@ -443,7 +442,7 @@ CREATE TABLE IF NOT EXISTS `petugas` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
--- Dumping data untuk tabel `petugas`
+-- Dumping data for table `petugas`
 --
 
 INSERT INTO `petugas` (`KODE_PETUGAS`, `NAMA_PETUGAS`, `EMAIL`, `USERNAME_LOGIN`, `PASSWORD_LOGIN`) VALUES
@@ -454,7 +453,7 @@ INSERT INTO `petugas` (`KODE_PETUGAS`, `NAMA_PETUGAS`, `EMAIL`, `USERNAME_LOGIN`
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `potongan_perusahaan`
+-- Table structure for table `potongan_perusahaan`
 --
 
 CREATE TABLE IF NOT EXISTS `potongan_perusahaan` (
@@ -466,7 +465,7 @@ CREATE TABLE IF NOT EXISTS `potongan_perusahaan` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `profil_perusahaan`
+-- Table structure for table `profil_perusahaan`
 --
 
 CREATE TABLE IF NOT EXISTS `profil_perusahaan` (
@@ -478,20 +477,21 @@ CREATE TABLE IF NOT EXISTS `profil_perusahaan` (
   `FAXIMILI` varchar(100) NOT NULL,
   `ALAMAT` text NOT NULL,
   `NEGARA` varchar(100) NOT NULL,
+  `logo` varchar(50) DEFAULT NULL,
 `id` int(11) NOT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
--- Dumping data untuk tabel `profil_perusahaan`
+-- Dumping data for table `profil_perusahaan`
 --
 
-INSERT INTO `profil_perusahaan` (`NAMA_PERUSAHAAN`, `EMAIL`, `PHONE_1`, `PHONE_2`, `KOTA`, `FAXIMILI`, `ALAMAT`, `NEGARA`, `id`) VALUES
-('Lukstron Company', 'lukstron2015@gmail.com', 2147483647, 2147483647, 'Bandung', '022-7561278', 'Jl.Soekarno Hatta no.456', 'Indonesia', 1);
+INSERT INTO `profil_perusahaan` (`NAMA_PERUSAHAAN`, `EMAIL`, `PHONE_1`, `PHONE_2`, `KOTA`, `FAXIMILI`, `ALAMAT`, `NEGARA`, `logo`, `id`) VALUES
+('Lukstron Company', 'lukstron2015@gmail.com', 2147483647, 2147483647, 'Bandung', '022-7561278', 'Jl.Soekarno Hatta no.456', 'Indonesia', 'logo.png', 1);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `restore_data`
+-- Table structure for table `restore_data`
 --
 
 CREATE TABLE IF NOT EXISTS `restore_data` (
@@ -501,7 +501,7 @@ CREATE TABLE IF NOT EXISTS `restore_data` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
--- Dumping data untuk tabel `restore_data`
+-- Dumping data for table `restore_data`
 --
 
 INSERT INTO `restore_data` (`id_restore`, `tanggal`, `file`) VALUES
@@ -515,7 +515,7 @@ INSERT INTO `restore_data` (`id_restore`, `tanggal`, `file`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tabungan`
+-- Table structure for table `tabungan`
 --
 
 CREATE TABLE IF NOT EXISTS `tabungan` (
@@ -707,7 +707,7 @@ MODIFY `KODE_MESIN` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 -- AUTO_INCREMENT for table `pegawai`
 --
 ALTER TABLE `pegawai`
-MODIFY `KODE_PEGAWAI` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+MODIFY `KODE_PEGAWAI` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `pengaturan_penggajian`
 --

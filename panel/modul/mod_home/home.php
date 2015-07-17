@@ -8,5 +8,5 @@
 
 <div class="jumbotron">
     <h1><?php echo $profil->NAMA_PERUSAHAAN; ?></h1>
-    <p>Human Resource Management Software</p>
+    <p>Payroll And Attendance Software</p>
 </div>

@@ -108,5 +108,9 @@
             var url = "modul/mod_hari_libur/hari_libur.php";
             $("#data-utama").load(url);
 	});
+	$('.input_penggajian').live("click", function(){
+            var url = "modul/mod_input_penggajian/input_penggajian.php";
+            $("#data-utama").load(url);
+	});
     });
 }) (jQuery);

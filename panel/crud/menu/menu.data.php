@@ -28,7 +28,14 @@
                         <li><a href="#" id="waktu" class="waktu"><span class="glyphicon glyphicon-list"> Jam Kerja</a></li>
                     </ul>
                 </li>
-		<li><a href="#" id="penggajian" class="penggajian"><span class="glyphicon glyphicon-pencil"></span> Penggajian</a></li>
+				<li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-tasks"></span> Data Master Penggajian<span class="caret"></span></a>
+                    <ul class="dropdown-menu " role="menu">
+			<li><a href="#" id="penggajian" class="penggajian"><span class="glyphicon glyphicon-user"> Data Penggajian</a></li>
+			<li><a href="#" id="input_penggajian" class="input_penggajian"><span class="glyphicon glyphicon-user"> Input Penggajian</a></li>
+		
+                    </ul>
+                </li>
 		<li><a href="../absensi" target="_blank"><span class="glyphicon glyphicon-ok"></span> Absensi</a></li>
 		<li><a href="#" id="absensi_data" class="absensi_data"><span class="glyphicon glyphicon-ok"></span> Absensi Data</a></li>
         <!-- <li><a href="#" id="penghargaan" class="penghargaan"><span class="glyphicon glyphicon-ok"></span> Penghargaan</a></li>-->

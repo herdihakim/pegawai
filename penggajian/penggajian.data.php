@@ -1,14 +1,12 @@
 <?php
 include("../panel/include/function_hitunggaji.php");
-?>
-<?php  
 $NIP2=$_POST['NIP'];
 
-	$getNIP=mysql_query("select * from pegawai where NIP_PEGAWAI='$NIP2'");
-	$dataNIP=mysql_fetch_object($getNIP);
-	$cekNIP=mysql_num_rows($getNIP);
-	if($cekNIP>0){
-	$NIP=$dataNIP->NIP_PEGAWAI;
+$getNIP=mysql_query("select * from pegawai where NIP_PEGAWAI='$NIP2'");
+$dataNIP=mysql_fetch_object($getNIP);
+$cekNIP=mysql_num_rows($getNIP);
+if($cekNIP>0){
+$NIP=$dataNIP->NIP_PEGAWAI;
 $data=pegawai($NIP);
 $jabatan=jabatan($data->KODE_JABATAN);
 $departemen=departemen($data->KODE_DEPARTEMEN);
@@ -62,7 +60,7 @@ $hutang=gethutang($NIP);
 		<?php
 			$tmptunjanganlain=explode(",",$jabatan->TUNJANGAN_LAIN);
 			foreach($tmptunjanganlain as $tmptunjanganlains){
-				$pendapatanlain=pendapatan($tmptunjanganlains);
+			$pendapatanlain=pendapatan($tmptunjanganlains);
 		?>
 		<tr>
           <td width="50%"><?php echo $pendapatanlain->NAMA_TUNJANGAN;?></td>

@@ -28,6 +28,7 @@
 	$STATUS_PEGAWAI=$data['STATUS_PEGAWAI'];
 	$JENIS_KELAMIN=$data['JENIS_KELAMIN'];
 	$FOTO_PEGAWAI=$data['FOTO_PEGAWAI'];
+	$NO_REKENING=$data['NO_REKENING'];
 
     } else {
 	$NIP_PEGAWAI = "";
@@ -48,6 +49,7 @@
 	$STATUS_PEGAWAI="";
 	$JENIS_KELAMIN="";
 	$FOTO_PEGAWAI="";
+	$NO_REKENING="";
     }
 ?>
 	
@@ -175,6 +177,12 @@
             <label for="GAJI_POKOK" class="col-sm-3 control-label">Gaji Pokok</label>
             <div class="col-sm-9">
 		<input type="text" class="form-control" value="<?php echo $GAJI_POKOK; ?>" id="GAJI_POKOK" name="GAJI_POKOK" placeholder="Gaji Pokok" \>
+            </div>
+	</div>	
+	<div class="form-group">
+            <label for="NO_REKENING" class="col-sm-3 control-label">No Rekening</label>
+            <div class="col-sm-9">
+		<input type="text" class="form-control" value="<?php echo $NO_REKENING; ?>" id="NO_REKENING" name="NO_REKENING" placeholder="No Rekening" \>
             </div>
 	</div>	
 	<div class="form-group">
@@ -391,6 +399,12 @@
                     }
 		},
                 KODE_DEPARTEMEN: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The is required'
+                        }
+                    }
+		},    NO_REKENING: {
                     validators: {
                         notEmpty: {
                             message: 'The is required'

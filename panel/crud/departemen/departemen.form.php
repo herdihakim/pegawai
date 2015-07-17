@@ -39,7 +39,7 @@
         <button type="submit" class="btn btn-success">Simpan</button>
     </div>
 </form>
-<script type="text/javascript">6123721
+<script type="text/javascript">
     $(document).ready(function() {
 	$('#petugasForm')
 	
