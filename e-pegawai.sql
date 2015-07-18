@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 13, 2015 at 08:01 PM
+-- Generation Time: Jul 18, 2015 at 06:20 PM
 -- Server version: 5.6.20
 -- PHP Version: 5.5.15
 
@@ -202,6 +202,88 @@ INSERT INTO `departemen` (`KODE_DEPARTEMEN`, `NAMA_DEPARTEMEN`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `detail_tunjangan_penggajian`
+--
+
+CREATE TABLE IF NOT EXISTS `detail_tunjangan_penggajian` (
+`id_detail_penggajian` int(11) NOT NULL,
+  `kode_penggajian` varchar(100) NOT NULL,
+  `nama_tunjangan` text NOT NULL,
+  `nominal_tunjangan` text NOT NULL
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=85 ;
+
+--
+-- Dumping data for table `detail_tunjangan_penggajian`
+--
+
+INSERT INTO `detail_tunjangan_penggajian` (`id_detail_penggajian`, `kode_penggajian`, `nama_tunjangan`, `nominal_tunjangan`) VALUES
+(22, 'P07001', 'anak', '300000'),
+(23, 'P07001', 'Istri', '500000'),
+(24, 'P07001', 'Keahlian', '500000'),
+(25, 'P07002', 'anak', '300000'),
+(26, 'P07002', 'Istri', '500000'),
+(27, 'P07003', 'anak', '300000'),
+(28, 'P07003', 'Istri', '500000'),
+(29, 'P07003', 'Keahlian', '500000'),
+(30, 'P07004', 'anak', '300000'),
+(31, 'P07004', 'Istri', '500000'),
+(32, 'P07004', 'Keahlian', '500000'),
+(33, 'P07005', 'anak', '300000'),
+(34, 'P07005', 'Istri', '500000'),
+(35, 'P07006', 'anak', '300000'),
+(36, 'P07006', 'Istri', '500000'),
+(37, 'P07007', 'anak', '300000'),
+(38, 'P07007', 'Istri', '500000'),
+(39, 'P07008', 'anak', '300000'),
+(40, 'P07008', 'Istri', '500000'),
+(41, 'P07008', 'Keahlian', '500000'),
+(42, 'P07009', 'anak', '300000'),
+(43, 'P07009', 'Istri', '500000'),
+(44, 'P07010', 'anak', '300000'),
+(45, 'P07010', 'Istri', '500000'),
+(46, 'P07011', 'anak', '300000'),
+(47, 'P07011', 'Istri', '500000'),
+(48, 'P07011', 'Keahlian', '500000'),
+(49, 'P07012', 'anak', '300000'),
+(50, 'P07012', 'Istri', '500000'),
+(51, 'P07013', 'anak', '300000'),
+(52, 'P07013', 'Istri', '500000'),
+(53, 'P07013', 'Keahlian', '500000'),
+(54, 'P07014', 'anak', '300000'),
+(55, 'P07014', 'Istri', '500000'),
+(56, 'P07015', 'anak', '300000'),
+(57, 'P07015', 'Istri', '500000'),
+(58, 'P07016', 'anak', '300000'),
+(59, 'P07016', 'Istri', '500000'),
+(60, 'P07016', 'Keahlian', '500000'),
+(61, 'P07017', 'anak', '300000'),
+(62, 'P07017', 'Istri', '500000'),
+(63, 'P07018', 'anak', '300000'),
+(64, 'P07018', 'Istri', '500000'),
+(65, 'P07018', 'Keahlian', '500000'),
+(66, 'P07019', 'anak', '300000'),
+(67, 'P07019', 'Istri', '500000'),
+(68, 'P07020', 'anak', '300000'),
+(69, 'P07020', 'Istri', '500000'),
+(70, 'P07021', 'anak', '300000'),
+(71, 'P07021', 'Istri', '500000'),
+(72, 'P07022', 'anak', '300000'),
+(73, 'P07022', 'Istri', '500000'),
+(74, 'P07022', 'Keahlian', '500000'),
+(75, 'P07023', 'anak', '300000'),
+(76, 'P07023', 'Istri', '500000'),
+(77, 'P07024', 'anak', '300000'),
+(78, 'P07024', 'Istri', '500000'),
+(79, 'P07025', 'anak', '300000'),
+(80, 'P07025', 'Istri', '500000'),
+(81, 'P07025', 'Keahlian', '500000'),
+(82, 'P07026', 'anak', '300000'),
+(83, 'P07026', 'Istri', '500000'),
+(84, 'P07026', 'Keahlian', '500000');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `hari_libur`
 --
 
@@ -219,6 +301,60 @@ INSERT INTO `hari_libur` (`ID`, `TAHUN`, `TANGGAL`) VALUES
 (1, 2015, '2015-07-06,2015-07-08,2015-07-11'),
 (2, 2015, '2015-08-01,2015-08-02,2015-08-05'),
 (4, 2015, '2015-09-01');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `head_penggajian`
+--
+
+CREATE TABLE IF NOT EXISTS `head_penggajian` (
+  `kode_penggajian` varchar(100) NOT NULL,
+  `kode_pegawai` int(11) NOT NULL,
+  `gaji_pokok` text NOT NULL,
+  `uang_makan_transport` text NOT NULL,
+  `lembur` text NOT NULL,
+  `terlambat` text NOT NULL,
+  `tabungan` text NOT NULL,
+  `mangkir` text NOT NULL,
+  `total_potongan` text NOT NULL,
+  `total_penerimaan` text NOT NULL,
+  `tanggal_gaji` date NOT NULL,
+  `departemen` int(11) NOT NULL,
+  `thp` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `head_penggajian`
+--
+
+INSERT INTO `head_penggajian` (`kode_penggajian`, `kode_pegawai`, `gaji_pokok`, `uang_makan_transport`, `lembur`, `terlambat`, `tabungan`, `mangkir`, `total_potongan`, `total_penerimaan`, `tanggal_gaji`, `departemen`, `thp`) VALUES
+('P07001', 2, '4000000', '1000000', '261,905', '30000', '50000', '0', '80,000', '6,561,905', '2015-07-17', 3, '6,481,905'),
+('P07002', 1, '4500000', '1500000', '294,643', '30000', '150000', '0', '180,000', '7,094,643', '2015-07-17', 1, '6,914,643'),
+('P07003', 2, '4000000', '1000000', '261,905', '30000', '50000', '0', '80,000', '6,561,905', '2015-07-17', 3, '6,481,905'),
+('P07004', 3, '45000000', '1000000', '2,946,429', '30000', '50000', '0', '80,000', '50,246,429', '2015-07-17', 1, '50,196,429'),
+('P07005', 4, '45', '1200000', '0', '0', '100000', '0', '100,000', '2,000,045', '2015-07-17', 1, '1,900,045'),
+('P07006', 5, '5000000', '1200000', '59,524', '5000', '100000', '0', '105,000', '7,059,524', '2015-07-17', 1, '6,959,524'),
+('P07007', 1, '4500000', '1500000', '294,643', '30000', '150000', '0', '180,000', '7,094,643', '2015-07-17', 1, '6,914,643'),
+('P07008', 3, '45000000', '1000000', '2,946,429', '30000', '50000', '0', '80,000', '50,246,429', '2015-07-17', 1, '50,196,429'),
+('P07009', 4, '45', '1200000', '0', '0', '100000', '0', '100,000', '2,000,045', '2015-07-17', 1, '1,900,045'),
+('P07010', 5, '5000000', '1200000', '59,524', '5000', '100000', '0', '105,000', '7,059,524', '2015-07-17', 1, '6,959,524'),
+('P07011', 2, '4000000', '1000000', '261,905', '30000', '50000', '0', '80,000', '6,561,905', '2015-07-17', 3, '6,481,905'),
+('P07012', 1, '4500000', '1500000', '294,643', '30000', '150000', '0', '180,000', '7,094,643', '2015-07-18', 1, '6,914,643'),
+('P07013', 3, '45000000', '1000000', '2,946,429', '30000', '50000', '0', '80,000', '50,246,429', '2015-07-18', 1, '50,196,429'),
+('P07014', 4, '45', '1200000', '0', '0', '100000', '0', '100,000', '2,000,045', '2015-07-18', 1, '1,900,045'),
+('P07015', 5, '5000000', '1200000', '59,524', '5000', '100000', '0', '105,000', '7,059,524', '2015-07-18', 1, '6,959,524'),
+('P07016', 2, '4000000', '1000000', '261,905', '30000', '50000', '0', '80,000', '6,561,905', '2015-07-18', 3, '6,481,905'),
+('P07017', 1, '4500000', '1500000', '294,643', '30000', '150000', '0', '180,000', '7,094,643', '2015-07-18', 1, '6,914,643'),
+('P07018', 3, '45000000', '1000000', '2,946,429', '30000', '50000', '0', '80,000', '50,246,429', '2015-07-18', 1, '50,196,429'),
+('P07019', 4, '45', '1200000', '0', '0', '100000', '0', '100,000', '2,000,045', '2015-07-18', 1, '1,900,045'),
+('P07020', 5, '5000000', '1200000', '59,524', '5000', '100000', '0', '105,000', '7,059,524', '2015-07-18', 1, '6,959,524'),
+('P07021', 1, '4500000', '1500000', '294,643', '30000', '150000', '0', '180,000', '7,094,643', '2015-07-18', 1, '6,914,643'),
+('P07022', 3, '45000000', '1000000', '2,946,429', '30000', '50000', '0', '80,000', '50,246,429', '2015-07-18', 1, '50,196,429'),
+('P07023', 4, '45', '1200000', '0', '0', '100000', '0', '100,000', '2,000,045', '2015-07-18', 1, '1,900,045'),
+('P07024', 5, '5000000', '1200000', '59,524', '5000', '100000', '0', '105,000', '7,059,524', '2015-07-18', 1, '6,959,524'),
+('P07025', 2, '4000000', '1000000', '261,905', '30000', '50000', '0', '80,000', '6,561,905', '2015-07-18', 3, '6,481,905'),
+('P07026', 2, '4000000', '1000000', '261,905', '30000', '50000', '0', '80,000', '6,561,905', '2015-07-18', 3, '6,481,905');
 
 -- --------------------------------------------------------
 
@@ -374,19 +510,20 @@ CREATE TABLE IF NOT EXISTS `pegawai` (
   `STATUS_PEGAWAI` varchar(50) DEFAULT NULL,
   `FOTO_PEGAWAI` text,
   `JENIS_KELAMIN` varchar(20) DEFAULT NULL,
-  `EMAIL` varchar(100) DEFAULT NULL
+  `EMAIL` varchar(100) DEFAULT NULL,
+  `NO_REKENING` text NOT NULL
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `pegawai`
 --
 
-INSERT INTO `pegawai` (`KODE_PEGAWAI`, `NIP_PEGAWAI`, `NAMA_PEGAWAI`, `TEMPAT_LAHIR`, `TANGGAL_LAHIR`, `AGAMA`, `STATUS_PERNIKAHAN`, `JUMLAH_ANAK`, `ALAMAT`, `NOMOR_TELEPON`, `KODE_JABATAN`, `KODE_DEPARTEMEN`, `GAJI_POKOK`, `TANGGAL_MASUK`, `TANGGAL_KELUAR`, `STATUS_PEGAWAI`, `FOTO_PEGAWAI`, `JENIS_KELAMIN`, `EMAIL`) VALUES
-(1, '6311239', 'Fajar Abby', 'Bandung', '1994-10-01', 'Islam', 'Menikah', 0, 'Komplek Margahayu raya', '08987898471', 15, 1, 4500000, '0000-00-00', '0000-00-00', 'Tetap', '123456.jpg', 'laki-laki', 'fajar@gmail.com'),
-(2, '3311187', 'Indra Ramadhan', 'Bandung', '1993-03-08', 'Islam', 'Belum Kawin', 0, 'Antapani', '08678577', 12, 3, 4000000, '2015-06-01', '0000-00-00', 'Tetap', '', 'laki-laki', 'indra08031993@gmail.com'),
-(3, '123456789', 'Fani MA', 'Bandung', '2015-07-04', 'Islam', 'Menikah', 10, 'Kiaracondong', '08981989111', 12, 1, 45000000, '2015-07-04', '2015-07-24', 'Tetap', '6311240.jpg', 'laki-laki', 'fani@gmail.com'),
-(4, '6311190', 'lpkia E', 'bandung', '2015-07-07', 'Islam', 'asd', 1, 'asd', '213123', 16, 1, 45, '2015-07-29', '0000-00-00', 'T', '', 'laki-laki', 'asd@gmail.com'),
-(5, '4354353', 'Lukman', 'Bandung', '2015-07-02', 'Islam', 'Kawin', 2, 'sekejati', '084325232', 16, 1, 5000000, '2015-07-01', '0000-00-00', 'Tetap', '4354353.jpg', 'laki-laki', 'lukman@gmail.com');
+INSERT INTO `pegawai` (`KODE_PEGAWAI`, `NIP_PEGAWAI`, `NAMA_PEGAWAI`, `TEMPAT_LAHIR`, `TANGGAL_LAHIR`, `AGAMA`, `STATUS_PERNIKAHAN`, `JUMLAH_ANAK`, `ALAMAT`, `NOMOR_TELEPON`, `KODE_JABATAN`, `KODE_DEPARTEMEN`, `GAJI_POKOK`, `TANGGAL_MASUK`, `TANGGAL_KELUAR`, `STATUS_PEGAWAI`, `FOTO_PEGAWAI`, `JENIS_KELAMIN`, `EMAIL`, `NO_REKENING`) VALUES
+(1, '6311239', 'Fajar Abby', 'Bandung', '1994-10-01', 'Islam', 'Menikah', 0, 'Komplek Margahayu raya', '08987898471', 15, 1, 4500000, '0000-00-00', '0000-00-00', 'Kontrak', '123456.jpg', 'laki-laki', 'fajar@gmail.com', '1234567'),
+(2, '3311187', 'Indra Ramadhan', 'Bandung', '1993-03-08', 'Islam', 'Belum Kawin', 0, 'Antapani', '08678577', 12, 3, 4000000, '2015-06-01', '0000-00-00', 'Kontrak', '', 'laki-laki', 'indra08031993@gmail.com', '123432123'),
+(3, '123456789', 'Fani MA', 'Bandung', '2015-07-04', 'Islam', 'Menikah', 10, 'Kiaracondong', '08981989111', 12, 1, 45000000, '2015-07-04', '2015-07-24', 'Tetap', '6311240.jpg', 'laki-laki', 'fani@gmail.com', '231231142'),
+(4, '6311190', 'lpkia E', 'bandung', '2015-07-07', 'Islam', 'asd', 1, 'asd', '213123', 16, 1, 45, '2015-07-29', '0000-00-00', 'Tetap', '', 'laki-laki', 'asd@gmail.com', '3213123'),
+(5, '4354353', 'Lukman', 'Bandung', '2015-07-02', 'Islam', 'Kawin', 2, 'sekejati', '084325232', 16, 1, 5000000, '2015-07-01', '0000-00-00', 'Tetap', '4354353.jpg', 'laki-laki', 'lukman@gmail.com', '321123');
 
 -- --------------------------------------------------------
 
@@ -449,6 +586,30 @@ INSERT INTO `petugas` (`KODE_PETUGAS`, `NAMA_PETUGAS`, `EMAIL`, `USERNAME_LOGIN`
 (1, 'fajar', 'fajar', 'fajar', 'fajar'),
 (2, 'admin', 'admin', 'admin', 'admin'),
 (3, 'indra', 'indra', 'indra', 'indra');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pinjaman`
+--
+
+CREATE TABLE IF NOT EXISTS `pinjaman` (
+`KODE_PINJAMAN` int(11) NOT NULL,
+  `KODE_PEGAWAI` int(11) NOT NULL,
+  `TANGGAL` date NOT NULL,
+  `NOMINAL` int(11) NOT NULL,
+  `JUMLAH_BLN` int(11) NOT NULL,
+  `KETERANGAN` text,
+  `STATUS` varchar(20) DEFAULT NULL,
+  `KODE_PETUGAS` int(11) NOT NULL
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `pinjaman`
+--
+
+INSERT INTO `pinjaman` (`KODE_PINJAMAN`, `KODE_PEGAWAI`, `TANGGAL`, `NOMINAL`, `JUMLAH_BLN`, `KETERANGAN`, `STATUS`, `KODE_PETUGAS`) VALUES
+(1, 2, '2015-07-18', 1000000, 12, 'keperluan', 'Hutang', 2);
 
 -- --------------------------------------------------------
 
@@ -555,10 +716,22 @@ ALTER TABLE `departemen`
  ADD PRIMARY KEY (`KODE_DEPARTEMEN`);
 
 --
+-- Indexes for table `detail_tunjangan_penggajian`
+--
+ALTER TABLE `detail_tunjangan_penggajian`
+ ADD PRIMARY KEY (`id_detail_penggajian`), ADD KEY `kode_penggajian` (`kode_penggajian`);
+
+--
 -- Indexes for table `hari_libur`
 --
 ALTER TABLE `hari_libur`
  ADD PRIMARY KEY (`ID`);
+
+--
+-- Indexes for table `head_penggajian`
+--
+ALTER TABLE `head_penggajian`
+ ADD PRIMARY KEY (`kode_penggajian`), ADD KEY `kode_pegawai` (`kode_pegawai`);
 
 --
 -- Indexes for table `jabatan`
@@ -621,6 +794,12 @@ ALTER TABLE `petugas`
  ADD PRIMARY KEY (`KODE_PETUGAS`);
 
 --
+-- Indexes for table `pinjaman`
+--
+ALTER TABLE `pinjaman`
+ ADD PRIMARY KEY (`KODE_PINJAMAN`);
+
+--
 -- Indexes for table `potongan_perusahaan`
 --
 ALTER TABLE `potongan_perusahaan`
@@ -668,6 +847,11 @@ MODIFY `KODE_CUTI` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 ALTER TABLE `departemen`
 MODIFY `KODE_DEPARTEMEN` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
+--
+-- AUTO_INCREMENT for table `detail_tunjangan_penggajian`
+--
+ALTER TABLE `detail_tunjangan_penggajian`
+MODIFY `id_detail_penggajian` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=85;
 --
 -- AUTO_INCREMENT for table `hari_libur`
 --
@@ -724,6 +908,11 @@ MODIFY `KODE_PENGHARGAAN` int(11) NOT NULL AUTO_INCREMENT;
 ALTER TABLE `petugas`
 MODIFY `KODE_PETUGAS` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
+-- AUTO_INCREMENT for table `pinjaman`
+--
+ALTER TABLE `pinjaman`
+MODIFY `KODE_PINJAMAN` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+--
 -- AUTO_INCREMENT for table `potongan_perusahaan`
 --
 ALTER TABLE `potongan_perusahaan`
@@ -743,6 +932,16 @@ MODIFY `id_restore` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 --
 ALTER TABLE `tabungan`
 MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `detail_tunjangan_penggajian`
+--
+ALTER TABLE `detail_tunjangan_penggajian`
+ADD CONSTRAINT `detail_tunjangan_penggajian_ibfk_1` FOREIGN KEY (`kode_penggajian`) REFERENCES `head_penggajian` (`kode_penggajian`) ON DELETE CASCADE ON UPDATE CASCADE;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
