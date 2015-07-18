@@ -54,6 +54,11 @@
             var url = "modul/mod_pinjaman/pinjaman.php";
             $("#data-utama").load(url);
 	});
+	
+	 $('.pinjaman').live("click", function(){
+            var url = "modul/mod_pinjaman2/pinjaman.php";
+            $("#data-utama").load(url);
+	});
         
         $('.waktu').live("click", function(){
             var url = "modul/mod_jam_kerja/jam.php";

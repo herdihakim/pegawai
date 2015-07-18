@@ -25,6 +25,7 @@
 			<li><a href="#" id="tunjangan" class="tunjangan"><span class="glyphicon glyphicon-list"> Tunjangan</a></li>
 			<li><a href="#" id="cuti" class="cuti"><span class="glyphicon glyphicon-list"> Cuti</a></li>
                         <li><a href="#" id="kasbon" class="kasbon"><span class="glyphicon glyphicon-list"> Kas Bon</a></li>
+                        <li><a href="#" id="pinjaman" class="pinjaman"><span class="glyphicon glyphicon-list"> Pinjaman</a></li>
                         <li><a href="#" id="waktu" class="waktu"><span class="glyphicon glyphicon-list"> Jam Kerja</a></li>
                     </ul>
                 </li>
