@@ -1,8 +1,16 @@
 <?php
+<<<<<<< HEAD
     include_once "panel/include/koneksi.php";
 
 	$profil=mysql_fetch_object(mysql_query("SELECT * FROM profil_perusahaan"));
 ?>
+=======
+
+		include_once "panel/include/koneksi.php";
+		
+		$profil=mysql_fetch_object(mysql_query("SELECT * FROM profil_perusahaan"));
+		?>
+>>>>>>> origin/master
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -13,12 +21,17 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="panel/<?php echo $profil->logo; ?>">
+<<<<<<< HEAD
 
 
     <title>Lukstron Development</title>
 
     <title><?php echo $profil->NAMA_PERUSAHAAN; ?></title>
 
+=======
+
+    <title><?php echo $profil->NAMA_PERUSAHAAN; ?></title>
+>>>>>>> origin/master
 	
     <!-- Bootstrap core CSS -->
     <link href="panel/bootstrap/docs/dist/css/bootstrap.min.css" rel="stylesheet">
