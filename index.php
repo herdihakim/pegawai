@@ -1,16 +1,13 @@
 <?php
-<<<<<<< HEAD
+
     include_once "panel/include/koneksi.php";
 
 	$profil=mysql_fetch_object(mysql_query("SELECT * FROM profil_perusahaan"));
 ?>
-=======
 
-		include_once "panel/include/koneksi.php";
-		
-		$profil=mysql_fetch_object(mysql_query("SELECT * FROM profil_perusahaan"));
-		?>
->>>>>>> origin/master
+
+	
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -21,17 +18,17 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="panel/<?php echo $profil->logo; ?>">
-<<<<<<< HEAD
+
 
 
     <title>Lukstron Development</title>
 
     <title><?php echo $profil->NAMA_PERUSAHAAN; ?></title>
 
-=======
+
 
     <title><?php echo $profil->NAMA_PERUSAHAAN; ?></title>
->>>>>>> origin/master
+
 	
     <!-- Bootstrap core CSS -->
     <link href="panel/bootstrap/docs/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -87,7 +84,7 @@
     <footer class="footer">
 	<div class="container">
             <p class="pull-right"><a href="#"><span class="glyphicon glyphicon-triangle-top"></span> Back to top <span class="glyphicon glyphicon-triangle-top"></span></a></p>
-            <p class="text-muted">&copy; 2015  - <a href="">Lukstron Development</a> - All Rights Reserved. </p>
+            <p class="text-muted">&copy; <?php echo date('Y');?>  - <a href=""><?php echo $profil->NAMA_PERUSAHAAN; ?></a> - All Rights Reserved. </p>
 	</div>
     </footer>
 	

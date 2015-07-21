@@ -89,7 +89,7 @@
 		</tr>
 		<tr>
                     <td class="col-sm-12">
-                        <h4 style="color:#258dc8;">Human Resource Management</h4>
+                        <h4 style="color:#258dc8;">Payroll And Attendance Software</h4>
                     </td>
 		</tr>
             </table>
@@ -107,8 +107,7 @@
     <footer class="footer">
 	<div class="container">
             <p class="pull-right"><a href="#"><span class="glyphicon glyphicon-triangle-top"></span> Back to top <span class="glyphicon glyphicon-triangle-top"></span></a></p>
-            <p class="text-muted">&copy; 2015  - <a href="">Lukstron Development</a> - All Rights Reserved. </p>
-	</div>
+    <p class="text-muted">&copy; <?php echo date('Y');?>  - <a href=""><?php echo $profil->NAMA_PERUSAHAAN; ?></a> - All Rights Reserved. </p></div>
     </footer>
 	
 	
