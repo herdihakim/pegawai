@@ -20,6 +20,10 @@
             var url = "modul/mod_pegawai/pegawai.php";
             $("#data-utama").load(url);
         });
+		$('.petugas').live("click", function(){
+            var url = "modul/mod_petugas/petugas.php";
+            $("#data-utama").load(url);
+        });
 		
 	$('.departemen').live("click", function(){
             var url = "modul/mod_departemen/departemen.php";
@@ -75,8 +79,16 @@
             $("#data-utama").load(url);
 	});
         
-        $('.penghargaan').live("click", function(){
+   $('.penghargaan').live("click", function(){
             var url = "modul/mod_penghargaan/penghargaan.php";
+            $("#data-utama").load(url);
+	}); 
+	$('.laporan_gaji').live("click", function(){
+            var url = "modul/mod_laporan_gaji/laporan_gaji.php";
+            $("#data-utama").load(url);
+	});
+	$('.laporan_absensi').live("click", function(){
+            var url = "modul/mod_laporan_absen/laporan_absen.php";
             $("#data-utama").load(url);
 	});
 	  $('.backup').live("click", function(){

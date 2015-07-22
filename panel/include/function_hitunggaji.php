@@ -125,7 +125,7 @@ $tmptunjanganlain=array();
 $tmptunjanganlain=explode(",",$nominaltelat);
 $getnominal=$tmptunjanganlain[1];
 
-$getjumlahtelat=mysql_query("SELECT count(JAM_MASUK) from absensi where JAM_MASUK > '$batastelat' and MONTH(TANGGAL)='$bulansekarang' and NIP_PEGAWAI='$pegawai->KODE_PEGAWAI' ");	
+$getjumlahtelat=mysql_query("SELECT count(JAM_MASUK) from absensi where JAM_MASUK > '$batastelat' and MONTH(TANGGAL)='$bulansekarang' and NIP_PEGAWAI='$pegawai->KODE_PEGAWAI'");	
 $hasilget=mysql_fetch_array($getjumlahtelat);
 $data=$hasilget[0];
 

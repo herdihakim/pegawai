@@ -1,13 +1,17 @@
 <?php
     include_once "../../include/koneksi.php";
     session_start();
-
+	$KODE_DEPARTEMEN=$_POST['id'];
+	$getdept=mysql_query("select * from departemen where KODE_DEPARTEMEN='$KODE_DEPARTEMEN'");
+	$viewdept=mysql_fetch_object($getdept);
 ?>
+
+	<p>Departemen : <?php echo $viewdept->NAMA_DEPARTEMEN;?><p/>
+
 	 <table id="example" class="table table-bordered" border="1">
 
         <tr>
 		<th width="10%" style="background-color:grey">No</th>
-		<th style="background-color:grey">Departemen</th>
 		<th width="30%" style="background-color:grey">No Rekening</th>
 		<th style="background-color:grey">Nama</th>
 		<th style="background-color:grey">Jumlah Transfer</th>
@@ -17,9 +21,8 @@
 	error_reporting(0);
 	include_once "../../include/koneksi.php";
 	include("../../include/function_hitunggaji.php");
-	$KODE_DEPARTEMEN=$_POST['id'];
 
-	$getpegawai=mysql_query("select * from pegawai where  KODE_DEPARTEMEN='$KODE_DEPARTEMEN'");
+	$getpegawai=mysql_query("select * from pegawai where KODE_DEPARTEMEN='$KODE_DEPARTEMEN'");
 	
 	$no = 1;
 	while($datapegawai=mysql_fetch_object($getpegawai)){
@@ -60,13 +63,11 @@
 	if($datapegawai->STATUS_PEGAWAI=="Kontrak"){
 	$takehomepay=number_format(getthp($NIP) - (potogan_terlambat($NIP)+$hutang->hutangnya+$jabatan->NOMINAL_TABUNGAN));
 	}
-	mysql_query("insert into head_penggajian values('$getkode','$kp','$gaji_pokok','$uang_makan_transport','$lembur','$terlambat','$tabungan','0','$total_potongan','$total_penerimaan','$tanggal_gaji','$KODE_DEPARTEMEN','$takehomepay')");
 	$tmptunjanganlain=explode(",",$jabatan->TUNJANGAN_LAIN);
 	foreach($tmptunjanganlain as $tmptunjanganlains){
 	$pendapatanlain=pendapatan($tmptunjanganlains);
 	$nama_tunjangan=$pendapatanlain->NAMA_TUNJANGAN;
 	$nominal_tunjangan=$pendapatanlain->NOMINAL;
-	mysql_query("insert into detail_tunjangan_penggajian values(NULL,'$getkode','$nama_tunjangan','$nominal_tunjangan')");
 	}
 	
 		echo'
@@ -75,13 +76,11 @@
 		';
 		$penggajiannama=mysql_query("SELECT * FROM departemen where KODE_DEPARTEMEN='$datapegawai->KODE_DEPARTEMEN'") or die (mysql_error());
 		$getnamapenggajian=mysql_fetch_object($penggajiannama);
-		echo'
-		<td>'.$getnamapenggajian->NAMA_DEPARTEMEN.'</td>
-		';
+		
 		echo'
 		<td width="30%">'.$datapegawai->NO_REKENING.'</td>
 		<td>'.$datapegawai->NAMA_PEGAWAI.'</td>
-		<td>'.$takehomepay.'</td>
+		<td>Rp.'.$takehomepay.'</td>
 		</tr>
 		';
 		

@@ -88,7 +88,12 @@
 				var departemen=data["departemen"];
 				if(tipe=="SIMPAN"){
 					
-					alert("Hanya Simpan");
+					alert("Input Data Penggajian berhasil");
+					
+				}
+				if(tipe=="false"){
+					
+					alert("Maaf Penggajian sudah dilakukan bulan ini");
 					
 				}
 				if(tipe=="CETAK"){

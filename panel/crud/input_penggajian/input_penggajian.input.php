@@ -21,7 +21,7 @@
 	if($KODE_DEPARTEMEN!="all"){
 	$KODE_DEPARTEMEN=$datapegawai->KODE_DEPARTEMEN;
 	}
-	$hutang=gethutang($NIP);	
+	$hutang=gethutang($kp);	
 	$gaji_pokok=$data->GAJI_POKOK;
 	$uang_makan_transport=$jabatan->NOMINAL_UMT;
 	$lembur=number_format(nominalumt(gajilembur($NIP)));
@@ -41,14 +41,19 @@
 	$IDbaru = $char . sprintf("%03s", $noUrut);
 	$getkode=$w.$IDbaru;
 	$tipe=$_POST["tipe"];
+	$kasbon=$hutang->hutangnya;
 	if($datapegawai->STATUS_PEGAWAI=="Tetap"){
-	$takehomepay=number_format(getthp($NIP) - ($hutang->hutangnya+$jabatan->NOMINAL_TABUNGAN));
+	$takehomepay=getthp($NIP) - ($hutang->hutangnya+$jabatan->NOMINAL_TABUNGAN);
 	}
 	if($datapegawai->STATUS_PEGAWAI=="Kontrak"){
-	$takehomepay=number_format(getthp($NIP) - (potogan_terlambat($NIP)+$hutang->hutangnya+$jabatan->NOMINAL_TABUNGAN));
+	$takehomepay=getthp($NIP) - (potogan_terlambat($NIP)+$hutang->hutangnya+$jabatan->NOMINAL_TABUNGAN);
 	}
 	if($tipe=="SIMPAN"){
-	mysql_query("insert into head_penggajian values('$getkode','$kp','$gaji_pokok','$uang_makan_transport','$lembur','$terlambat','$tabungan','0','$total_potongan','$total_penerimaan','$tanggal_gaji','$KODE_DEPARTEMEN','$takehomepay')");
+	$bulanini=date('m');
+	$cek=mysql_query("select MONTH(tanggal_gaji) from head_penggajian where MONTH(tanggal_gaji)='$bulanini' and kode_pegawai='$kp'");
+	$getcek=mysql_fetch_object($cek);
+	if($getcek==""){
+	mysql_query("insert into head_penggajian values('$getkode','$kp','$gaji_pokok','$uang_makan_transport','$lembur','$terlambat','$tabungan','0','$total_potongan','$total_penerimaan','$tanggal_gaji','$KODE_DEPARTEMEN','$takehomepay','$kasbon')");
 	$tmptunjanganlain=explode(",",$jabatan->TUNJANGAN_LAIN);
 	foreach($tmptunjanganlain as $tmptunjanganlains){
 	$pendapatanlain=pendapatan($tmptunjanganlains);
@@ -58,6 +63,11 @@
 	}
 	header('Content-Type: application/json');
 	echo json_encode(array('tipe' => 'SIMPAN'));
+	}
+	if($getcek!=""){
+	header('Content-Type: application/json');
+	echo json_encode(array('tipe' => 'false'));
+	}
 	}
 	}
 	

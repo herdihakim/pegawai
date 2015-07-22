@@ -29,8 +29,8 @@
         <div class="form-group">
             <label for="NAMA_DEPARTEMEN" class="col-sm-3 control-label"> Departemen</label>
             <div class="col-sm-9">
-			<input type="text" class="form-control" value="<?php echo $NAMA_DEPARTEMEN; ?>" id="NAMA_DEPARTEMEN" name="NAMA_DEPARTEMEN"  \>
-			<input type="hidden" class="form-control" value="<?php echo $KODE_DEPARTEMEN; ?>" id="KODE_DEPARTEMEN" name="KODE_DEPARTEMEN"  \>
+		<input type="text" class="form-control" value="<?php echo $NAMA_DEPARTEMEN; ?>" id="NAMA_DEPARTEMEN" name="NAMA_DEPARTEMEN"  \>
+		<input type="hidden" class="form-control" value="<?php echo $KODE_DEPARTEMEN; ?>" id="KODE_DEPARTEMEN" name="KODE_DEPARTEMEN"  \>
             </div>
 	</div>
     </div>

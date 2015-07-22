@@ -24,7 +24,7 @@
 	<tbody>
 	<?php
             $querypetugas=mysql_query("SELECT * FROM hari_libur") or die (mysql_error());
-            $no = 1;
+            $no = 0;
             while($objectdata=mysql_fetch_object($querypetugas)){
 			$no++;
 			echo'
