@@ -3,8 +3,8 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 18, 2015 at 06:20 PM
--- Server version: 5.6.20
+-- Generation Time: 22 Jul 2015 pada 22.54
+-- Versi Server: 5.6.20
 -- PHP Version: 5.5.15
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -23,7 +23,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `absensi`
+-- Struktur dari tabel `absensi`
 --
 
 CREATE TABLE IF NOT EXISTS `absensi` (
@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `absensi` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=332 ;
 
 --
--- Dumping data for table `absensi`
+-- Dumping data untuk tabel `absensi`
 --
 
 INSERT INTO `absensi` (`KODE_ABSENSI`, `KODE_JAM_KERJA`, `NIP_PEGAWAI`, `TANGGAL`, `JAM_MASUK`, `JAM_KELUAR`) VALUES
@@ -135,7 +135,7 @@ INSERT INTO `absensi` (`KODE_ABSENSI`, `KODE_JAM_KERJA`, `NIP_PEGAWAI`, `TANGGAL
 -- --------------------------------------------------------
 
 --
--- Table structure for table `backup_data`
+-- Struktur dari tabel `backup_data`
 --
 
 CREATE TABLE IF NOT EXISTS `backup_data` (
@@ -145,7 +145,7 @@ CREATE TABLE IF NOT EXISTS `backup_data` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=38 ;
 
 --
--- Dumping data for table `backup_data`
+-- Dumping data untuk tabel `backup_data`
 --
 
 INSERT INTO `backup_data` (`id_backup`, `tanggal`, `file`) VALUES
@@ -156,7 +156,7 @@ INSERT INTO `backup_data` (`id_backup`, `tanggal`, `file`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cuti`
+-- Struktur dari tabel `cuti`
 --
 
 CREATE TABLE IF NOT EXISTS `cuti` (
@@ -170,7 +170,7 @@ CREATE TABLE IF NOT EXISTS `cuti` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
--- Dumping data for table `cuti`
+-- Dumping data untuk tabel `cuti`
 --
 
 INSERT INTO `cuti` (`KODE_CUTI`, `NIP_PEGAWAI`, `KETERANGAN`, `TANGGAL_AWAL`, `TANGGAL_AKHIR`, `STATUS`, `KODE_PETUGAS`) VALUES
@@ -180,16 +180,16 @@ INSERT INTO `cuti` (`KODE_CUTI`, `NIP_PEGAWAI`, `KETERANGAN`, `TANGGAL_AWAL`, `T
 -- --------------------------------------------------------
 
 --
--- Table structure for table `departemen`
+-- Struktur dari tabel `departemen`
 --
 
 CREATE TABLE IF NOT EXISTS `departemen` (
 `KODE_DEPARTEMEN` int(11) NOT NULL,
   `NAMA_DEPARTEMEN` varchar(50) NOT NULL
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
 
 --
--- Dumping data for table `departemen`
+-- Dumping data untuk tabel `departemen`
 --
 
 INSERT INTO `departemen` (`KODE_DEPARTEMEN`, `NAMA_DEPARTEMEN`) VALUES
@@ -202,7 +202,7 @@ INSERT INTO `departemen` (`KODE_DEPARTEMEN`, `NAMA_DEPARTEMEN`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `detail_tunjangan_penggajian`
+-- Struktur dari tabel `detail_tunjangan_penggajian`
 --
 
 CREATE TABLE IF NOT EXISTS `detail_tunjangan_penggajian` (
@@ -210,81 +210,30 @@ CREATE TABLE IF NOT EXISTS `detail_tunjangan_penggajian` (
   `kode_penggajian` varchar(100) NOT NULL,
   `nama_tunjangan` text NOT NULL,
   `nominal_tunjangan` text NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=85 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=375 ;
 
 --
--- Dumping data for table `detail_tunjangan_penggajian`
+-- Dumping data untuk tabel `detail_tunjangan_penggajian`
 --
 
 INSERT INTO `detail_tunjangan_penggajian` (`id_detail_penggajian`, `kode_penggajian`, `nama_tunjangan`, `nominal_tunjangan`) VALUES
-(22, 'P07001', 'anak', '300000'),
-(23, 'P07001', 'Istri', '500000'),
-(24, 'P07001', 'Keahlian', '500000'),
-(25, 'P07002', 'anak', '300000'),
-(26, 'P07002', 'Istri', '500000'),
-(27, 'P07003', 'anak', '300000'),
-(28, 'P07003', 'Istri', '500000'),
-(29, 'P07003', 'Keahlian', '500000'),
-(30, 'P07004', 'anak', '300000'),
-(31, 'P07004', 'Istri', '500000'),
-(32, 'P07004', 'Keahlian', '500000'),
-(33, 'P07005', 'anak', '300000'),
-(34, 'P07005', 'Istri', '500000'),
-(35, 'P07006', 'anak', '300000'),
-(36, 'P07006', 'Istri', '500000'),
-(37, 'P07007', 'anak', '300000'),
-(38, 'P07007', 'Istri', '500000'),
-(39, 'P07008', 'anak', '300000'),
-(40, 'P07008', 'Istri', '500000'),
-(41, 'P07008', 'Keahlian', '500000'),
-(42, 'P07009', 'anak', '300000'),
-(43, 'P07009', 'Istri', '500000'),
-(44, 'P07010', 'anak', '300000'),
-(45, 'P07010', 'Istri', '500000'),
-(46, 'P07011', 'anak', '300000'),
-(47, 'P07011', 'Istri', '500000'),
-(48, 'P07011', 'Keahlian', '500000'),
-(49, 'P07012', 'anak', '300000'),
-(50, 'P07012', 'Istri', '500000'),
-(51, 'P07013', 'anak', '300000'),
-(52, 'P07013', 'Istri', '500000'),
-(53, 'P07013', 'Keahlian', '500000'),
-(54, 'P07014', 'anak', '300000'),
-(55, 'P07014', 'Istri', '500000'),
-(56, 'P07015', 'anak', '300000'),
-(57, 'P07015', 'Istri', '500000'),
-(58, 'P07016', 'anak', '300000'),
-(59, 'P07016', 'Istri', '500000'),
-(60, 'P07016', 'Keahlian', '500000'),
-(61, 'P07017', 'anak', '300000'),
-(62, 'P07017', 'Istri', '500000'),
-(63, 'P07018', 'anak', '300000'),
-(64, 'P07018', 'Istri', '500000'),
-(65, 'P07018', 'Keahlian', '500000'),
-(66, 'P07019', 'anak', '300000'),
-(67, 'P07019', 'Istri', '500000'),
-(68, 'P07020', 'anak', '300000'),
-(69, 'P07020', 'Istri', '500000'),
-(70, 'P07021', 'anak', '300000'),
-(71, 'P07021', 'Istri', '500000'),
-(72, 'P07022', 'anak', '300000'),
-(73, 'P07022', 'Istri', '500000'),
-(74, 'P07022', 'Keahlian', '500000'),
-(75, 'P07023', 'anak', '300000'),
-(76, 'P07023', 'Istri', '500000'),
-(77, 'P07024', 'anak', '300000'),
-(78, 'P07024', 'Istri', '500000'),
-(79, 'P07025', 'anak', '300000'),
-(80, 'P07025', 'Istri', '500000'),
-(81, 'P07025', 'Keahlian', '500000'),
-(82, 'P07026', 'anak', '300000'),
-(83, 'P07026', 'Istri', '500000'),
-(84, 'P07026', 'Keahlian', '500000');
+(363, 'P07001', 'anak', '300000'),
+(364, 'P07001', 'Istri', '500000'),
+(365, 'P07001', 'Keahlian', '500000'),
+(366, 'P07002', 'anak', '300000'),
+(367, 'P07002', 'Istri', '500000'),
+(368, 'P07003', 'anak', '300000'),
+(369, 'P07003', 'Istri', '500000'),
+(370, 'P07003', 'Keahlian', '500000'),
+(371, 'P07004', 'anak', '300000'),
+(372, 'P07004', 'Istri', '500000'),
+(373, 'P07005', 'anak', '300000'),
+(374, 'P07005', 'Istri', '500000');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `hari_libur`
+-- Struktur dari tabel `hari_libur`
 --
 
 CREATE TABLE IF NOT EXISTS `hari_libur` (
@@ -294,7 +243,7 @@ CREATE TABLE IF NOT EXISTS `hari_libur` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
--- Dumping data for table `hari_libur`
+-- Dumping data untuk tabel `hari_libur`
 --
 
 INSERT INTO `hari_libur` (`ID`, `TAHUN`, `TANGGAL`) VALUES
@@ -305,7 +254,7 @@ INSERT INTO `hari_libur` (`ID`, `TAHUN`, `TANGGAL`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `head_penggajian`
+-- Struktur dari tabel `head_penggajian`
 --
 
 CREATE TABLE IF NOT EXISTS `head_penggajian` (
@@ -321,45 +270,26 @@ CREATE TABLE IF NOT EXISTS `head_penggajian` (
   `total_penerimaan` text NOT NULL,
   `tanggal_gaji` date NOT NULL,
   `departemen` int(11) NOT NULL,
-  `thp` text NOT NULL
+  `thp` text NOT NULL,
+  `kasbon` int(200) NOT NULL,
+  `pinjaman` int(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `head_penggajian`
+-- Dumping data untuk tabel `head_penggajian`
 --
 
-INSERT INTO `head_penggajian` (`kode_penggajian`, `kode_pegawai`, `gaji_pokok`, `uang_makan_transport`, `lembur`, `terlambat`, `tabungan`, `mangkir`, `total_potongan`, `total_penerimaan`, `tanggal_gaji`, `departemen`, `thp`) VALUES
-('P07001', 2, '4000000', '1000000', '261,905', '30000', '50000', '0', '80,000', '6,561,905', '2015-07-17', 3, '6,481,905'),
-('P07002', 1, '4500000', '1500000', '294,643', '30000', '150000', '0', '180,000', '7,094,643', '2015-07-17', 1, '6,914,643'),
-('P07003', 2, '4000000', '1000000', '261,905', '30000', '50000', '0', '80,000', '6,561,905', '2015-07-17', 3, '6,481,905'),
-('P07004', 3, '45000000', '1000000', '2,946,429', '30000', '50000', '0', '80,000', '50,246,429', '2015-07-17', 1, '50,196,429'),
-('P07005', 4, '45', '1200000', '0', '0', '100000', '0', '100,000', '2,000,045', '2015-07-17', 1, '1,900,045'),
-('P07006', 5, '5000000', '1200000', '59,524', '5000', '100000', '0', '105,000', '7,059,524', '2015-07-17', 1, '6,959,524'),
-('P07007', 1, '4500000', '1500000', '294,643', '30000', '150000', '0', '180,000', '7,094,643', '2015-07-17', 1, '6,914,643'),
-('P07008', 3, '45000000', '1000000', '2,946,429', '30000', '50000', '0', '80,000', '50,246,429', '2015-07-17', 1, '50,196,429'),
-('P07009', 4, '45', '1200000', '0', '0', '100000', '0', '100,000', '2,000,045', '2015-07-17', 1, '1,900,045'),
-('P07010', 5, '5000000', '1200000', '59,524', '5000', '100000', '0', '105,000', '7,059,524', '2015-07-17', 1, '6,959,524'),
-('P07011', 2, '4000000', '1000000', '261,905', '30000', '50000', '0', '80,000', '6,561,905', '2015-07-17', 3, '6,481,905'),
-('P07012', 1, '4500000', '1500000', '294,643', '30000', '150000', '0', '180,000', '7,094,643', '2015-07-18', 1, '6,914,643'),
-('P07013', 3, '45000000', '1000000', '2,946,429', '30000', '50000', '0', '80,000', '50,246,429', '2015-07-18', 1, '50,196,429'),
-('P07014', 4, '45', '1200000', '0', '0', '100000', '0', '100,000', '2,000,045', '2015-07-18', 1, '1,900,045'),
-('P07015', 5, '5000000', '1200000', '59,524', '5000', '100000', '0', '105,000', '7,059,524', '2015-07-18', 1, '6,959,524'),
-('P07016', 2, '4000000', '1000000', '261,905', '30000', '50000', '0', '80,000', '6,561,905', '2015-07-18', 3, '6,481,905'),
-('P07017', 1, '4500000', '1500000', '294,643', '30000', '150000', '0', '180,000', '7,094,643', '2015-07-18', 1, '6,914,643'),
-('P07018', 3, '45000000', '1000000', '2,946,429', '30000', '50000', '0', '80,000', '50,246,429', '2015-07-18', 1, '50,196,429'),
-('P07019', 4, '45', '1200000', '0', '0', '100000', '0', '100,000', '2,000,045', '2015-07-18', 1, '1,900,045'),
-('P07020', 5, '5000000', '1200000', '59,524', '5000', '100000', '0', '105,000', '7,059,524', '2015-07-18', 1, '6,959,524'),
-('P07021', 1, '4500000', '1500000', '294,643', '30000', '150000', '0', '180,000', '7,094,643', '2015-07-18', 1, '6,914,643'),
-('P07022', 3, '45000000', '1000000', '2,946,429', '30000', '50000', '0', '80,000', '50,246,429', '2015-07-18', 1, '50,196,429'),
-('P07023', 4, '45', '1200000', '0', '0', '100000', '0', '100,000', '2,000,045', '2015-07-18', 1, '1,900,045'),
-('P07024', 5, '5000000', '1200000', '59,524', '5000', '100000', '0', '105,000', '7,059,524', '2015-07-18', 1, '6,959,524'),
-('P07025', 2, '4000000', '1000000', '261,905', '30000', '50000', '0', '80,000', '6,561,905', '2015-07-18', 3, '6,481,905'),
-('P07026', 2, '4000000', '1000000', '261,905', '30000', '50000', '0', '80,000', '6,561,905', '2015-07-18', 3, '6,481,905');
+INSERT INTO `head_penggajian` (`kode_penggajian`, `kode_pegawai`, `gaji_pokok`, `uang_makan_transport`, `lembur`, `terlambat`, `tabungan`, `mangkir`, `total_potongan`, `total_penerimaan`, `tanggal_gaji`, `departemen`, `thp`, `kasbon`, `pinjaman`) VALUES
+('P07001', 2, '4000000', '1000000', '261,905', '30000', '50000', '0', '463,333', '6,561,905', '2015-07-23', 3, '6098571.7619048', 300000, 83333),
+('P07002', 1, '4500000', '1500000', '294,643', '30000', '150000', '0', '430,000', '7,094,643', '2015-07-23', 1, '6664642.8571429', 0, 250000),
+('P07003', 3, '45000000', '1000000', '2,946,429', '30000', '50000', '0', '50,000', '50,246,429', '2015-07-23', 1, '50196428.571429', 0, 0),
+('P07004', 4, '45', '1200000', '0', '0', '100000', '0', '100,000', '2,000,045', '2015-07-23', 1, '1900045', 0, 0),
+('P07005', 5, '5000000', '1200000', '59,524', '5000', '100000', '0', '100,000', '7,059,524', '2015-07-23', 1, '6959523.8095238', 0, 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `jabatan`
+-- Struktur dari tabel `jabatan`
 --
 
 CREATE TABLE IF NOT EXISTS `jabatan` (
@@ -372,7 +302,7 @@ CREATE TABLE IF NOT EXISTS `jabatan` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=17 ;
 
 --
--- Dumping data for table `jabatan`
+-- Dumping data untuk tabel `jabatan`
 --
 
 INSERT INTO `jabatan` (`KODE_JABATAN`, `NAMA_JABATAN`, `TUNJANGAN_JABATAN`, `TUNJANGAN_LAIN`, `NOMINAL_TABUNGAN`, `NOMINAL_UMT`) VALUES
@@ -385,7 +315,7 @@ INSERT INTO `jabatan` (`KODE_JABATAN`, `NAMA_JABATAN`, `TUNJANGAN_JABATAN`, `TUN
 -- --------------------------------------------------------
 
 --
--- Table structure for table `jam_kerja`
+-- Struktur dari tabel `jam_kerja`
 --
 
 CREATE TABLE IF NOT EXISTS `jam_kerja` (
@@ -398,7 +328,7 @@ CREATE TABLE IF NOT EXISTS `jam_kerja` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
--- Dumping data for table `jam_kerja`
+-- Dumping data untuk tabel `jam_kerja`
 --
 
 INSERT INTO `jam_kerja` (`KODE_JAM_KERJA`, `KETERANGAN`, `JAM_DATANG`, `JAM_PULANG`, `KODE_MASUK`, `KODE_KELUAR`) VALUES
@@ -408,7 +338,7 @@ INSERT INTO `jam_kerja` (`KODE_JAM_KERJA`, `KETERANGAN`, `JAM_DATANG`, `JAM_PULA
 -- --------------------------------------------------------
 
 --
--- Table structure for table `kasbon_pegawai`
+-- Struktur dari tabel `kasbon_pegawai`
 --
 
 CREATE TABLE IF NOT EXISTS `kasbon_pegawai` (
@@ -422,17 +352,17 @@ CREATE TABLE IF NOT EXISTS `kasbon_pegawai` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
--- Dumping data for table `kasbon_pegawai`
+-- Dumping data untuk tabel `kasbon_pegawai`
 --
 
 INSERT INTO `kasbon_pegawai` (`KODE_KASBON`, `NIP_PEGAWAI`, `TANGGAL`, `NOMINAL`, `KETERANGAN`, `STATUS`, `KODE_PETUGAS`) VALUES
-(2, '1', '2015-07-22', 250000, 'Pinjam', 'Hutang', 2),
-(3, '1', '2015-06-22', 50000, 'makan siang', 'Hutang', 2);
+(2, '2', '2015-07-22', 250000, 'Pinjam', 'Hutang', 1),
+(3, '2', '2015-07-22', 50000, 'makan siang', 'Hutang', 2);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `lembur`
+-- Struktur dari tabel `lembur`
 --
 
 CREATE TABLE IF NOT EXISTS `lembur` (
@@ -447,7 +377,7 @@ CREATE TABLE IF NOT EXISTS `lembur` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `master_tunjangan`
+-- Struktur dari tabel `master_tunjangan`
 --
 
 CREATE TABLE IF NOT EXISTS `master_tunjangan` (
@@ -457,7 +387,7 @@ CREATE TABLE IF NOT EXISTS `master_tunjangan` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
--- Dumping data for table `master_tunjangan`
+-- Dumping data untuk tabel `master_tunjangan`
 --
 
 INSERT INTO `master_tunjangan` (`KODE_MASTER_TUNJANGAN`, `NAMA_TUNJANGAN`, `NOMINAL`) VALUES
@@ -468,7 +398,7 @@ INSERT INTO `master_tunjangan` (`KODE_MASTER_TUNJANGAN`, `NAMA_TUNJANGAN`, `NOMI
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mesin_absensi`
+-- Struktur dari tabel `mesin_absensi`
 --
 
 CREATE TABLE IF NOT EXISTS `mesin_absensi` (
@@ -479,7 +409,7 @@ CREATE TABLE IF NOT EXISTS `mesin_absensi` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
--- Dumping data for table `mesin_absensi`
+-- Dumping data untuk tabel `mesin_absensi`
 --
 
 INSERT INTO `mesin_absensi` (`KODE_MESIN`, `NAMA_MESIN`, `IP_ADDRESS`, `PORT_COM`) VALUES
@@ -488,7 +418,7 @@ INSERT INTO `mesin_absensi` (`KODE_MESIN`, `NAMA_MESIN`, `IP_ADDRESS`, `PORT_COM
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pegawai`
+-- Struktur dari tabel `pegawai`
 --
 
 CREATE TABLE IF NOT EXISTS `pegawai` (
@@ -515,7 +445,7 @@ CREATE TABLE IF NOT EXISTS `pegawai` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
--- Dumping data for table `pegawai`
+-- Dumping data untuk tabel `pegawai`
 --
 
 INSERT INTO `pegawai` (`KODE_PEGAWAI`, `NIP_PEGAWAI`, `NAMA_PEGAWAI`, `TEMPAT_LAHIR`, `TANGGAL_LAHIR`, `AGAMA`, `STATUS_PERNIKAHAN`, `JUMLAH_ANAK`, `ALAMAT`, `NOMOR_TELEPON`, `KODE_JABATAN`, `KODE_DEPARTEMEN`, `GAJI_POKOK`, `TANGGAL_MASUK`, `TANGGAL_KELUAR`, `STATUS_PEGAWAI`, `FOTO_PEGAWAI`, `JENIS_KELAMIN`, `EMAIL`, `NO_REKENING`) VALUES
@@ -528,7 +458,7 @@ INSERT INTO `pegawai` (`KODE_PEGAWAI`, `NIP_PEGAWAI`, `NAMA_PEGAWAI`, `TEMPAT_LA
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pengaturan_penggajian`
+-- Struktur dari tabel `pengaturan_penggajian`
 --
 
 CREATE TABLE IF NOT EXISTS `pengaturan_penggajian` (
@@ -538,7 +468,7 @@ CREATE TABLE IF NOT EXISTS `pengaturan_penggajian` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
--- Dumping data for table `pengaturan_penggajian`
+-- Dumping data untuk tabel `pengaturan_penggajian`
 --
 
 INSERT INTO `pengaturan_penggajian` (`ID`, `PARAMETER`, `VALUE`) VALUES
@@ -551,7 +481,7 @@ INSERT INTO `pengaturan_penggajian` (`ID`, `PARAMETER`, `VALUE`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `penghargaan`
+-- Struktur dari tabel `penghargaan`
 --
 
 CREATE TABLE IF NOT EXISTS `penghargaan` (
@@ -567,7 +497,7 @@ CREATE TABLE IF NOT EXISTS `penghargaan` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `petugas`
+-- Struktur dari tabel `petugas`
 --
 
 CREATE TABLE IF NOT EXISTS `petugas` (
@@ -576,10 +506,10 @@ CREATE TABLE IF NOT EXISTS `petugas` (
   `EMAIL` varchar(100) NOT NULL,
   `USERNAME_LOGIN` text NOT NULL,
   `PASSWORD_LOGIN` text NOT NULL
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
 --
--- Dumping data for table `petugas`
+-- Dumping data untuk tabel `petugas`
 --
 
 INSERT INTO `petugas` (`KODE_PETUGAS`, `NAMA_PETUGAS`, `EMAIL`, `USERNAME_LOGIN`, `PASSWORD_LOGIN`) VALUES
@@ -590,7 +520,7 @@ INSERT INTO `petugas` (`KODE_PETUGAS`, `NAMA_PETUGAS`, `EMAIL`, `USERNAME_LOGIN`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pinjaman`
+-- Struktur dari tabel `pinjaman`
 --
 
 CREATE TABLE IF NOT EXISTS `pinjaman` (
@@ -601,20 +531,23 @@ CREATE TABLE IF NOT EXISTS `pinjaman` (
   `JUMLAH_BLN` int(11) NOT NULL,
   `KETERANGAN` text,
   `STATUS` varchar(20) DEFAULT NULL,
-  `KODE_PETUGAS` int(11) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+  `KODE_PETUGAS` int(11) NOT NULL,
+  `CICILAN_PERBULAN` int(200) NOT NULL,
+  `SISA_CICILAN` int(200) NOT NULL
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
--- Dumping data for table `pinjaman`
+-- Dumping data untuk tabel `pinjaman`
 --
 
-INSERT INTO `pinjaman` (`KODE_PINJAMAN`, `KODE_PEGAWAI`, `TANGGAL`, `NOMINAL`, `JUMLAH_BLN`, `KETERANGAN`, `STATUS`, `KODE_PETUGAS`) VALUES
-(1, 2, '2015-07-18', 1000000, 12, 'keperluan', 'Hutang', 2);
+INSERT INTO `pinjaman` (`KODE_PINJAMAN`, `KODE_PEGAWAI`, `TANGGAL`, `NOMINAL`, `JUMLAH_BLN`, `KETERANGAN`, `STATUS`, `KODE_PETUGAS`, `CICILAN_PERBULAN`, `SISA_CICILAN`) VALUES
+(1, 2, '2015-07-23', 1000000, 12, 'ok', 'Hutang', 1, 83333, 10),
+(2, 1, '2015-07-23', 2500000, 10, 'ok', 'Hutang', 1, 250000, 8);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `potongan_perusahaan`
+-- Struktur dari tabel `potongan_perusahaan`
 --
 
 CREATE TABLE IF NOT EXISTS `potongan_perusahaan` (
@@ -626,7 +559,7 @@ CREATE TABLE IF NOT EXISTS `potongan_perusahaan` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `profil_perusahaan`
+-- Struktur dari tabel `profil_perusahaan`
 --
 
 CREATE TABLE IF NOT EXISTS `profil_perusahaan` (
@@ -643,7 +576,7 @@ CREATE TABLE IF NOT EXISTS `profil_perusahaan` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
--- Dumping data for table `profil_perusahaan`
+-- Dumping data untuk tabel `profil_perusahaan`
 --
 
 INSERT INTO `profil_perusahaan` (`NAMA_PERUSAHAAN`, `EMAIL`, `PHONE_1`, `PHONE_2`, `KOTA`, `FAXIMILI`, `ALAMAT`, `NEGARA`, `logo`, `id`) VALUES
@@ -652,7 +585,7 @@ INSERT INTO `profil_perusahaan` (`NAMA_PERUSAHAAN`, `EMAIL`, `PHONE_1`, `PHONE_2
 -- --------------------------------------------------------
 
 --
--- Table structure for table `restore_data`
+-- Struktur dari tabel `restore_data`
 --
 
 CREATE TABLE IF NOT EXISTS `restore_data` (
@@ -662,7 +595,7 @@ CREATE TABLE IF NOT EXISTS `restore_data` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
--- Dumping data for table `restore_data`
+-- Dumping data untuk tabel `restore_data`
 --
 
 INSERT INTO `restore_data` (`id_restore`, `tanggal`, `file`) VALUES
@@ -676,7 +609,7 @@ INSERT INTO `restore_data` (`id_restore`, `tanggal`, `file`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tabungan`
+-- Struktur dari tabel `tabungan`
 --
 
 CREATE TABLE IF NOT EXISTS `tabungan` (
@@ -846,12 +779,12 @@ MODIFY `KODE_CUTI` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 -- AUTO_INCREMENT for table `departemen`
 --
 ALTER TABLE `departemen`
-MODIFY `KODE_DEPARTEMEN` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
+MODIFY `KODE_DEPARTEMEN` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT for table `detail_tunjangan_penggajian`
 --
 ALTER TABLE `detail_tunjangan_penggajian`
-MODIFY `id_detail_penggajian` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=85;
+MODIFY `id_detail_penggajian` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=375;
 --
 -- AUTO_INCREMENT for table `hari_libur`
 --
@@ -906,12 +839,12 @@ MODIFY `KODE_PENGHARGAAN` int(11) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT for table `petugas`
 --
 ALTER TABLE `petugas`
-MODIFY `KODE_PETUGAS` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+MODIFY `KODE_PETUGAS` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `pinjaman`
 --
 ALTER TABLE `pinjaman`
-MODIFY `KODE_PINJAMAN` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+MODIFY `KODE_PINJAMAN` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `potongan_perusahaan`
 --
@@ -933,11 +866,11 @@ MODIFY `id_restore` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 ALTER TABLE `tabungan`
 MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 --
--- Constraints for dumped tables
+-- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --
 
 --
--- Constraints for table `detail_tunjangan_penggajian`
+-- Ketidakleluasaan untuk tabel `detail_tunjangan_penggajian`
 --
 ALTER TABLE `detail_tunjangan_penggajian`
 ADD CONSTRAINT `detail_tunjangan_penggajian_ibfk_1` FOREIGN KEY (`kode_penggajian`) REFERENCES `head_penggajian` (`kode_penggajian`) ON DELETE CASCADE ON UPDATE CASCADE;

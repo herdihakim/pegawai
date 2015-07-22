@@ -12,10 +12,10 @@
 	$KODE_PINJAMAN = $data['KODE_PINJAMAN'];
 	$NIP_PEGAWAI = $data['KODE_PEGAWAI'];
 	$TANGGAL = $data['TANGGAL'];
-        $NOMINAL = $data['NOMINAL'];
-        $JUMLAH_BLN = $data['JUMLAH_BLN'];
-        $KETERANGAN = $data['KETERANGAN'];
-        $STATUS = $data['STATUS'];
+    $NOMINAL = $data['NOMINAL'];
+    $JUMLAH_BLN = $data['JUMLAH_BLN'];
+    $KETERANGAN = $data['KETERANGAN'];
+    $STATUS = $data['STATUS'];
     } else {
 	$KODE_PINJAMAN = "";
 	$NIP_PEGAWAI = "";

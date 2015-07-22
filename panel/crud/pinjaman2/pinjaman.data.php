@@ -15,14 +15,16 @@
     <table id="example" class="table table-bordered">
 	<thead>
             <tr>
-                <th>No</th>
+        <th>No</th>
 		<th>Nip Pegawai</th>
-                <th>Nama Pegawai</th>
-                <th>Tanggal</th>
+        <th>Nama Pegawai</th>
+        <th>Tanggal</th>
 		<th>Nominal</th>
 		<th>Jumlah (BLN)</th>
-                <th>Keterangan</th>
-                <th>Status</th>
+       <th>Keterangan</th>
+        <th>Status</th>
+        <th>Cicilan/Bulan</th>
+        <th>Sisa Cicilan</th>
 		<th>Aksi</th>
             </tr>
 	</thead>
@@ -43,6 +45,8 @@
                 <td>'.$objectdata->JUMLAH_BLN.'</td>
                 <td>'.$objectdata->KETERANGAN.'</td>
                 <td>'.$objectdata->STATUS.'</td>
+                <td>'.number_format($objectdata->CICILAN_PERBULAN).'</td>
+                <td>'.$objectdata->SISA_CICILAN.'</td>
 		<td>
                     <a href="#dialog-pinjaman2" id="'.$objectdata->KODE_PINJAMAN.'" alt="Ubah" title="Ubah" class="glyphicon ubah-pinjaman2 glyphicon-edit" data-toggle="modal"></a>&nbsp; 
                     <a href="#" id="'.$objectdata->KODE_PINJAMAN.'" alt="Hapus" title="Hapus" class="glyphicon hapus-pinjaman2 glyphicon-trash"></a>

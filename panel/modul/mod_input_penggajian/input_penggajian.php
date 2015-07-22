@@ -96,6 +96,11 @@
 					alert("Maaf Penggajian sudah dilakukan bulan ini");
 					
 				}
+				if(tipe!="false" && tipe!="SIMPAN" ){
+					
+					alert("Maaf data karyawan tidak ditemukan");
+					
+				}
 				if(tipe=="CETAK"){
 						//alert("Hanya Cetak");
 						window.open('modul/mod_input_penggajian/cetakpdf.php?dept='+departemen);

@@ -9,7 +9,7 @@
 		</tr>
 
 <?php
-	error_reporting(0);
+error_reporting(0);
 	include_once "../../include/koneksi.php";
 	include("../../include/function_hitunggaji.php");
 	$KODE_DEPARTEMEN=$_GET["dept"];
@@ -32,20 +32,37 @@
 	if($KODE_DEPARTEMEN!="all"){
 	$KODE_DEPARTEMEN=$datapegawai->KODE_DEPARTEMEN;
 	}
-	$hutang=gethutang($NIP);	
+	$pinjaman=mysql_query("select * from pinjaman where KODE_PEGAWAI='$kp' and SISA_CICILAN!='0'");
+	$getpinjaman=mysql_fetch_object($pinjaman);
+	$nominalpinjaman=$getpinjaman->CICILAN_PERBULAN;
+	$sisa_cicilan=$getpinjaman->SISA_CICILAN;
+	$hutang=gethutang($kp);	
 	$gaji_pokok=$data->GAJI_POKOK;
 	$uang_makan_transport=$jabatan->NOMINAL_UMT;
 	$lembur=number_format(nominalumt(gajilembur($NIP)));
 	$terlambat=potogan_terlambat($NIP);
 	$tabungan=$jabatan->NOMINAL_TABUNGAN;
-	$total_potongan=number_format(potogan_terlambat($NIP)+$hutang->hutangnya+$jabatan->NOMINAL_TABUNGAN);
 	$total_penerimaan=number_format(getthp($NIP));
 	$tanggal_gaji=date("Y-m-d");
+	$query = "SELECT max(kode_penggajian) as idMaks FROM head_penggajian";
+	$hasil = mysql_query($query);
+	$data  = mysql_fetch_array($hasil);
+	$nim = $data['idMaks'];
+	$noUrut = (int) substr($nim, 3, 3);
+	$noUrut++;
+	$inisial="P";
+	$w = $inisial.date('m');
+	$IDbaru = $char . sprintf("%03s", $noUrut);
+	$getkode=$w.$IDbaru;
+	$tipe=$_POST["tipe"];
+	$kasbon=$hutang->hutangnya;
 	if($datapegawai->STATUS_PEGAWAI=="Tetap"){
-	$takehomepay=number_format(getthp($NIP) - ($hutang->hutangnya+$jabatan->NOMINAL_TABUNGAN));
+	$takehomepay=number_format(getthp($NIP) - ($hutang->hutangnya+$nominalpinjaman+$jabatan->NOMINAL_TABUNGAN));
+		
 	}
 	if($datapegawai->STATUS_PEGAWAI=="Kontrak"){
-	$takehomepay=number_format(getthp($NIP) - (potogan_terlambat($NIP)+$hutang->hutangnya+$jabatan->NOMINAL_TABUNGAN));
+	$takehomepay=number_format(getthp($NIP) - (potogan_terlambat($NIP)+$nominalpinjaman+$hutang->hutangnya+$jabatan->NOMINAL_TABUNGAN));
+	
 	}
 		echo'
         <tr>
