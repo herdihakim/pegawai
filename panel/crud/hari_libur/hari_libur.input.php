@@ -4,9 +4,14 @@
     
 	$ID = $_POST['ID'];
 	$TAHUN = $_POST['TAHUN'];
+	$BULAN = $_POST['BULAN'];
 	$TANGGAL = $_POST['TANGGAL'];
-	
-	mysql_query("insert into hari_libur values(NULL,'$TAHUN','$TANGGAL')");
-	
+	$state = $_POST['state'];
+	if($state !="true") { 
+	mysql_query("insert into hari_libur values(NULL,'$BULAN','$TAHUN','$TANGGAL')");
+	}
+	else{ 
+	mysql_query("UPDATE `hari_libur` SET `TANGGAL` = '$TANGGAL',`BULAN` = '$BULAN',`TAHUN` = '$TAHUN' WHERE `ID` ='$ID'");
+	}
 	
 ?>

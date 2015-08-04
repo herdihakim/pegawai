@@ -31,7 +31,7 @@
 			<td>'.$no.'</td>
 			
 			<td>'.$objectdata->tanggal.'</td>
-			<td>Backup Database Berhasil</td>
+			<td>Pencadangan basis data Berhasil</td>
 			<td>
                     <a href="modul/mod_backup/data_backup/'.$objectdata->file.'" id="'.$objectdata->file.'" alt="Download" title="Download" class="glyphicon ubah-pegawai glyphicon-download" data-toggle="modal">Download</a>&nbsp; 
             </td>

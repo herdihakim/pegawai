@@ -11,34 +11,49 @@
     if($id> 0) { 
     $ID = $data['ID'];
     $TAHUN = $data['TAHUN'];
+    $BULAN = $data['BULAN'];
 	$TANGGAL = $data['TANGGAL'];
+	$state = "true";
     } else {
 	$TAHUN = "";
+	$BULAN = "";
 	$TANGGAL = "";
-	
+	$state = "";
     }
 ?>
 	
 <form class="form-horizontal hari_liburForm" id="hari_liburForm" action="crud/hari_libur/hari_libur.input.php" type="POST">
     <div class="modal-body">
         <div class="form-group">
-            <label for="NAMA_conf_penggajian" class="col-sm-3 control-label"> Parameter</label>
+            <label for="NAMA_conf_penggajian" class="col-sm-3 control-label"> Tahun</label>
             <div class="col-sm-9">
 	
                 <div class="input-group date" id="tahun">
-                    <input type="text" class="form-control" id="TAHUN" name="TAHUN" value="<?php echo $TAHUN; ?>" placeholder="Tanggal Lahir" readonly required><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+                    <input type="text" class="form-control" id="TAHUN" name="TAHUN" value="<?php echo $TAHUN; ?>" placeholder="Tahun" readonly required><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
                     <input type="hidden" class="form-control" id="ID" name="ID" value="<?php echo $ID; ?>" >
+                    <input type="hidden" class="form-control" id="state" name="state" value="<?php echo $state; ?>" >
 				</div>
       
 		
 			</div>
 	</div>
 	<div class="form-group">
-            <label for="NAMA_conf_penggajian" class="col-sm-3 control-label"> Value</label>
+            <label for="NAMA_conf_penggajian" class="col-sm-3 control-label"> Bulan</label>
+            <div class="col-sm-9">
+	
+                <div class="input-group date" id="BULAN">
+                    <input type="text" class="form-control" id="BULAN" name="BULAN" value="<?php echo $BULAN; ?>" placeholder="Bulan" readonly required><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+                </div>
+      
+		
+			</div> 
+			
+	</div><div class="form-group">
+            <label for="NAMA_conf_penggajian" class="col-sm-3 control-label"> Tanggal</label>
             <div class="col-sm-9">
 	
                 <div class="input-group date" id="datePicker">
-                    <input type="text" class="form-control" id="TANGGAL" name="TANGGAL" value="<?php echo $TANGGAL; ?>" placeholder="Tanggal Lahir" readonly required><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+                    <input type="text" class="form-control" id="TANGGAL" name="TANGGAL" value="<?php echo $TANGGAL; ?>" placeholder="Tanggal " readonly required><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
                 </div>
       
 		
@@ -67,6 +82,15 @@
 	multidate: true,
 	startView: 2,
 	minViewMode: 2,
+    todayHighlight: true
+	
+	});
+	$('#BULAN').datepicker({
+    format: "mm",
+    autoclose: true,
+	multidate: true,
+	startView: 1,
+	minViewMode: 1,
     todayHighlight: true
 	
 	});

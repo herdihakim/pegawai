@@ -14,25 +14,23 @@
 <div class="table-responsive">
     <table id="example" class="table table-bordered">
 	<thead>
-            <tr>
+        <tr>
 		<th>No</th>
-		
 		<th>Tanggal</th>
 		<th>Bulan</th>
 		<th>Tahun</th>
 		<th>Departemen</th>
 		<th>Aksi</th>
-            </tr>
+        </tr>
 	</thead>
 	<tbody>
 	<?php
-            $query=mysql_query("SELECT * FROM head_penggajian where MONTH(tanggal_gaji)='07' group by departemen ") or die (mysql_error());
-            $no = 1;
-            while($objectdata=mysql_fetch_object($query)){
+		$query=mysql_query("SELECT * FROM head_penggajian  group by departemen ") or die (mysql_error());
+        $no = 1;
+        while($objectdata=mysql_fetch_object($query)){
 		echo'
         <tr>
 		<td>'.$no.'</td>
-		
 		<td>'.substr($objectdata->tanggal_gaji,8,2).'</td>
 		<td>'.substr($objectdata->tanggal_gaji,5,2).'</td>
 		<td>'.substr($objectdata->tanggal_gaji,0,4).'</td>

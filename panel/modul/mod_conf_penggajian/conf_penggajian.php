@@ -13,16 +13,16 @@
 
 <ol class="breadcrumb">
   <li><a href="#" id="beranda" class="beranda"><span class="glyphicon glyphicon-home"> Beranda</a></li>
-  <li class="active"><span class="glyphicon glyphicon-user"> conf_penggajian</li>
+  <li class="active"><span class="glyphicon glyphicon-user"> Konfigurasi penggajian</li>
 </ol>
 
 <div class="page-header" style="margin-top:5px;">
-    <h3>Kelola Data conf_penggajian</h3>
+    <h3>Konfigurasi penggajian</h3>
 </div>
 
 <div class="panel panel-warning">
     <div class="panel-heading">
-        <h3 class="panel-title">Data conf_penggajian</h3>
+        <h3 class="panel-title">Data Konfigurasi penggajian</h3>
     </div>
     <div class="panel-body">
 	

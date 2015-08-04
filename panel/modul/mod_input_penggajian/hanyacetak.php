@@ -7,19 +7,43 @@
 		<th style="background-color:grey">Nama</th>
 		<th style="background-color:grey">Jumlah Transfer</th>
 		</tr>
-
-<?php
-error_reporting(0);
+	<?php
+	error_reporting(0);
 	include_once "../../include/koneksi.php";
 	include("../../include/function_hitunggaji.php");
 	$KODE_DEPARTEMEN=$_GET["dept"];
+	$Akhir = new DateTime('now');
+	$Akhir->modify('last day of this month');
+	$Awal = new DateTime('now');
+	$Awal->modify('first day of this month');
+	$tawal=$Awal->format('Y-m-d');
+	$takhir=$Akhir->format('Y-m-d');
+	function hitung_minggu($tawal,$takhir) {
+	$adaysec =24*3600;
+	$tgl1= strtotime($tawal);
+	$tgl2= strtotime($takhir);
+	$minggu=0;
+	for ($i=$tgl1;$i<$tgl2;$i+=$adaysec){
+	if (date("w",$i) =="0") { $minggu++;}
+	}
+	return $minggu;
+	}
+	 function hitung_sabtu($tawal,$takhir) {
+	$adaysec =24*3600;
+	$tgl1= strtotime($tawal);
+	$tgl2= strtotime($takhir);
+	$sabtu=0;
+	for ($i=$tgl1;$i<$tgl2;$i+=$adaysec){
+	if (date("w",$i) =="6") {$sabtu++;}
+	}
+	return $sabtu;
+	}
 	if($KODE_DEPARTEMEN=="all"){
 	$getpegawai=mysql_query("select * from pegawai");
 	}
 	if($KODE_DEPARTEMEN!="all"){
 	$getpegawai=mysql_query("select * from pegawai where  KODE_DEPARTEMEN='$KODE_DEPARTEMEN'");
 	}
-	$no = 1;
 	while($datapegawai=mysql_fetch_object($getpegawai)){
 	$NIP=$datapegawai->NIP_PEGAWAI;
 	$data=pegawai($NIP);
@@ -38,11 +62,10 @@ error_reporting(0);
 	$sisa_cicilan=$getpinjaman->SISA_CICILAN;
 	$hutang=gethutang($kp);	
 	$gaji_pokok=$data->GAJI_POKOK;
-	$uang_makan_transport=$jabatan->NOMINAL_UMT;
+	
 	$lembur=number_format(nominalumt(gajilembur($NIP)));
-	$terlambat=potogan_terlambat($NIP);
+	
 	$tabungan=$jabatan->NOMINAL_TABUNGAN;
-	$total_penerimaan=number_format(getthp($NIP));
 	$tanggal_gaji=date("Y-m-d");
 	$query = "SELECT max(kode_penggajian) as idMaks FROM head_penggajian";
 	$hasil = mysql_query($query);
@@ -56,14 +79,77 @@ error_reporting(0);
 	$getkode=$w.$IDbaru;
 	$tipe=$_POST["tipe"];
 	$kasbon=$hutang->hutangnya;
+/* ------------------Fungsi mangkir-------------------- */
+$kalender=CAL_GREGORIAN;
+$bulan=date('m');
+$tahun=date('Y');
+$hari=cal_days_in_month($kalender,$bulan,$tahun);
+$bulanini=date('m');
+$queryabsensi_data=mysql_query("SELECT TANGGAL FROM absensi where NIP_PEGAWAI='$kp' and MONTH(TANGGAL)='$bulanini' and YEAR(TANGGAL)='$tahun'") or die (mysql_error());
+$absen=array();
+while($objectdata[]=mysql_fetch_array($queryabsensi_data)){
+}
+$jumlahmasuk=count($objectdata)-1;
+$bulanini=date('m');
+$libur=mysql_query("select * from hari_libur where BULAN='$bulanini' and YEAR(TANGGAL)='$tahun'");
+while($viewdata=mysql_fetch_object($libur)){
+$harilibur=array();
+$harilibur=explode(",",$viewdata->TANGGAL);
+	foreach($harilibur as $datalibur){
+	} 
+	
+}
+	$jumlahlibur=count($harilibur);
+
+	/* -------------------------------------- */
+	$uang_makan_transport=$jabatan->NOMINAL_UMT * $jumlahmasuk;
 	if($datapegawai->STATUS_PEGAWAI=="Tetap"){
-	$takehomepay=number_format(getthp($NIP) - ($hutang->hutangnya+$nominalpinjaman+$jabatan->NOMINAL_TABUNGAN));
-		
+	$takehomepay=getthp($NIP) - ($hutang->hutangnya+$nominalpinjaman+$jabatan->NOMINAL_TABUNGAN);
+	$hitungjumlahharikerja=$hari-hitung_minggu($tawal,$takhir)-hitung_sabtu($tawal,$takhir)-$jumlahlibur;
+	$mangkir=$hitungjumlahharikerja-$jumlahmasuk;
+	if($mangkir<0){
+		 $hasil=0;
+	}
+	if($mangkir>0){
+		 $hasil=$mangkir;
+	}
+	else{
+		 $hasil=0;
+	}
+	$pot_mangkir=0;
+	$penghargaan=mysql_query("select sum(NOMINAL) as totnom from penghargaan where BULAN='$bulanini' and TAHUN='$tahun' and NIP_PEGAWAI='$NIP'");
+	$getpenghargaan=mysql_fetch_object($penghargaan);
+	$totalpenghargaan=$getpenghargaan->totnom;
+	$takehomepayfix=getthp($NIP) + $uang_makan_transport+ $totalpenghargaan - ($hutang->hutangnya+$nominalpinjaman+$jabatan->NOMINAL_TABUNGAN);
+	$total_potongan=number_format($hutang->hutangnya+$jabatan->NOMINAL_TABUNGAN+$nominalpinjaman);
+	$terlambat=0;
 	}
 	if($datapegawai->STATUS_PEGAWAI=="Kontrak"){
-	$takehomepay=number_format(getthp($NIP) - (potogan_terlambat($NIP)+$nominalpinjaman+$hutang->hutangnya+$jabatan->NOMINAL_TABUNGAN));
+	$terlambat=potogan_terlambat($NIP);
+	$penghargaan=mysql_query("select sum(NOMINAL) as totnom from penghargaan where BULAN='$bulanini' and TAHUN='$tahun' and NIP_PEGAWAI='$NIP'");
+	$getpenghargaan=mysql_fetch_object($penghargaan);
+	$totalpenghargaan=$getpenghargaan->totnom;
+	$takehomepay=number_format(getthp($NIP) + $uang_makan_transport+ $totalpenghargaan - ($hutang->hutangnya+$nominalpinjaman+$jabatan->NOMINAL_TABUNGAN+$terlambat));
+	$hitungjumlahharikerja=$hari-hitung_minggu($tawal,$takhir)-hitung_sabtu($tawal,$takhir)-$jumlahlibur;
+	$mangkir=$hitungjumlahharikerja-$jumlahmasuk;
+	if($mangkir<0){
+		 $hasil=0;
+	}
+	if($mangkir>0){
+		 $hasil=$mangkir;
+	}
+	else{
+		 $hasil=0;
+	}
+	$terlambat=potogan_terlambat($NIP);
+	$go=str_replace(array(','), array(''), $takehomepay);
+	$pot_mangkir=$go / $hitungjumlahharikerja * $hasil;
+	$takehomepayfix=getthp($NIP) + $uang_makan_transport+ $totalpenghargaan - ($hutang->hutangnya+$nominalpinjaman+$jabatan->NOMINAL_TABUNGAN+$pot_mangkir+$terlambat);
+	$total_potongan=number_format(potogan_terlambat($NIP)+$hutang->hutangnya+$jabatan->NOMINAL_TABUNGAN+$nominalpinjaman+$pot_mangkir);
 	
 	}
+		$total_penerimaan=number_format(getthp($NIP) + $uang_makan_transport+ $totalpenghargaan);
+		$no++;
 		echo'
         <tr>
 		<td width="10%">'.$no.'</td>
@@ -76,7 +162,7 @@ error_reporting(0);
 		echo'
 		<td width="30%">'.$datapegawai->NO_REKENING.'</td>
 		<td>'.$datapegawai->NAMA_PEGAWAI.'</td>
-		<td>'.$takehomepay.'</td>
+		<td>Rp.'.number_format($takehomepayfix).'</td>
 		</tr>
 		';
 		

@@ -3,17 +3,19 @@
     session_start();
 
     $id = $_POST['id'];
-
+	
     $data = mysql_fetch_array(mysql_query("
         SELECT * FROM departemen WHERE KODE_DEPARTEMEN=".$id
     ));
 		
     if($id> 0) { 
-        $KODE_DEPARTEMEN = $data['KODE_DEPARTEMEN'];
+    $KODE_DEPARTEMEN = $data['KODE_DEPARTEMEN'];
 	$NAMA_DEPARTEMEN = $data['NAMA_DEPARTEMEN'];
+	
     } else {
 	$KODE_DEPARTEMEN = "";
 	$NAMA_DEPARTEMEN = "";
+	
 	
     }
 ?>

@@ -7,6 +7,5 @@
 </ol>
 
 <div class="jumbotron">
-    <h1><?php echo $profil->NAMA_PERUSAHAAN; ?></h1>
-    <p>Payroll And Attendance Software</p>
+<img src="banner.png" style="width:1000px;height:250px">
 </div>

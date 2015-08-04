@@ -16,7 +16,7 @@
 </ol>
 
 <div class="page-header" style="margin-top:5px;">
-    <h3>Laporan Penggajian</h3>
+    <h3>Laporan Penggajian</h3><hr/>
 </div>
 
 <div class="panel panel-warning">
@@ -54,7 +54,7 @@
 		?>
 				
                     </div>
-                    <button type="submit"  class="btn btn-success">Tampil</button>
+                    <button type="submit"  class="btn btn-info">Tampil</button>
                 </div>
             </form>
 			
@@ -149,11 +149,11 @@
         <h3 class="panel-title">Data Penggajian</h3>
     </div>
     <div class="panel-body">
-	<div class="well">
+
             <div id="data-laporan_gaji">
 			<span id="laporan"></span>
 			</div>
-	</div>
+	
     </div>
 </div>
 

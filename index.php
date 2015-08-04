@@ -58,12 +58,12 @@
                 <tr>
                     <td class="col-sm-1" rowspan="2"><img alt="Brand" src="panel/<?php echo $profil->logo; ?>" style="width:75px; height:75;"/></td>
                     <td class="col-sm-12" style="border-bottom:1pt solid green;">
-                        <h3 style="color:#00b7ea;"><?php echo $profil->NAMA_PERUSAHAAN; ?></h3>
+                        <h3 style="color:<?php echo $profil->COLOR; ?>;"><?php echo $profil->NAMA_PERUSAHAAN; ?></h3>
                     </td>
 		</tr>
 		<tr>
                     <td class="col-sm-12">
-                        <h4 style="color:#258dc8;">Human Resource Management</h4>
+                        <h4 style="color:<?php echo $profil->COLOR; ?>;">Human Resource Management</h4>
                     </td>
 		</tr>
             </table>
@@ -74,17 +74,17 @@
     <div class="container theme-showcase" role="main">
 	
            <div class="row">
-			  <div class="col-md-4"><a href="absensi" ><center><img src="1.png"><br/><h3>ATENDANCE</h3></a></center></div>
-			  <div class="col-md-4"><a href="penggajian"><center><img src="3.png"><br/><h3>PAYROLL</h3></a></center></div>
-			  <div class="col-md-4"><a href="panel" target="_blank"><center><img src="2.png"><br/><h3>ADMINISTRATOR</h3></a></center></div>
+			  <div class="col-md-4"><a style="color:<?php echo $profil->COLOR; ?>" href="absensi" ><center><img style="color:<?php echo $profil->COLOR; ?>" src="1.png"><br/><h3>ATENDANCE</h3></a></center></div>
+			  <div class="col-md-4"><a style="color:<?php echo $profil->COLOR; ?>" href="penggajian"><center><img src="3.png"><br/><h3>PAYROLL</h3></a></center></div>
+			  <div class="col-md-4"><a style="color:<?php echo $profil->COLOR; ?>" href="panel" target="_blank"><center><img src="2.png"><br/><h3>ADMINISTRATOR</h3></a></center></div>
 			</div>
 	
     </div> <!-- /container -->
 	
     <footer class="footer">
 	<div class="container">
-            <p class="pull-right"><a href="#"><span class="glyphicon glyphicon-triangle-top"></span> Back to top <span class="glyphicon glyphicon-triangle-top"></span></a></p>
-            <p class="text-muted">&copy; <?php echo date('Y');?>  - <a href=""><?php echo $profil->NAMA_PERUSAHAAN; ?></a> - All Rights Reserved. </p>
+            <p class="pull-right"><a style="color:<?php echo $profil->COLOR; ?>" href="#"><span class="glyphicon glyphicon-triangle-top"></span> Back to top <span class="glyphicon glyphicon-triangle-top"></span></a></p>
+            <p class="text-muted">&copy; <?php echo date('Y');?>  - <a href="" style="color:<?php echo $profil->COLOR; ?>"><?php echo $profil->NAMA_PERUSAHAAN; ?></a> - All Rights Reserved. </p>
 	</div>
     </footer>
 	

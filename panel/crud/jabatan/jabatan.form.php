@@ -1,7 +1,7 @@
 <?php
     include_once "../../include/koneksi.php";
     session_start();
-
+	$state_session=$_SESSION['STATE_ID'];
     $id = $_POST['id'];
 
     $data = mysql_fetch_array(mysql_query("
@@ -66,10 +66,10 @@
             <label for="TUNJANGAN_LAIN" class="col-sm-3 control-label"> Tunjangan Lain</label>
             <div class="col-sm-9">
 		<?php
-                    $result = mysql_query("select * from master_tunjangan");  
+                    $result = mysql_query("select * from master_tunjangan where STATE_ID='$state_session'");  
                     echo '<select multiple="multiple" style="width:100%" class="form-control select2" name="TUNJANGAN_LAIN[]" id="TUNJANGAN_LAIN" placeholder="Tunjangan Lain">';  
                     while ($row = mysql_fetch_array($result)) {  
-			echo '<option value="' . $row['KODE_MASTER_TUNJANGAN'] . '"';
+			echo '<option value="' .$row['KODE_MASTER_TUNJANGAN'].'"';
 			foreach($tmptunjanganlain as $tmptunjanganlains){
                             if($tmptunjanganlains==$row['KODE_MASTER_TUNJANGAN']){
 				echo "selected='selected'";

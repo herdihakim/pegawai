@@ -1,6 +1,7 @@
 <?php
     include_once "../../include/koneksi.php";
-
+	session_start();
+	$state_session=$_SESSION['STATE_ID'];
     if(isset($_POST['hapus'])) {
 	mysql_query("DELETE FROM jabatan WHERE KODE_JABATAN=".$_POST['hapus']);
     } else {
@@ -14,7 +15,7 @@
 	
 	if($KODE_JABATAN == 0) {
             mysql_query("INSERT INTO jabatan 
-		VALUES(NULL,'$NAMA_JABATAN','$TUNJANGAN_JABATAN','$tmptunjanganlain2','$NOMINAL_TABUNGAN','$NOMINAL_UMT')");
+		VALUES(NULL,'$NAMA_JABATAN','$TUNJANGAN_JABATAN','$tmptunjanganlain2','$NOMINAL_TABUNGAN','$NOMINAL_UMT','$state_session')");
 	} else {
             mysql_query("UPDATE jabatan SET NAMA_JABATAN = '$NAMA_JABATAN',TUNJANGAN_JABATAN = '$TUNJANGAN_JABATAN',TUNJANGAN_LAIN = '$tmptunjanganlain2',NOMINAL_TABUNGAN = '$NOMINAL_TABUNGAN',NOMINAL_UMT = '$NOMINAL_UMT' WHERE KODE_JABATAN = '$KODE_JABATAN' ");
 	}

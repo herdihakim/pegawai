@@ -58,15 +58,12 @@
 							$smenit=date('H:i:s', strtotime($DATE));
 						}
 						
-					mysql_query("INSERT INTO absensi 
-					VALUES(NULL,'$KODE_JAM_KERJA','$NIP','$tmptanggal','$smenit','00:00:00')");
-					
-
+					mysql_query("INSERT INTO absensi VALUES(NULL,'$KODE_JAM_KERJA','$NIP','$tmptanggal','$smenit','00:00:00')");
 					header('Content-Type: application/json');
 					echo json_encode(array('cek' => 'true','nip'=>$NIP));
 					}
 					
-					if($hasil!="" ){
+					if($hasil!=""){
 						$tahansemua1=mysql_query("select NIP_PEGAWAI from absensi where TANGGAL='$tmptanggal' and NIP_PEGAWAI='$NIP' and JAM_KELUAR ='00:00:00'");
 						$getsemua1=mysql_fetch_object($tahansemua1);
 						$hasilgetsemua1=$getsemua1->NIP_PEGAWAI;
@@ -80,7 +77,7 @@
 					}
 					
 					}
-					$zk->clearattendance();						
+					$zk->clearattendance();				
 					$zk->getTime();
 					$zk->enableDevice();
 					$zk->disconnect();

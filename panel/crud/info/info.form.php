@@ -19,6 +19,8 @@
 	$ALAMAT = $data['ALAMAT'];
 	$NEGARA = $data['NEGARA'];
 	$logo = $data['logo'];
+	$STATE_ID = $data['STATE_ID'];
+	$COLOR = $data['COLOR'];
     } else {
 	$NAMA_PERUSAHAAN ="";
 	$EMAIL = "";
@@ -29,6 +31,8 @@
 	$ALAMAT ="";
 	$NEGARA ="";
 	$logo ="";
+	$STATE_ID ="";
+	$COLOR ="";
 	
     }
 ?>
@@ -91,6 +95,30 @@
 			<textarea class="form-control" id="ALAMAT" name="ALAMAT"  \><?php echo $ALAMAT; ?></textarea>
             </div>
 	</div>
+	<div class="form-group">
+            <label for="STATE_ID" class="col-sm-3 control-label">STATE </label>
+            <div class="col-sm-9">
+                <?php
+                    $result = mysql_query("select * from state");  
+                    echo '<select id="STATE_ID" name="STATE_ID" style="width: 100%;" class="form-control">';  
+                    echo '<option value="">Silahkan Pilih State</option>';  
+					while ($row = mysql_fetch_array($result)) {  
+                            echo '<option value="' . $row['STATE_ID'] . '"';if($STATE_ID==$row['STATE_ID']){echo "selected='selected'";} echo'>' . $row['STATE_NAME']. '</option>';  
+			}  
+                    echo '</select>';
+		?>
+            </div>
+	</div>
+	<div class="form-group">
+            <label for="LOGO" class="col-sm-3 control-label">Warna</label>
+            <div class="col-sm-9">
+<input type="text" class="demo1" value="<?php echo $COLOR; ?>" name="COLOR" />
+<script>
+$(function(){
+    $('.demo1').colorpicker();
+});
+</script>
+	</div></div>
 	<div class="form-group">
             <label for="LOGO" class="col-sm-3 control-label">Logo</label>
             <div class="col-sm-9">

@@ -1,4 +1,5 @@
-<?php  //error_reporting(0);
+<?php  
+	error_reporting(0);
 	include_once "../panel/include/koneksi.php";
 
 	$profil=mysql_fetch_object(mysql_query("SELECT * FROM profil_perusahaan"));
@@ -95,11 +96,11 @@ $(document).ready(function() {
 
 </div>
 <hr/>
-<h4>Tata Cara Absensi</h4>
+<h4>Tata cara absensi</h4>
 <ul>
-<li>Silahkan Taruh Jari Yang telah didaftarkan Pada Mesin Fingerprint</li>
+<li>Silahkan taruh jari yang telah didaftarkan pada mesin fingerprint</li>
 <li>Tunggu sampai proses verifikasi jari anda terverifikasi </li>
-<li>Setelah Terverifikasi Maka Anda telah melakukan Absensi</li>
+<li>Setelah terverifikasi maka anda telah melakukan absensi</li>
 </ul>
 </div>
 

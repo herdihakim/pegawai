@@ -1,7 +1,7 @@
 <?php
     include_once "../../include/koneksi.php";
     session_start();
-
+	$state_session=$_SESSION['STATE_ID'];
     $id = $_POST['id'];
 
     $data = mysql_fetch_array(mysql_query("
@@ -37,7 +37,7 @@
             <label for="NIP_PEGAWAI" class="col-sm-3 control-label"> Nama Pegawai</label>
             <div class="col-sm-9">
                  <?php
-                    $result = mysql_query("select * from pegawai");  
+                    $result = mysql_query("select * from pegawai  where STATE_ID='$state_session'");  
                     echo '<select id="NIP_PEGAWAI" name="NIP_PEGAWAI" style="width: 100%;" class="NIP_PEGAWAI form-control ">';  
                         echo '<option value="">Silahkan Pilih Pegawai</option>';  
 			while ($row = mysql_fetch_array($result)) {  

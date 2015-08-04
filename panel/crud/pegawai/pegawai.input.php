@@ -1,4 +1,5 @@
 <?php
+	session_start();
 	include_once "../../include/koneksi.php";
 	include("../../include/zklib/zklib.php");
 					$getmachine=mysql_query("select * from mesin_absensi");
@@ -8,8 +9,8 @@
 					$zk = new ZKLib("$ip", $port);
 					$ret = $zk->connect(); */
 					
-				
-// proses menghapus data mahasiswa
+	$state_session=$_SESSION['STATE_ID'];			
+
 if(isset($_POST['hapus'])) {
 	mysql_query("DELETE FROM pegawai WHERE KODE_PEGAWAI=".$_POST['hapus']);
 } else {
@@ -32,6 +33,7 @@ if(isset($_POST['hapus'])) {
 	$STATUS_PEGAWAI=$_POST['STATUS_PEGAWAI'];
 	$JENIS_KELAMIN=$_POST['JENIS_KELAMIN'];
 	$NO_REKENING=$_POST['NO_REKENING'];
+	$STATE_ID=$state_session;
 	//$FOTO_PEGAWAI=$_POST['FOTO_PEGAWAI'];
 	
 	if($KODE_PEGAWAI == 0) {
@@ -47,7 +49,7 @@ if(isset($_POST['hapus'])) {
                     mysql_query("INSERT INTO pegawai 
 					VALUES('','$NIP_PEGAWAI','$NAMA_PEGAWAI','$TEMPAT_LAHIR','$TANGGAL_LAHIR','$AGAMA','$STATUS_PERNIKAHAN','$JUMLAH_ANAK',
 				   '$ALAMAT','$NOMOR_TELEPON','$KODE_JABATAN','$KODE_DEPARTEMEN','$GAJI_POKOK','$TANGGAL_MASUK','$TANGGAL_KELUAR',
-				   '$STATUS_PEGAWAI','$new_name','$JENIS_KELAMIN','$EMAIL','$NO_REKENING')");
+				   '$STATUS_PEGAWAI','$new_name','$JENIS_KELAMIN','$EMAIL','$NO_REKENING','$STATE_ID')");
 				   $ID_PEGAWAI=mysql_insert_id();
 				   //$zk->setUser($ID_PEGAWAI,$ID_PEGAWAI, $NAMA_PEGAWAI, '', LEVEL_USER);
 					
@@ -68,7 +70,7 @@ if(isset($_POST['hapus'])) {
 		mysql_query("INSERT INTO pegawai 
 				VALUES('','$NIP_PEGAWAI','$NAMA_PEGAWAI','$TEMPAT_LAHIR','$TANGGAL_LAHIR','$AGAMA','$STATUS_PERNIKAHAN','$JUMLAH_ANAK',
 				   '$ALAMAT','$NOMOR_TELEPON','$KODE_JABATAN','$KODE_DEPARTEMEN','$GAJI_POKOK','$TANGGAL_MASUK','$TANGGAL_KELUAR',
-				   '$STATUS_PEGAWAI','','$JENIS_KELAMIN','$EMAIL','$NO_REKENING')");	
+				   '$STATUS_PEGAWAI','','$JENIS_KELAMIN','$EMAIL','$NO_REKENING','$STATE_ID')");	
 					$ID_PEGAWAI=mysql_insert_id();
 				    //$zk->setUser($ID_PEGAWAI,$ID_PEGAWAI, $NAMA_PEGAWAI, '', LEVEL_USER);			   
             }
@@ -87,7 +89,7 @@ if(isset($_POST['hapus'])) {
                     mysql_query("UPDATE pegawai SET NIP_PEGAWAI = '$NIP_PEGAWAI',NAMA_PEGAWAI = '$NAMA_PEGAWAI', TEMPAT_LAHIR = '$TEMPAT_LAHIR', TANGGAL_LAHIR = '$TANGGAL_LAHIR'
 					, AGAMA = '$AGAMA', JUMLAH_ANAK = '$JUMLAH_ANAK', ALAMAT = '$ALAMAT', NOMOR_TELEPON = '$NOMOR_TELEPON', KODE_JABATAN = '$KODE_JABATAN'
 					, KODE_DEPARTEMEN = '$KODE_DEPARTEMEN', GAJI_POKOK = '$GAJI_POKOK', TANGGAL_MASUK = '$TANGGAL_MASUK', TANGGAL_KELUAR = '$TANGGAL_KELUAR'
-					, STATUS_PEGAWAI = '$STATUS_PEGAWAI', FOTO_PEGAWAI = '$new_name', JENIS_KELAMIN = '$JENIS_KELAMIN', EMAIL = '$EMAIL', NO_REKENING = '$NO_REKENING' WHERE KODE_PEGAWAI = '$KODE_PEGAWAI' ");
+					, STATUS_PEGAWAI = '$STATUS_PEGAWAI', FOTO_PEGAWAI = '$new_name', JENIS_KELAMIN = '$JENIS_KELAMIN', EMAIL = '$EMAIL', NO_REKENING = '$NO_REKENING', STATE_ID = '$STATE_ID' WHERE KODE_PEGAWAI = '$KODE_PEGAWAI' ");
 					//$zk->setUser($KODE_PEGAWAI,$KODE_PEGAWAI, $NAMA_PEGAWAI, '', LEVEL_USER);
                     if (!file_exists('../../foto')) {
 					mkdir('../../foto');
@@ -106,7 +108,7 @@ if(isset($_POST['hapus'])) {
 			mysql_query("UPDATE pegawai SET NIP_PEGAWAI = '$NIP_PEGAWAI',NAMA_PEGAWAI = '$NAMA_PEGAWAI', TEMPAT_LAHIR = '$TEMPAT_LAHIR', TANGGAL_LAHIR = '$TANGGAL_LAHIR'
 					, AGAMA = '$AGAMA', JUMLAH_ANAK = '$JUMLAH_ANAK', ALAMAT = '$ALAMAT', NOMOR_TELEPON = '$NOMOR_TELEPON', KODE_JABATAN = '$KODE_JABATAN'
 					, KODE_DEPARTEMEN = '$KODE_DEPARTEMEN', GAJI_POKOK = '$GAJI_POKOK', TANGGAL_MASUK = '$TANGGAL_MASUK', TANGGAL_KELUAR = '$TANGGAL_KELUAR'
-					, STATUS_PEGAWAI = '$STATUS_PEGAWAI', JENIS_KELAMIN = '$JENIS_KELAMIN', EMAIL = '$EMAIL', NO_REKENING = '$NO_REKENING' WHERE KODE_PEGAWAI = '$KODE_PEGAWAI' ");
+					, STATUS_PEGAWAI = '$STATUS_PEGAWAI', JENIS_KELAMIN = '$JENIS_KELAMIN', EMAIL = '$EMAIL', NO_REKENING = '$NO_REKENING', STATE_ID = '$STATE_ID' WHERE KODE_PEGAWAI = '$KODE_PEGAWAI' ");
 					//$zk->setUser($KODE_PEGAWAI,$KODE_PEGAWAI, $NAMA_PEGAWAI, '', LEVEL_USER);	
             }
 	}

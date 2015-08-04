@@ -14,12 +14,16 @@
 	$EMAIL = $data['EMAIL'];
 	$USERNAME_LOGIN = $data['USERNAME_LOGIN'];
 	$PASSWORD_LOGIN = $data['PASSWORD_LOGIN'];
+	$STATE_ID = $data['STATE_ID'];
+	$AKSES = $data['AKSES'];
     } else {
 	$KODE_PETUGAS = "";
 	$NAMA_PETUGAS = "";
 	$EMAIL = "";
 	$USERNAME_LOGIN = "";
 	$PASSWORD_LOGIN = "";
+	$STATE_ID= "";
+	$AKSES= "";
 	
     }
 ?>
@@ -59,6 +63,34 @@
 			<input type="password" class="form-control" value="<?php echo $PASSWORD_LOGIN; ?>" id="PASSWORD_LOGIN" name="PASSWORD_LOGIN"  \>
 		
 		</div>
+	</div>
+	  <div class="form-group">
+            <label for="STATE_ID" class="col-sm-3 control-label">State</label>
+             <div class="col-sm-9">
+                <?php
+                    $result = mysql_query("select * from state");  
+                    echo '<select id="STATE_ID" name="STATE_ID" style="width: 100%;" class="form-control">';  
+                        echo '<option value="">Silahkan Pilih State</option>';  
+			while ($row = mysql_fetch_array($result)) {  
+                            echo '<option value="' . $row['STATE_ID'] . '"';if($STATE_ID==$row['STATE_ID']){echo "selected='selected'";} echo'>' . $row['STATE_NAME']. '</option>';  
+			}  
+                    echo '</select>';
+		?>
+            </div>
+	</div>
+  <div class="form-group">
+            <label for="STATE_ID" class="col-sm-3 control-label">Group Akses</label>
+             <div class="col-sm-9">
+                <?php
+                    $result = mysql_query("select * from rights_group");  
+                    echo '<select id="AKSES" name="AKSES" style="width: 100%;" class="form-control">';  
+                        echo '<option value="">Silahkan Pilih rights_group</option>';  
+			while ($row = mysql_fetch_array($result)) {  
+                            echo '<option value="' . $row['ID'] . '"';if($AKSES==$row['ID']){echo "selected='selected'";} echo'>' . $row['GROUP_NAME']. '</option>';  
+			}  
+                    echo '</select>';
+		?>
+            </div>
 	</div>
     </div>
     <div class="modal-footer">

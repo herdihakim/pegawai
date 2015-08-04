@@ -13,20 +13,20 @@
 
 <ol class="breadcrumb">
   <li><a href="#" id="beranda" class="beranda"><span class="glyphicon glyphicon-home"> Beranda</a></li>
-  <li class="active"><span class="glyphicon glyphicon-user"> restore</li>
+  <li class="active"><span class="glyphicon glyphicon-user"></li>
 </ol>
 
 <div class="page-header" style="margin-top:5px;">
-    <h3>Kelola Data restore</h3>
+    <h3>Pemulihan basis data</h3>
 </div>
 
 <div class="panel panel-warning">
     <div class="panel-heading">
-        <h3 class="panel-title">Data restore</h3>
+        <h3 class="panel-title"></h3>
     </div>
     <div class="panel-body">
 	<div style="padding: 10px 10px 10px;">
-            <a href="#dialog-restore" id="0" class="btn tambah-restore btn-info" data-toggle="modal" >Restore Data</a> 
+            <a href="#dialog-restore" id="0" class="btn tambah-restore btn-info" data-toggle="modal" >Pulihkan Data</a> 
 	</div>
 	<div class="well">
             <div id="data-restore"></div>

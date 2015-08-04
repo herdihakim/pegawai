@@ -10,10 +10,9 @@
 	$FAXIMILI = $_POST['FAXIMILI'];
 	$ALAMAT = $_POST['ALAMAT'];
 	$NEGARA = $_POST['NEGARA'];
-	
-	
-	
-   if($_FILES['logo']['name'][0]!=""){
+	$STATE_ID = $_POST['STATE_ID'];
+	$COLOR = $_POST['COLOR'];
+	if($_FILES['logo']['name'][0]!=""){
 		foreach($_FILES['logo']['name'] as $key => $value){
                     $name = $_FILES['logo']['name'][$key];
                     $tmp  = $_FILES['logo']['tmp_name'][$key];
@@ -24,7 +23,7 @@
                     $new_name = "logo.".$ext;
                    mysql_query("UPDATE profil_perusahaan SET NAMA_PERUSAHAAN = '$NAMA_PERUSAHAAN',EMAIL = '$EMAIL',PHONE_1 = '$PHONE_1' 
 						,PHONE_2 = '$PHONE_2',KOTA = '$KOTA',PHONE_2 = '$PHONE_2'
-						,FAXIMILI = '$FAXIMILI',ALAMAT = '$ALAMAT',NEGARA = '$NEGARA',logo = '$new_name' 
+						,FAXIMILI = '$FAXIMILI',ALAMAT = '$ALAMAT',NEGARA = '$NEGARA',logo = '$new_name' ,STATE_ID = '$STATE_ID',COLOR = '$COLOR' 
 
 						WHERE id = '$id' ");
 				   
@@ -35,7 +34,7 @@
 		}
             }else{
 		mysql_query("UPDATE profil_perusahaan SET NAMA_PERUSAHAAN = '$NAMA_PERUSAHAAN',EMAIL = '$EMAIL',PHONE_1 = '$PHONE_1' 
-	,PHONE_2 = '$PHONE_2',KOTA = '$KOTA',PHONE_2 = '$PHONE_2',FAXIMILI = '$FAXIMILI',ALAMAT = '$ALAMAT',NEGARA = '$NEGARA' 
+	,PHONE_2 = '$PHONE_2',KOTA = '$KOTA',PHONE_2 = '$PHONE_2',FAXIMILI = '$FAXIMILI',ALAMAT = '$ALAMAT',NEGARA = '$NEGARA',STATE_ID = '$STATE_ID',COLOR = '$COLOR' 
 
 	WHERE id = '$id' ");	   
             }

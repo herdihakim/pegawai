@@ -30,8 +30,8 @@ $profil=mysql_fetch_object(mysql_query("SELECT * FROM profil_perusahaan"));
 <body>
     <section id="logo" style="padding: 30px 0 25px 0;">
 	<a href="#"><img src="<?php echo $profil->logo; ?>" alt="" width="100" height="100"/></a>
-	<div style="width:100%;"><center><h2><strong><?php echo $profil->NAMA_PERUSAHAAN; ?></strong></h2></center></div>
-	<div style="width:100%;"><center><h3><strong style="color:blue;">Login Panel Form</strong></h3></center></div>
+	<div style="width:100%;color:<?php echo $profil->COLOR; ?>"><center><h2><strong><?php echo $profil->NAMA_PERUSAHAAN; ?></strong></h2></center></div>
+	<div style="width:100%;"><center><h3><strong style="color:<?php echo $profil->COLOR; ?>;">Login Form</strong></h3></center></div>
     </section>
 	
     <section class="container" style="margin-top:50px;">
@@ -47,10 +47,8 @@ $profil=mysql_fetch_object(mysql_query("SELECT * FROM profil_perusahaan"));
 		<div class="form-group">
                     <input type="password" name="password" placeholder="Enter password" required class="form-control" />
 		</div>
-		<div class="form-group">
-                    <input type="checkbox" name="remember" value="1" /> Remember me
-		</div>
-		<button type="submit" name="go" class="btn btn-block btn-primary">Login Now</button>
+		
+		<button type="submit" name="go" style="background-color:<?php echo $profil->COLOR; ?>" class="btn btn-block btn-info">Login</button>
 		<section>
                     <!--<a href="#" style="color:green;">Forgot your password ?</a>-->
 		</section>

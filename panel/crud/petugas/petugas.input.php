@@ -1,6 +1,7 @@
 <?php
-    include_once "../../include/koneksi.php";
-
+    session_start();
+	include_once "../../include/koneksi.php";
+	$state_session=$_SESSION['STATE_ID'];
     if(isset($_POST['hapus'])) {
 	mysql_query("DELETE FROM petugas WHERE KODE_PETUGAS=".$_POST['hapus']);
     } else {
@@ -9,11 +10,11 @@
 	$EMAIL = $_POST['EMAIL'];
 	$USERNAME_LOGIN = $_POST['USERNAME_LOGIN'];
 	$PASSWORD_LOGIN = $_POST['PASSWORD_LOGIN'];
-	
+	$AKSES = $_POST['AKSES'];
 	if($KODE_PETUGAS == 0) {
-            mysql_query("INSERT INTO petugas VALUES(NULL,'$NAMA_PETUGAS','$EMAIL','$USERNAME_LOGIN','$PASSWORD_LOGIN')");
+            mysql_query("INSERT INTO petugas VALUES(NULL,'$NAMA_PETUGAS','$EMAIL','$USERNAME_LOGIN','$PASSWORD_LOGIN','$state_session','$AKSES')");
 	} else {
-            mysql_query("UPDATE petugas SET NAMA_PETUGAS = '$NAMA_PETUGAS',EMAIL = '$EMAIL',USERNAME_LOGIN = '$USERNAME_LOGIN',PASSWORD_LOGIN = '$PASSWORD_LOGIN'  WHERE KODE_PETUGAS = '$KODE_PETUGAS' ");
+            mysql_query("UPDATE petugas SET NAMA_PETUGAS = '$NAMA_PETUGAS',EMAIL = '$EMAIL',USERNAME_LOGIN = '$USERNAME_LOGIN',PASSWORD_LOGIN = '$PASSWORD_LOGIN',STATE_ID = '$state_session',AKSES = '$AKSES'  WHERE KODE_PETUGAS = '$KODE_PETUGAS' ");
 	}
     }
 ?>

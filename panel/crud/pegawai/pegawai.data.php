@@ -1,4 +1,5 @@
 <?php
+	error_reporting(0);
     include_once "../../include/koneksi.php";
     session_start();
 ?>
@@ -27,7 +28,7 @@
 	</thead>
 	<tbody>
 	<?php
-            $querypetugas=mysql_query("SELECT * FROM pegawai") or die (mysql_error());
+            $querypetugas=mysql_query("SELECT * FROM pegawai where STATE_ID='$_SESSION[STATE_ID]'") or die (mysql_error());
             $no = 1;
             while($objectdata=mysql_fetch_object($querypetugas)){
                 $queryjabatan=mysql_query("SELECT * FROM jabatan WHERE KODE_JABATAN=".$objectdata->KODE_JABATAN) or die (mysql_error());

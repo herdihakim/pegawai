@@ -30,7 +30,7 @@
             <tr>
 		<td>'.$no.'</td>
 		<td>'.$objectdata->tanggal.'</td>
-		<td>Restore Data Berhasil</td>
+		<td>Pemulihan basis data berhasil</td>
 		
             </tr>';
             $no++;

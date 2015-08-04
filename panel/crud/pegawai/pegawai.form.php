@@ -1,7 +1,8 @@
 <?php
+	error_reporting(0);
     include_once "../../include/koneksi.php";
     session_start();
-
+	$state_session=$_SESSION['STATE_ID'];
     $id = $_POST['id'];
 
     $data = mysql_fetch_array(mysql_query("
@@ -29,9 +30,20 @@
 	$JENIS_KELAMIN=$data['JENIS_KELAMIN'];
 	$FOTO_PEGAWAI=$data['FOTO_PEGAWAI'];
 	$NO_REKENING=$data['NO_REKENING'];
+	$STATE_ID=$data['STATE_ID'];
 
     } else {
-	$NIP_PEGAWAI = "";
+			
+	$query = "SELECT max(NIP_PEGAWAI) as idMaks FROM pegawai";
+	$hasil = mysql_query($query);
+	$data  = mysql_fetch_array($hasil);
+	$nim = $data['idMaks'];
+	$noUrut = (int) substr($nim, 8, 5);
+	$noUrut++;
+	$char =  date('ym');
+	$w = "PG".$state_session."-";
+	$NIP_PEGAWAI = $w.$char . sprintf("%05s", $noUrut);
+
 	$NAMA_PEGAWAI = "";
 	$TEMPAT_LAHIR = "";
 	$TANGGAL_LAHIR = "";
@@ -50,6 +62,7 @@
 	$JENIS_KELAMIN="";
 	$FOTO_PEGAWAI="";
 	$NO_REKENING="";
+	$STATE_ID="";
     }
 ?>
 	
@@ -118,8 +131,8 @@
                     <option value="">Pilih Status Pernikahan</option>
                     <option value="Kawin" <?php if($STATUS_PERNIKAHAN=="Kawin"){echo "selected='selected'";}?>>Kawin</option>
                     <option value="Belum Kawin" <?php if($STATUS_PERNIKAHAN=="Belum Kawin"){echo "selected='selected'";}?>>Belum Kawin</option>
-                </select>
-			</div>
+             </select>
+	</div>
 	</div>
 	<div class="form-group">
             <label for="JUMLAH_ANAK" class="col-sm-3 control-label">Jumlah Anak</label>
@@ -159,6 +172,7 @@
 		?>
             </div>
 	</div>
+	
 	<div class="form-group">
             <label for="KODE_DEPARTEMEN" class="col-sm-3 control-label">Departemen</label>
             <div class="col-sm-9">
@@ -176,7 +190,7 @@
 	<div class="form-group">
             <label for="GAJI_POKOK" class="col-sm-3 control-label">Gaji Pokok</label>
             <div class="col-sm-9">
-		<input type="text" class="form-control" value="<?php echo $GAJI_POKOK; ?>" id="GAJI_POKOK" name="GAJI_POKOK" placeholder="Gaji Pokok" \>
+			<input type="text" class="form-control" value="<?php echo $GAJI_POKOK; ?>" id="GAJI_POKOK" name="GAJI_POKOK" placeholder="Gaji Pokok" \>
             </div>
 	</div>	
 	<div class="form-group">
@@ -291,17 +305,7 @@
                 validating: 'glyphicon glyphicon-refresh'
             },
             fields: {
-		NIP_PEGAWAI: {
-                    validators: {
-                        notEmpty: {
-                            message: 'The is required'
-                        },
-                        stringLength: {
-                            max: 25,
-                            message: 'The must be less than 25 characters'
-                        }
-                    }
-		},
+		
                 NAMA_PEGAWAI: {
                     validators: {
                         notEmpty: {

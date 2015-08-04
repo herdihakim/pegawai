@@ -218,7 +218,7 @@ $querytunjangan=mysql_query("select sum(NOMINAL) as tunjangan from master_tunjan
 $gettunjangan=mysql_fetch_object($querytunjangan);
 $tunjangan=$gettunjangan->tunjangan;
 
-$thp=$gajipokok+$umt+$tunjangan+$gjlembur;
+$thp=$gajipokok+$tunjangan+$gjlembur;
 	
 return  $thp;
 }

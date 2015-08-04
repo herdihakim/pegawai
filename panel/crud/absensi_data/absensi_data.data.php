@@ -1,4 +1,5 @@
 <?php
+		error_reporting(0);
     include_once "../../include/koneksi.php";
     session_start();
 ?>
@@ -32,8 +33,8 @@
 	<?php
             $queryabsensi_data=mysql_query("SELECT * FROM absensi") or die (mysql_error());
             $no = 1;
-            while($objectdata=mysql_fetch_object($queryabsensi_data)){
-                $querypegawai=mysql_query("SELECT * FROM pegawai WHERE KODE_PEGAWAI=".$objectdata->NIP_PEGAWAI) or die (mysql_error());
+        while($objectdata=mysql_fetch_object($queryabsensi_data)){
+        $querypegawai=mysql_query("SELECT * FROM pegawai WHERE KODE_PEGAWAI=".$objectdata->NIP_PEGAWAI) or die (mysql_error());
 		$tampilpegawai=mysql_fetch_object($querypegawai);
                 $queryjam=mysql_query("SELECT * FROM jam_kerja WHERE KODE_JAM_KERJA=".$objectdata->KODE_JAM_KERJA) or die (mysql_error());
 		$tampiljam=mysql_fetch_object($queryjam);

@@ -17,7 +17,9 @@
             <tr>
 		<th>No</th>
 		<th>TAHUN</th>
+		<th>BULAN</th>
 		<th>TANGGAL</th>
+		<th>Aksi</th>
 
             </tr>
 	</thead>
@@ -31,11 +33,14 @@
          <tr>
 		<td>'.$no.'</td>
 		<td>'.$objectdata->TAHUN.'</td>
+		<td>'.$objectdata->BULAN.'</td>
 		<td>'.$objectdata->TANGGAL.'</td>
-		
+		<td>
+                    <a href="#dialog-hari_libur" id="'.$objectdata->ID.'" alt="Ubah" title="Ubah" class="glyphicon ubah-hari_libur glyphicon-edit" data-toggle="modal"></a>&nbsp; 
+       </td>
 		
 		';
-            }
+         }
 	?>
 	</tbody>
     </table>

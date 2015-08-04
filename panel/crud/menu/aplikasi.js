@@ -1,7 +1,7 @@
 (function($) {
     $(document).ready(function(e) {
 
-        var main = "crud/menu/menu.data.php";
+    var main = "crud/menu/menu.data.php";
 	var utama = "modul/mod_home/home.php";
 		
 	$("#data-menu").load(main);
@@ -20,8 +20,22 @@
             var url = "modul/mod_pegawai/pegawai.php";
             $("#data-utama").load(url);
         });
+	$('.update').live("click", function(){
+            var url = "modul/mod_update/update.php";
+            $("#data-utama").load(url);
+        });
+
+	
+	$('.group').live("click", function(){
+            var url = "modul/mod_group/group.php";
+            $("#data-utama").load(url);
+        });
 		$('.petugas').live("click", function(){
             var url = "modul/mod_petugas/petugas.php";
+            $("#data-utama").load(url);
+        });	
+		$('.state').live("click", function(){
+            var url = "modul/mod_state/state.php";
             $("#data-utama").load(url);
         });
 		

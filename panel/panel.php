@@ -24,9 +24,13 @@
     <link href="bootstrap/docs/dist/css/bootstrap.min.css" rel="stylesheet">
 	 <!-- Bootstrap theme -->
     <link href="bootstrap/docs/dist/css/bootstrap-theme.min.css" rel="stylesheet">
-	
+	<link href="bootstrap/docs/dist/css/bootstrap.min.php" rel="stylesheet">
+	<link href="bootstrap/docs/dist/css/bootstrap-colorpicker.min.css" rel="stylesheet">
+	<script src="bootstrap/docs/dist/css/jquery-2.1.4.min.js"></script>
+	<script src="bootstrap/docs/dist/css/bootstrap-colorpicker.js"></script>
+	<script src="bootstrap/docs/dist/css/docs.js"></script>
     <!-- JQuery -->
-    <script src="js/jquery-1.11.1.min.js"></script>
+     <!-- <script src="js/jquery-1.11.1.min.js"></script>-->
     <script src="js/jquery-migrate-1.2.1.min.js"></script>
 	
     <!-- datatables -->
@@ -69,7 +73,7 @@
 	<!-- Custom styles for this template -->
     <link href="bootstrap/docs/examples/theme/theme.css" rel="stylesheet">
     <link href="bootstrap/docs/examples/sticky-footer-navbar/sticky-footer-navbar.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/backend.css" />
+    <link rel="stylesheet" href="css/backend.php" />
 	
   </head>
   <body role="document">
@@ -84,12 +88,12 @@
                 <tr>
                     <td class="col-sm-1" rowspan="2"><img alt="Brand" src="<?php echo $profil->logo; ?>" style="width:75px; height:75;"/></td>
                     <td class="col-sm-12" style="border-bottom:1pt solid green;">
-                        <h3 style="color:#00b7ea;"><?php echo $profil->NAMA_PERUSAHAAN; ?></h3>
+                        <h3 style="color:<?php echo $profil->COLOR; ?>;"><?php echo $profil->NAMA_PERUSAHAAN; ?></h3>
                     </td>
 		</tr>
 		<tr>
                     <td class="col-sm-12">
-                        <h4 style="color:#258dc8;">Payroll And Attendance Software</h4>
+                        <h4 style="color:<?php echo $profil->COLOR; ?>;">Online Sistem Penggajian Dan Absensi Karyawan</h4>
                     </td>
 		</tr>
             </table>
@@ -106,7 +110,7 @@
 	
     <footer class="footer">
 	<div class="container">
-            <p class="pull-right"><a href="#"><span class="glyphicon glyphicon-triangle-top"></span> Back to top <span class="glyphicon glyphicon-triangle-top"></span></a></p>
+            <p class="pull-right"><a href="#"><span class="glyphicon glyphicon-triangle-top"></span>Kembali Ke Atas<span class="glyphicon glyphicon-triangle-top"></span></a></p>
     <p class="text-muted">&copy; <?php echo date('Y');?>  - <a href=""><?php echo $profil->NAMA_PERUSAHAAN; ?></a> - All Rights Reserved. </p></div>
     </footer>
 	

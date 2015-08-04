@@ -31,6 +31,8 @@ else
 	$_SESSION['NAMA_PETUGAS']     	= $r['NAMA_PETUGAS'];
 	$_SESSION['EMAIL']              = $r['EMAIL'];
     $_SESSION['USERNAME_LOGIN']     = $r['USERNAME_LOGIN'];
+    $_SESSION['STATE_ID']     = $r['STATE_ID'];
+    $_SESSION['AKSES']        = $r['AKSES'];
 	
 	header('Content-Type: application/json');
 	echo json_encode(array('cek' => 'true'));
