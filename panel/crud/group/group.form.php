@@ -44,6 +44,13 @@ $(document).ready(function(){
         if($('.class1:checked').length){
             $('.class3').prop('checked', true);
             $('.class1').prop('checked', false);
+			<?php
+					$mastermenu1=mysql_query("select * from rights_menu");
+					while($datamastermenu1=mysql_fetch_object($mastermenu1)){
+						echo "$('.ckontrol_'+".$datamastermenu1->ID.").prop('checked', true);";
+						echo "$('#kontrol_'+".$datamastermenu1->ID.").show();";
+					}
+			?>
             return;
         }
         
@@ -73,7 +80,51 @@ $(document).ready(function(){
 					}
 					}	
 					?>
-					<input type="checkbox" <?php if($ok==1){echo 'checked';}?> value="<?php echo $datamastermenu->ID; ?>" id="AKSES"  class="class3" name="AKSES[]"><?php echo $datamastermenu->MENU_NAME;?><br/>
+					<input type="checkbox" <?php if($ok==1){echo 'checked';}?> value="<?php echo $datamastermenu->ID; ?>" id="AKSES_<?php echo $datamastermenu->ID; ?>"  class="class3" name="AKSES[]"><?php echo $datamastermenu->MENU_NAME;?><br/>
+					<div class="kontrol_<?php echo $datamastermenu->ID; ?>" id="kontrol_<?php echo $datamastermenu->ID; ?>" style="<?php if($ok==0){ echo 'display:none;';} ?> border: 2px solid; padding: 5px 5px 5px 5px;">
+						<?php
+							$C=0;
+							$U=0;
+							$R=0;
+							$D=0;
+							$rights_kontrol=mysql_query("select * from rights_control where GROUP_ID='$ID' AND AKSES='$datamastermenu->ID'");
+							$rights_kontroldata=mysql_fetch_array($rights_kontrol);
+							$dkontrol=$rights_kontroldata["CONTROL"];
+							$tmptrights_kontrol=array();
+							$tmptrights_kontrol=explode(",",$dkontrol);
+							foreach($tmptrights_kontrol as $datakontrol){
+								if($datakontrol=="C"){	
+									$C=1;
+								}else if($datakontrol=="R"){	
+									$R=1;
+								}else if($datakontrol=="U"){	
+									$U=1;
+								}else if($datakontrol=="D"){	
+									$D=1;
+								}
+							}
+						?>
+						<input type="checkbox" <?php if($C==1){echo 'checked';}?> value="C" class="ckontrol_<?php echo $datamastermenu->ID; ?>" id="ckontrol_<?php echo $datamastermenu->ID; ?>" name="<?php echo $datamastermenu->ID; ?>_kontrol[]"> Create 
+						<input type="checkbox" <?php if($R==1){echo 'checked';}?> value="R" class="ckontrol_<?php echo $datamastermenu->ID; ?>" id="ckontrol_<?php echo $datamastermenu->ID; ?>" name="<?php echo $datamastermenu->ID; ?>_kontrol[]"> Read 
+						<input type="checkbox" <?php if($U==1){echo 'checked';}?> value="U" class="ckontrol_<?php echo $datamastermenu->ID; ?>" id="ckontrol_<?php echo $datamastermenu->ID; ?>" name="<?php echo $datamastermenu->ID; ?>_kontrol[]"> Update 
+						<input type="checkbox" <?php if($D==1){echo 'checked';}?> value="D" class="ckontrol_<?php echo $datamastermenu->ID; ?>" id="ckontrol_<?php echo $datamastermenu->ID; ?>" name="<?php echo $datamastermenu->ID; ?>_kontrol[]"> Delete 
+					</div>
+					<script>
+					$(document).ready(function(){
+						$('#AKSES_'+<?php echo $datamastermenu->ID; ?>).on('change', function(){
+							
+							if($('#AKSES_'+<?php echo $datamastermenu->ID; ?>+':checked').length){
+								$('#kontrol_'+<?php echo $datamastermenu->ID; ?>).show();
+								$('.ckontrol_'+<?php echo $datamastermenu->ID; ?>).prop('checked', true);
+							}else{
+								$('#kontrol_'+<?php echo $datamastermenu->ID; ?>).hide();
+								$('.ckontrol_'+<?php echo $datamastermenu->ID; ?>).prop('checked', false);
+							}
+						});
+						
+					  
+					})
+					</script>
 					<?php
 					}
 					?>
