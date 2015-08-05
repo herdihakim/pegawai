@@ -168,9 +168,9 @@ if($jumlahcuti>0){
 		 $hasiljumlahcuti=$jumlahcuti;
 }
 	/* -------------------------------------- */
-	$uang_makan_transport=$jabatan->NOMINAL_UMT * $jumlahmasuk;
+	$uang_makan_transport=$datapegawai->NOMINAL_UMT *$jumlahmasuk ;
 	if($datapegawai->STATUS_PEGAWAI=="Tetap"){
-	$takehomepay=getthp($NIP) - ($hutang->hutangnya+$nominalpinjaman+$jabatan->NOMINAL_TABUNGAN);
+	$takehomepay=getthp($NIP) - ($hutang->hutangnya+$nominalpinjaman+$datapegawai->TABUNGAN);
 	$hitungjumlahharikerja=$hari-hitung_minggu($tawal,$takhir)-hitung_sabtu($tawal,$takhir)-$jumlahlibur;
 	$mangkir=$hitungjumlahharikerja-$jumlahmasuk-$hasiljumlahcuti;
 	if($mangkir<0){
@@ -185,17 +185,17 @@ if($jumlahcuti>0){
 	$pot_mangkir=0;
 	$penghargaan=mysql_query("select sum(NOMINAL) as totnom from penghargaan where BULAN='$bulanini' and TAHUN='$tahun' and NIP_PEGAWAI='$NIP'");
 	$getpenghargaan=mysql_fetch_object($penghargaan);
-	$totalpenghargaan=$getpenghargaan->totnom;
-	$takehomepayfix=getthp($NIP) + $uang_makan_transport+ $totalpenghargaan - ($hutang->hutangnya+$nominalpinjaman+$jabatan->NOMINAL_TABUNGAN);
-	$total_potongan=number_format($hutang->hutangnya+$jabatan->NOMINAL_TABUNGAN+$nominalpinjaman);
+	$totalpenghargaan=$datapegawai->PENGHARGAAN;
+	$takehomepayfix=getthp($NIP) + $uang_makan_transport+$datapegawai->PENGHARGAAN - ($hutang->hutangnya+$nominalpinjaman+$datapegawai->TABUNGAN);
+	$total_potongan=number_format($hutang->hutangnya+$datapegawai->TABUNGAN+$nominalpinjaman);
 	$terlambat=0;
 	}
 	if($datapegawai->STATUS_PEGAWAI=="Kontrak"){
 	$terlambat=potogan_terlambat($NIP);
 	$penghargaan=mysql_query("select sum(NOMINAL) as totnom from penghargaan where BULAN='$bulanini' and TAHUN='$tahun' and NIP_PEGAWAI='$NIP'");
 	$getpenghargaan=mysql_fetch_object($penghargaan);
-	$totalpenghargaan=$getpenghargaan->totnom;
-	$takehomepay=number_format(getthp($NIP) + $uang_makan_transport+ $totalpenghargaan - ($hutang->hutangnya+$nominalpinjaman+$jabatan->NOMINAL_TABUNGAN+$terlambat));
+	$totalpenghargaan=$datapegawai->PENGHARGAAN;
+	$takehomepay=number_format(getthp($NIP) + $uang_makan_transport+$datapegawai->PENGHARGAAN- ($hutang->hutangnya+$nominalpinjaman+$datapegawai->TABUNGAN+$terlambat));
 	$hitungjumlahharikerja=$hari-hitung_minggu($tawal,$takhir)-hitung_sabtu($tawal,$takhir)-$jumlahlibur;
 	$mangkir=$hitungjumlahharikerja-$jumlahmasuk-$hasiljumlahcuti;
 	if($mangkir<0){
@@ -210,8 +210,8 @@ if($jumlahcuti>0){
 	$terlambat=potogan_terlambat($NIP);
 	$go=str_replace(array(','), array(''), $takehomepay);
 	$pot_mangkir=$go / $hitungjumlahharikerja * $hasil;
-	$takehomepayfix=getthp($NIP) + $uang_makan_transport+ $totalpenghargaan - ($hutang->hutangnya+$nominalpinjaman+$jabatan->NOMINAL_TABUNGAN+$pot_mangkir+$terlambat);
-	$total_potongan=number_format(potogan_terlambat($NIP)+$hutang->hutangnya+$jabatan->NOMINAL_TABUNGAN+$nominalpinjaman+$pot_mangkir);
+	$takehomepayfix=getthp($NIP) + $uang_makan_transport+ $totalpenghargaan - ($hutang->hutangnya+$nominalpinjaman+$datapegawai->TABUNGAN+$pot_mangkir+$terlambat);
+	$total_potongan=number_format(potogan_terlambat($NIP)+$hutang->hutangnya+$datapegawai->TABUNGAN+$nominalpinjaman+$pot_mangkir);
 	}
 	$total_penerimaan=number_format(getthp($NIP) + $uang_makan_transport+ $totalpenghargaan);
 	if($tipe=="SIMPAN"){
@@ -221,7 +221,7 @@ if($jumlahcuti>0){
 	if($getcek==""){
 	mysql_query("insert into head_penggajian values('$getkode','$kp','$gaji_pokok','$uang_makan_transport','$lembur','$terlambat','$tabungan','$hasil','$total_potongan','$total_penerimaan','$tanggal_gaji','$KODE_DEPARTEMEN','$takehomepayfix','$kasbon','$nominalpinjaman','$pot_mangkir','$jumlahmasuk','$totalpenghargaan','$hasiljumlahcuti')");
 	mysql_query("UPDATE `pinjaman` SET `SISA_CICILAN` = '$sisa_cicilan'-1 WHERE KODE_PEGAWAI='$kp'");
-	$tmptunjanganlain=explode(",",$jabatan->TUNJANGAN_LAIN);
+	$tmptunjanganlain=explode(",",$datapegawai->TUNJANGAN_LAIN);
 	foreach($tmptunjanganlain as $tmptunjanganlains){
 	$pendapatanlain=pendapatan($tmptunjanganlains);
 	$nama_tunjangan=$pendapatanlain->NAMA_TUNJANGAN;

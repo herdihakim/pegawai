@@ -31,7 +31,13 @@
 	$FOTO_PEGAWAI=$data['FOTO_PEGAWAI'];
 	$NO_REKENING=$data['NO_REKENING'];
 	$STATE_ID=$data['STATE_ID'];
-
+	$NOMINAL_UMT=$data['NOMINAL_UMT'];
+	$TABUNGAN=$data['TABUNGAN'];
+	$PENGHARGAAN=$data['PENGHARGAAN'];
+	$CATATAN=$data['CATATAN'];
+	$TUNJANGAN_LAIN = $data['TUNJANGAN_LAIN'];
+        $tmptunjanganlain=array();
+        $tmptunjanganlain=explode(",",$TUNJANGAN_LAIN);
     } else {
 			
 	$query = "SELECT max(NIP_PEGAWAI) as idMaks FROM pegawai";
@@ -63,6 +69,13 @@
 	$FOTO_PEGAWAI="";
 	$NO_REKENING="";
 	$STATE_ID="";
+	$NOMINAL_UMT="";
+	$TABUNGAN="";
+	$PENGHARGAAN="";
+	$CATATAN="";
+	$TUNJANGAN_LAIN = "";
+    $tmptunjanganlain=array();
+    $tmptunjanganlain=explode(",",$TUNJANGAN_LAIN);
     }
 ?>
 	
@@ -192,7 +205,45 @@
             <div class="col-sm-9">
 			<input type="text" class="form-control" value="<?php echo $GAJI_POKOK; ?>" id="GAJI_POKOK" name="GAJI_POKOK" placeholder="Gaji Pokok" \>
             </div>
+	</div>
+	<div class="form-group">
+            <label for="NOMINAL_UMT" class="col-sm-3 control-label">Nominal UMT</label>
+            <div class="col-sm-9">
+			<input type="text" class="form-control" value="<?php echo $NOMINAL_UMT; ?>" id="NOMINAL_UMT" name="NOMINAL_UMT" placeholder="Nominal UMT" \>
+            </div>
 	</div>	
+	<div class="form-group">
+            <label for="TABUNGAN" class="col-sm-3 control-label">Nominal Tabungan</label>
+            <div class="col-sm-9">
+			<input type="text" class="form-control" value="<?php echo $TABUNGAN; ?>" id="TABUNGAN" name="TABUNGAN" placeholder="Nominal TABUNGAN" \>
+            </div>
+	</div>	
+	
+	<div class="form-group">
+            <label for="PENGHARGAAN" class="col-sm-3 control-label">Nominal Penghargaan</label>
+            <div class="col-sm-9">
+			<input type="text" class="form-control" value="<?php echo $PENGHARGAAN; ?>" id="PENGHARGAAN" name="PENGHARGAAN" placeholder="Nominal PENGHARGAAN" \>
+            </div>
+	</div>	
+	 <div class="form-group">
+            <label for="TUNJANGAN_LAIN" class="col-sm-3 control-label">Tunjangan Lain</label>
+            <div class="col-sm-9">
+		<?php
+                    $result = mysql_query("select * from master_tunjangan where STATE_ID='$state_session'");  
+                    echo '<select multiple="multiple" style="width:100%" class="form-control select2" name="TUNJANGAN_LAIN[]" id="TUNJANGAN_LAIN" placeholder="Tunjangan Lain">';  
+                    while ($row = mysql_fetch_array($result)) {  
+			echo '<option value="' .$row['KODE_MASTER_TUNJANGAN'].'"';
+			foreach($tmptunjanganlain as $tmptunjanganlains){
+                            if($tmptunjanganlains==$row['KODE_MASTER_TUNJANGAN']){
+				echo "selected='selected'";
+                            }; 
+			}
+			echo'>' . $row['NAMA_TUNJANGAN']. '</option>';  
+                    }  
+                    echo '</select>';
+		?>
+            </div>
+	</div>
 	<div class="form-group">
             <label for="NO_REKENING" class="col-sm-3 control-label">No Rekening</label>
             <div class="col-sm-9">
@@ -230,6 +281,12 @@
             <div class="col-sm-9">
                 <input type="file" class="form-control" id="FOTO_PEGAWAI" name="FOTO_PEGAWAI" value="" multiple\>
             </div>
+	</div> 
+	<div class="form-group">
+            <label for="foto" class="col-sm-3 control-label">Catatan</label>
+            <div class="col-sm-9">
+                <textarea class="form-control" id="CATATAN" name="CATATAN" ><?php echo $CATATAN; ?></textarea>
+            </div>
 	</div>
     </div>
     <div class="modal-footer">
@@ -258,6 +315,12 @@
             todayHighlight: true
 	});
 	$('#petugasForm')
+	.find('[name="TUNJANGAN_LAIN[]"]')
+            .select2({dropdownAutoWidth : true, width: "100%"})
+            .change(function(e) {
+                $('#jabatanForm').formValidation('revalidateField', 'TUNJANGAN_LAIN[]');
+            })
+            .end()
 	.on('success.form.fv', function(e) {
             e.preventDefault();
             var $form = $(e.target),

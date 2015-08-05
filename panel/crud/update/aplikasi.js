@@ -10,11 +10,7 @@
             var url = "crud/update/update.form.php";
             id = this.id;
 			
-            if(id != 0) {
-		$("#myModalLabel").html("<img alt='Brand' src='"+logo1+"' style='width:50px; height:50px;'/>&nbsp;&nbsp;&nbsp;Ubah Data update");
-            } else {
-		$("#myModalLabel").html("<img alt='Brand' src='"+logo1+"' style='width:50px; height:50px;'/>&nbsp;&nbsp;&nbsp;Tambah Data update");
-            }
+         
 
             $.post(url, {id: id} ,function(data) {
 		$(".isiForm").html(data).show();

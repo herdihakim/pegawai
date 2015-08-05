@@ -207,10 +207,9 @@ $gajipokok=$datapeg->GAJI_POKOK;
 
 $dataumt=jabatan($datapeg->KODE_JABATAN);
 $umt=$dataumt->NOMINAL_UMT;
-$TUNJANGAN_LAIN=$dataumt->TUNJANGAN_LAIN;
+$TUNJANGAN_LAIN=$datapeg->TUNJANGAN_LAIN;
 
 $gjlembur=gajilembur($NIP);
-
 $tmptunjanganlain=array();
 $tmptunjanganlain=explode(",",$TUNJANGAN_LAIN);
 

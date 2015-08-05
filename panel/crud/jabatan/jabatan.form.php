@@ -50,37 +50,19 @@
 		<input type="text" class="form-control" value="<?php echo $TUNJANGAN_JABATAN; ?>" id="TUNJANGAN_JABATAN" name="TUNJANGAN_JABATAN"  \>
             </div>
 	</div>
-	<div class="form-group">
+	<!--<div class="form-group">
             <label for="NOMINAL_TABUNGAN" class="col-sm-3 control-label">Nominal Tabungan</label>
             <div class="col-sm-9">
-		<input type="text" class="form-control" value="<?php echo $NOMINAL_TABUNGAN; ?>" id="NOMINAL_TABUNGAN" name="NOMINAL_TABUNGAN"  \>
+		<input type="text" class="form-control" value="<?php /* echo $NOMINAL_TABUNGAN; */ ?>" id="NOMINAL_TABUNGAN" name="NOMINAL_TABUNGAN"  \>
             </div>
 	</div>
 	<div class="form-group">
             <label for="NOMINAL_UMT" class="col-sm-3 control-label">Nominal UMT</label>
             <div class="col-sm-9">
-		<input type="text" class="form-control" value="<?php echo $NOMINAL_UMT; ?>" id="NOMINAL_UMT" name="NOMINAL_UMT"  \>
+		<input type="text" class="form-control" value="<?php /* echo $NOMINAL_UMT; */ ?>" id="NOMINAL_UMT" name="NOMINAL_UMT"  \>
             </div>
-	</div>
-        <div class="form-group">
-            <label for="TUNJANGAN_LAIN" class="col-sm-3 control-label"> Tunjangan Lain</label>
-            <div class="col-sm-9">
-		<?php
-                    $result = mysql_query("select * from master_tunjangan where STATE_ID='$state_session'");  
-                    echo '<select multiple="multiple" style="width:100%" class="form-control select2" name="TUNJANGAN_LAIN[]" id="TUNJANGAN_LAIN" placeholder="Tunjangan Lain">';  
-                    while ($row = mysql_fetch_array($result)) {  
-			echo '<option value="' .$row['KODE_MASTER_TUNJANGAN'].'"';
-			foreach($tmptunjanganlain as $tmptunjanganlains){
-                            if($tmptunjanganlains==$row['KODE_MASTER_TUNJANGAN']){
-				echo "selected='selected'";
-                            }; 
-			}
-			echo'>' . $row['NAMA_TUNJANGAN']. '</option>';  
-                    }  
-                    echo '</select>';
-		?>
-            </div>
-	</div>
+	</div>-->
+       
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">Batal Simpan</button>

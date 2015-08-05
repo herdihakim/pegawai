@@ -27,7 +27,9 @@
     <div class="panel-body">
 	
 	<div class="well">
-            <div id="data-update"></div>
+	<center>
+            <a href="#dialog-update" id="0" class="btn tambah-update btn-info" data-toggle="modal" >Cek pembaruan sistem</a> 
+	</center>		
 	</div>
     </div>
 </div>
@@ -37,7 +39,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h3 id="myModalLabel">Tambah Data update</h3>
+      
       </div>
       <div id="isiForm" class="isiForm"></div>
     </div>

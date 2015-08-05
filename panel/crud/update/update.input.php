@@ -1,13 +1,10 @@
 <?php
-    include_once "../../include/koneksi.php";
-
-   
-	$KODE_MESIN = $_POST['KODE_MESIN'];
-	$NAMA_MESIN = $_POST['NAMA_MESIN'];
-	$IP_ADDRESS = $_POST['IP_ADDRESS'];
-	$PORT_COM = $_POST['PORT_COM'];
-	
-	mysql_query("UPDATE mesin_absensi SET NAMA_MESIN = '$NAMA_MESIN',IP_ADDRESS = '$IP_ADDRESS',PORT_COM = '$PORT_COM'  WHERE KODE_MESIN = '$KODE_MESIN' ");
-	
-   
+$zip = new ZipArchive;
+if ($zip->open('system_update.zip') === TRUE) {
+    $zip->extractTo("../../../");
+    $zip->close();
+    echo 'ok';
+} else {
+    echo 'failed';
+}
 ?>
