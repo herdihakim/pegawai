@@ -57,10 +57,10 @@ position: absolute;
 						$departemen=departemen($data->KODE_DEPARTEMEN);
 						$hutang=gethutang($NIP);
 						
-						$taggal=date("Y-m-d");
+						 $taggal=date("Y-m-d");
 						 $queryabsensi_data=mysql_query("SELECT * FROM absensi where TANGGAL='$taggal' and NIP_PEGAWAI='$NIP1'") or die (mysql_error());
 						 $objectdata=mysql_fetch_object($queryabsensi_data);
-						  $queryjam=mysql_query("SELECT * FROM jam_kerja WHERE KODE_JAM_KERJA=".$objectdata->KODE_JAM_KERJA) or die (mysql_error());
+						 $queryjam=mysql_query("SELECT * FROM jam_kerja WHERE KODE_JAM_KERJA=".$objectdata->KODE_JAM_KERJA) or die (mysql_error());
 							$tampiljam=mysql_fetch_object($queryjam);
 							$jammasukkantor=new DateTime($tampiljam->JAM_DATANG);
 							$jammasukpegawai=new DateTime($objectdata->JAM_MASUK);

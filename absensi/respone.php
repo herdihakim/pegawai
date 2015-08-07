@@ -57,8 +57,22 @@
 						}else{
 							$smenit=date('H:i:s', strtotime($DATE));
 						}
-						
-					mysql_query("INSERT INTO absensi VALUES(NULL,'$KODE_JAM_KERJA','$NIP','$tmptanggal','$smenit','00:00:00')");
+					   	 
+						 $queryabsensi_data=mysql_query("SELECT * FROM absensi where TANGGAL='$tmptanggal' and NIP_PEGAWAI='$NIP'") or die (mysql_error());
+						 $objectdata=mysql_fetch_object($queryabsensi_data);
+						 $queryjam1=mysql_query("SELECT * FROM jam_kerja WHERE KODE_JAM_KERJA=".$objectdata->KODE_JAM_KERJA) or die (mysql_error());
+							$tampiljam1=mysql_fetch_object($queryjam1);
+							$jammasukkantor=new DateTime($tampiljam1->JAM_DATANG);
+							$jammasukpegawai=new DateTime($objectdata->JAM_MASUK);
+							$cektelat=$jammasukpegawai->diff($jammasukkantor)->format('%i');
+							$terlambat=$jammasukpegawai->diff($jammasukkantor)->format('%h jam %i menit ');	
+							if($cek>15){
+							$telat=1;
+							}
+							if($cek<15){
+							$telat=0;
+							}
+					mysql_query("INSERT INTO absensi VALUES(NULL,'$KODE_JAM_KERJA','$NIP','$tmptanggal','$smenit','00:00:00','$telat')");
 					header('Content-Type: application/json');
 					echo json_encode(array('cek' => 'true','nip'=>$NIP));
 					}

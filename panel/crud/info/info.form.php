@@ -112,7 +112,7 @@
 	<div class="form-group">
             <label for="LOGO" class="col-sm-3 control-label">Warna</label>
             <div class="col-sm-9">
-<input type="text" class="demo1" value="<?php echo $COLOR; ?>" name="COLOR" />
+			<input type="text" class="demo1" value="<?php echo $COLOR; ?>" name="COLOR" />
 <script>
 $(function(){
     $('.demo1').colorpicker();

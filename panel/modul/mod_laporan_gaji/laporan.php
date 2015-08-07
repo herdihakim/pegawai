@@ -1,15 +1,21 @@
 <?php 
+session_start();
+$state_session=$_SESSION['STATE_ID'];
 error_reporting(0);
 include_once "../../include/koneksi.php";
-session_start();
-
 $BULAN=$_GET["BULAN"];
 $TAHUN=$_GET["TAHUN"];
 $DEPT=$_GET["DEPT"];
 
 ?>
-<h3>Data Laporan Gaji </h3>
-<p>Bulan:<?php echo $BULAN;?>,Tahun:<?php echo $TAHUN;?>  </p>
+<h3>Bulan:<?php echo $BULAN;?>,Tahun:<?php echo $TAHUN;?></h3>
+<div class="panel panel-warning">
+	<div class="panel-heading">
+		<h3 class="panel-title">Laporan pengeluaran gaji</h3>
+    </div>
+    <div class="panel-body">	
+
+
 <div class="table-responsive">
     <table id="example" class="table table-bordered">
 	<thead>
@@ -41,8 +47,97 @@ $DEPT=$_GET["DEPT"];
 	</tbody>
     </table>
 </div>
+</div>
+</div>
+
+<div class="panel panel-warning">
+	<div class="panel-heading">
+		<h3 class="panel-title">Detail laporan data gaji</h3>
+    </div>
+    <div class="panel-body">	
 
 
+<div class="table-responsive">
+ 
+ <table id="example" class="table table-bordered" border="1">
+
+        <tr>
+		<th width="10%" style="background-color:grey">No</th>
+		<th style="background-color:grey">Pegawai</th>
+		<th style="background-color:grey">Departemen</th>
+		<th style="background-color:grey">Gaji Pokok</th>
+		<th style="background-color:grey">UMT</th>
+		<th style="background-color:grey"> tunjangan</th>
+		<th style="background-color:grey">Penghargaan</th>
+		<th style="background-color:grey">Kasbon</th>
+		<th style="background-color:grey">Pinjaman</th>
+		<th style="background-color:grey">Potongan</th>
+		<th style="background-color:grey"> masuk</th>
+		<th style="background-color:grey">Mangkir</th>
+		<th style="background-color:grey">Cuti</th>
+		<th style="background-color:grey"> penerimaan</th>
+		<th style="background-color:grey">THP</th>
+		</tr>
+	<?php
+	 $no = 0;
+	if($DEPT=="all"){
+	$query=mysql_query("SELECT * FROM head_penggajian where MONTH(tanggal_gaji)='$BULAN' and YEAR(tanggal_gaji)='$TAHUN'") or die (mysql_error());
+       
+        
+	}
+	else{
+	$query=mysql_query("SELECT * FROM head_penggajian where MONTH(tanggal_gaji)='$BULAN' and YEAR(tanggal_gaji)='$TAHUN' and departemen='$DEPT'") or die (mysql_error());
+  	
+		
+	}
+	while($objectdata=mysql_fetch_object($query)){
+	$no++;
+		echo'
+        <tr>
+		<td width="10%">'.$no.'</td>
+		';
+		$pegawaidata=mysql_query("SELECT * FROM pegawai where KODE_PEGAWAI='$objectdata->kode_pegawai'") or die (mysql_error());
+		$getnamapegawaidata=mysql_fetch_object($pegawaidata);
+		echo'
+		<td>'.$getnamapegawaidata->NAMA_PEGAWAI.'</td>
+		';
+		$penggajiannama=mysql_query("SELECT * FROM departemen where KODE_DEPARTEMEN='$objectdata->departemen'") or die (mysql_error());
+		$getnamapenggajian=mysql_fetch_object($penggajiannama);
+		echo'
+		<td>'.$getnamapenggajian->NAMA_DEPARTEMEN.'</td>
+		';
+		echo'
+		<td>Rp.'.number_format($objectdata->gaji_pokok).'</td>
+		
+		<td>Rp.'.number_format($objectdata->uang_makan_transport).'</td>
+		
+		';
+		$tunjangandata=mysql_query("SELECT SUM(nominal_tunjangan) as nomtun from detail_tunjangan_penggajian where kode_penggajian='$objectdata->kode_penggajian'") or die (mysql_error());
+		$gettunjangandata=mysql_fetch_object($tunjangandata);
+		echo'
+		<td>Rp.'.number_format($gettunjangandata->nomtun).'</td>
+		<td>Rp.'.number_format($objectdata->penghargaan).'</td>
+		<td>Rp.'.$objectdata->kasbon.'</td>
+		<td>Rp.'.$objectdata->pinjaman.'</td>
+		<td>Rp.'.$objectdata->total_potongan.'</td>
+		<td>'.$objectdata->total_masuk.' Hari</td>
+		<td>'.$objectdata->mangkir.' Hari</td>
+		<td>'.$objectdata->jumlah_cuti.' Hari</td>
+		<td>Rp.'.$objectdata->total_penerimaan.'</td>
+		<td>Rp.'.number_format($objectdata->thp).'</td>
+		</tr>
+		';
+	
+	}
+
+	?>
+    </table>
+ 
+ 
+ 
+ </div>
+</div>
+</div>
 
 <div class="panel panel-warning">
 	<div class="panel-heading">

@@ -138,9 +138,11 @@
 	}
 	$cekdata=mysql_query("SELECT TANGGAL FROM absensi where NIP_PEGAWAI='$kp' and MONTH(TANGGAL)='$bulanini' and YEAR(TANGGAL)='$tahun'");
 	$ada=mysql_fetch_object($cekdata);
+	$jumlahmasukabsen=mysql_query("SELECT count(TANGGAL) as totmasuk FROM absensi where NIP_PEGAWAI='$kp' and MONTH(TANGGAL)='$bulanini' and YEAR(TANGGAL)='$tahun'");
+	$datajumlahmasukabsen=mysql_fetch_object($jumlahmasukabsen);
 	$cekada=$ada->TANGGAL;
 	if($cekada!=""){
-	$jumlahmasuk=count($objectdata)-1;
+	$jumlahmasuk=$datajumlahmasukabsen->totmasuk;
 	}
 	if($cekada==""){
 	$jumlahmasuk=0;
@@ -180,7 +182,7 @@ if($jumlahcuti>0){
 	$uang_makan_transport=$datapegawai->NOMINAL_UMT *$jumlahmasuk ;
 	if($datapegawai->STATUS_PEGAWAI=="Tetap"){
 	$takehomepay=getthp($NIP) - ($hutang->hutangnya+$nominalpinjaman+$datapegawai->TABUNGAN);
-	$hitungjumlahharikerja=$hari-hitung_minggu($tawal,$takhir)-hitung_sabtu($tawal,$takhir)-$jumlahlibur;
+	$hitungjumlahharikerja=$hari-hitung_minggu($tawal,$takhir)/*-hitung_sabtu($tawal,$takhir)*/-$jumlahlibur;
 	$mangkir=$hitungjumlahharikerja-$jumlahmasuk-$hasiljumlahcuti;
 	if($mangkir<0){
 		 $hasil=0;
@@ -205,7 +207,7 @@ if($jumlahcuti>0){
 	$getpenghargaan=mysql_fetch_object($penghargaan);
 	$totalpenghargaan=$datapegawai->PENGHARGAAN;
 	$takehomepay=number_format(getthp($NIP) + $uang_makan_transport+$datapegawai->PENGHARGAAN- ($hutang->hutangnya+$nominalpinjaman+$datapegawai->TABUNGAN+$terlambat));
-	$hitungjumlahharikerja=$hari-hitung_minggu($tawal,$takhir)-hitung_sabtu($tawal,$takhir)-$jumlahlibur;
+	$hitungjumlahharikerja=$hari-hitung_minggu($tawal,$takhir)/*-hitung_sabtu($tawal,$takhir)*/-$jumlahlibur;
 	$mangkir=$hitungjumlahharikerja-$jumlahmasuk-$hasiljumlahcuti;
 	if($mangkir<0){
 		 $hasil=0;
