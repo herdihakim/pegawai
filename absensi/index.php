@@ -45,12 +45,12 @@
                 <tr>
                     <td class="col-sm-1" rowspan="2"><img alt="Brand" src="../panel/<?php echo $profil->logo; ?>" style="width:75px; height:75;"/></td>
                     <td class="col-sm-12" style="border-bottom:1pt solid green;">
-                        <h3 style="color:#00b7ea;"><?php echo $profil->NAMA_PERUSAHAAN; ?></h3>
+                        <h3 style="color:<?php echo $profil->COLOR; ?>;"><?php echo $profil->NAMA_PERUSAHAAN; ?></h3>
                     </td>
 		</tr>
 		<tr>
                     <td class="col-sm-12">
-                        <h4 style="color:#258dc8;">Human Resource Management</h4>
+                        <h4 style="color:<?php echo $profil->COLOR; ?>;">Online Sistem Penggajian Dan Absensi Karyawan</h4>
                     </td>
 		</tr>
             </table>
@@ -170,8 +170,8 @@ $(document).ready(function() {
 
 	 <footer class="footer">
 	<div class="container">
-            <p class="pull-right"><a href="#"><span class="glyphicon glyphicon-triangle-top"></span> Back to top <span class="glyphicon glyphicon-triangle-top"></span></a></p>
-            <p class="text-muted">&copy; 2015  - <a href="">Lukstron Development</a> - All Rights Reserved. </p>
+            <p class="pull-right"><a href="#" style="color:<?php echo $profil->COLOR; ?>;"><span class="glyphicon glyphicon-triangle-top"></span> Back to top <span class="glyphicon glyphicon-triangle-top"></span></a></p>
+            <p class="text-muted" style="color:<?php echo $profil->COLOR; ?>;">&copy; 2015  - <a href="" >Lukstron Development</a> - All Rights Reserved. </p>
 	</div>
     </footer>
 	
@@ -180,7 +180,7 @@ $(document).ready(function() {
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script type="text/javascript" src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    <!--<script type="text/javascript" src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script> -->
 	
 	<!-- bootstrap -->
     <script src="../panel/bootstrap/docs/dist/js/bootstrap.min.js"></script>

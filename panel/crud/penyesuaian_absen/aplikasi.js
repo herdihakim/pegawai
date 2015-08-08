@@ -11,9 +11,9 @@
             id = this.id;
 			
             if(id != 0) {
-		$("#myModalLabel").html("<img alt='Brand' src='"+logo1+"' style='width:50px; height:50px;'/>&nbsp;&nbsp;&nbsp;Ubah Data penyesuaian_absen");
+		$("#myModalLabel").html("<img alt='Brand' src='"+logo1+"' style='width:50px; height:50px;'/>&nbsp;&nbsp;&nbsp;Ubah data penyesuaian absen");
             } else {
-		$("#myModalLabel").html("<img alt='Brand' src='"+logo1+"' style='width:50px; height:50px;'/>&nbsp;&nbsp;&nbsp;Tambah Data penyesuaian_absen");
+		$("#myModalLabel").html("<img alt='Brand' src='"+logo1+"' style='width:50px; height:50px;'/>&nbsp;&nbsp;&nbsp;Tambah data penyesuaian absen");
             }
 
             $.post(url, {id: id} ,function(data) {
@@ -23,7 +23,7 @@
 		
 	$('.import').live("click", function(){
             var url = "crud/penyesuaian_absen/import.form.php";
-            $("#myModalLabel").html("<img alt='Brand' src='"+logo1+"' style='width:50px; height:50px;'/>&nbsp;&nbsp;&nbsp;Import Data penyesuaian_absen");
+            $("#myModalLabel").html("<img alt='Brand' src='"+logo1+"' style='width:50px; height:50px;'/>&nbsp;&nbsp;&nbsp;Import data penyesuaian absen");
             $.post(url, "" ,function(data) {
 		$(".isiForm").html(data).show();
             });
@@ -43,7 +43,7 @@
 		
 	$('#dialog-penyesuaian_absen').on('hidden.bs.modal', function () {
             $("#data-penyesuaian_absen").load(main);
-            $("#myModalLabel").html("<img alt='Brand' src='"+logo1+"' style='width:50px; height:50px;'/>&nbsp;&nbsp;&nbsp;Tambah Data penyesuaian_absen");
+            $("#myModalLabel").html("<img alt='Brand' src='"+logo1+"' style='width:50px; height:50px;'/>&nbsp;&nbsp;&nbsp;Tambah data penyesuaian absen");
 	});
     });
 }) (jQuery);

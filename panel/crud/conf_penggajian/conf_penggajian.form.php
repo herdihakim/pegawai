@@ -31,7 +31,7 @@
 	<div class="form-group">
             <label for="NAMA_conf_penggajian" class="col-sm-3 control-label"> Value</label>
             <div class="col-sm-9">
-		<?php if($ID!="4" && $ID!="3" && $ID!="2" ){ ?>
+		<?php if($ID!="4" && $ID!="3" && $ID!="2"&& $ID!="5" ){ ?>
 		<input type="text" class="form-control"  value="<?php echo $VALUE; ?>" id="VALUE" name="VALUE"  \>
 		<?php } ?>
 		<?php if($ID=="2"){ ?>
@@ -56,11 +56,18 @@
 		<option value="GAJI POKOK">GAJI POKOK</option>
 		</select>
 		<?php } ?>
+		<?php if($ID=="5"){ ?>
+		<select class="form-control" id="VALUE" name="VALUE"  \>
+		<option value="THP">THP</option>
+		<option value="GAJI POKOK">GAJI POKOK</option>
+		</select>
+		<?php } ?>
 		<br/><p><i>Catatan:
 		<?php 
 		if($ID=="1"){echo "Jumlah Hari kerja Masukan Jumlah Hari kerja Efektif Dalam Seminggu";}
 		if($ID=="2"){echo "Keterlambatan Masukan Dalam Satuan Menit";}
 		if($ID=="3"){echo "Lembur Masukan Keterangan THP Atau Gaji Pokok";}
+		if($ID=="5"){echo "Mangkir Masukan Keterangan THP Atau Gaji Pokok";}
 		if($ID=="4"){echo "Pilih Tanggal Penggajian";}
 		
 		?>

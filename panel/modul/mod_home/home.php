@@ -7,5 +7,7 @@
 </ol>
 
 <div class="jumbotron">
-<img src="banner.png" style="width:1000px;height:250px">
+<center>
+<img src="banner.png" style="width:900px;height:250px">
+<center>
 </div>

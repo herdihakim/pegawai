@@ -61,6 +61,10 @@
         $('.tunjangan').live("click", function(){
             var url = "modul/mod_tunjangan/tunjangan.php";
             $("#data-utama").load(url);
+	});  
+	$('.penyesuaian_absen').live("click", function(){
+            var url = "modul/mod_penyesuaian_absen/penyesuaian_absen.php";
+            $("#data-utama").load(url);
 	});
         
         $('.cuti').live("click", function(){

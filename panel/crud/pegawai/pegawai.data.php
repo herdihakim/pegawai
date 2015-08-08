@@ -1,7 +1,8 @@
 <?php
 	error_reporting(0);
+	session_start();
     include_once "../../include/koneksi.php";
-    session_start();
+    $state_session=$_SESSION['STATE_ID'];	
 ?>
 
 <script>
@@ -22,13 +23,13 @@
 		<th>Nama</th>
 		<th>Jabatan</th>
 		<th>Departemen</th>
-		<th>Telepon</th>
+		<th>Status</th>
 		<th>Aksi</th>
             </tr>
 	</thead>
 	<tbody>
 	<?php
-            $querypetugas=mysql_query("SELECT * FROM pegawai where STATE_ID='$_SESSION[STATE_ID]'") or die (mysql_error());
+            $querypetugas=mysql_query("SELECT * FROM pegawai where STATE_ID='$state_session'") or die (mysql_error());
             $no = 1;
             while($objectdata=mysql_fetch_object($querypetugas)){
                 $queryjabatan=mysql_query("SELECT * FROM jabatan WHERE KODE_JABATAN=".$objectdata->KODE_JABATAN) or die (mysql_error());
@@ -50,7 +51,7 @@
 		<td>'.$objectdata->NAMA_PEGAWAI.'</td>
 		<td>'.$tampiljabatan->NAMA_JABATAN.'</td>
 		<td>'.$tampildepartemen->NAMA_DEPARTEMEN.'</td>
-		<td>'.$objectdata->NOMOR_TELEPON.'</td>
+		<td>'.$objectdata->STATUS_PEGAWAI.'</td>
 		<td>
                     <a href="#dialog-pegawai" id="'.$objectdata->KODE_PEGAWAI.'" alt="Ubah" title="Ubah" class="glyphicon ubah-pegawai glyphicon-edit" data-toggle="modal"></a>&nbsp; 
                     <a href="#" id="'.$objectdata->KODE_PEGAWAI.'" alt="Hapus" title="Hapus" class="glyphicon hapus-pegawai glyphicon-trash"></a>

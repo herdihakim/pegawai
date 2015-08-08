@@ -48,7 +48,7 @@
 	$noUrut++;
 	$char =  date('ym');
 	$w = "PG".$state_session."-";
-	$NIP_PEGAWAI = $w.$char . sprintf("%05s", $noUrut);
+	$NIP_PEGAWAI = ""/* $w.$char . sprintf("%05s", $noUrut) */;
 
 	$NAMA_PEGAWAI = "";
 	$TEMPAT_LAHIR = "";

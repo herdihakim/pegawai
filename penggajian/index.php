@@ -45,26 +45,26 @@ error_reporting(0);
   <body role="document">
 	
     <!-- Fixed navbar -->
-    <nav class="navbar navbar-custom  navbar-fixed-top" style="background-image: linear-gradient(to bottom, #E8E8E8 0px, #F1F1F1 120%);
+     <nav class="navbar navbar-custom  navbar-fixed-top" style="background-image: linear-gradient(to bottom, #E8E8E8 0px, #F5F5F5 100%);
 	background-repeat: repeat-x;
 	border-color: #DCDCDC;
-	box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.01) inset, 0px 1px 0px rgba(211, 211, 211, 0.1);">
+	box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.05) inset, 0px 1px 0px rgba(255, 255, 255, 0.1);">
         <div class="container">
-            <table width="120%">
+            <table width="100%">
                 <tr>
-                    <td class="col-sm-1" rowspan="2"><img alt="Brand" src="../panel/<?php echo $profil->logo; ?>" style="width:71px; height:71;"/></td>
+                    <td class="col-sm-1" rowspan="2"><img alt="Brand" src="../panel/<?php echo $profil->logo; ?>" style="width:75px; height:75;"/></td>
                     <td class="col-sm-12" style="border-bottom:1pt solid green;">
-                        <h3 style="color:#00b7ea;"><?php echo $profil->NAMA_PERUSAHAAN; ?></h3>
+                        <h3 style="color:<?php echo $profil->COLOR; ?>;"><?php echo $profil->NAMA_PERUSAHAAN; ?></h3>
                     </td>
 		</tr>
 		<tr>
                     <td class="col-sm-12">
-                        <h4 style="color:#218dc8;">Human Resource Management</h4>
+                        <h4 style="color:<?php echo $profil->COLOR; ?>;">Online Sistem Penggajian Dan Absensi Karyawan</h4>
                     </td>
 		</tr>
             </table>
         </div>
-	 </nav>	
+    </nav>
 
 
     <div class="container theme-showcase" role="main">
@@ -218,10 +218,10 @@ $(document).ready(function() {
 	<!-- /container -->
 
 
-	 <footer class="footer">
+	  <footer class="footer">
 	<div class="container">
-            <p class="pull-right"><a href="#"><span class="glyphicon glyphicon-triangle-top"></span> Back to top <span class="glyphicon glyphicon-triangle-top"></span></a></p>
-            <p class="text-muted">&copy; 2011  - <a href="">Lukstron Development</a> - All Rights Reserved. </p>
+            <p class="pull-right"><a style="color:<?php echo $profil->COLOR; ?>" href="#"><span class="glyphicon glyphicon-triangle-top"></span> Back to top <span class="glyphicon glyphicon-triangle-top"></span></a></p>
+            <p class="text-muted">&copy; <?php echo date('Y');?>  - <a href="" style="color:<?php echo $profil->COLOR; ?>"><?php echo $profil->NAMA_PERUSAHAAN; ?></a> - All Rights Reserved. </p>
 	</div>
     </footer>
 	

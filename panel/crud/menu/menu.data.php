@@ -39,7 +39,7 @@
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-tasks"></span> Data Master Penggajian<span class="caret"></span></a>
             <ul class="dropdown-menu " role="menu">
 					<?php
-					$mastermenu=mysql_query("select * from rights_menu where ID = '11' or ID='12'");
+					$mastermenu=mysql_query("select * from rights_menu where ID='12' or ID='25'");
 					while($datamastermenu=mysql_fetch_object($mastermenu)){
 					foreach($tmptrights_group as $datarights){
 					?>

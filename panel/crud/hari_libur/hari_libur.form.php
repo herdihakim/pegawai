@@ -66,11 +66,9 @@
         <button type="submit" class="btn btn-success">Simpan</button>
     </div>
 </form>
-<script type="text/javascript">
+	<script type="text/javascript">
     $(document).ready(function() {
-	
-	
-    $('#datePicker').datepicker({
+	$('#datePicker').datepicker({
     format: "yyyy-mm-dd",
     autoclose: true,
 	multidate: true,

@@ -1,7 +1,7 @@
 <?php
     session_start();
 	include_once "../../include/koneksi.php";
-	$state_session=$_SESSION['STATE_ID'];
+	$state_session=$_POST['STATE_ID'];
     if(isset($_POST['hapus'])) {
 	mysql_query("DELETE FROM petugas WHERE KODE_PETUGAS=".$_POST['hapus']);
     } else {
