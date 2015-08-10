@@ -12,7 +12,24 @@ for($a=0;$a<$id;$a++){
             autoclose: true,
             todayHighlight: true
 	});  
-	
+	 $('#timepicker<?php echo $no;?>').timepicker({
+				minuteStep: 1,
+                secondStep: 5,
+                showInputs: false,
+                template: 'modal',
+                modalBackdrop: true,
+                showSeconds: false,
+                showMeridian: false
+	 });
+	 $('#2timepicker<?php echo $no;?>').timepicker({
+				minuteStep: 1,
+                secondStep: 5,
+                showInputs: false,
+                template: 'modal',
+                modalBackdrop: true,
+                showSeconds: false,
+                showMeridian: false
+	 });
 
 		
           
@@ -28,9 +45,19 @@ for($a=0;$a<$id;$a++){
 					<span class="input-group-addon"></span>
             </div>
 			<br/>
-			  <input type="text" style="width:45%;margin-left:10px" id="JAM_MASUK" name="JAM_MASUK[]" value="" placeholder="Jam masuk"  required>
-			  <input type="text" style="width:45%;margin-left:10px" id="TANGGAL" name="JAM_KELUAR[]" value="" placeholder="Jam keluar"  required>
 		
+				<div style="margin-left:0px" class="col-sm-11">
+					 <label for="jam_masuk" class="col-sm-6">Jam Masuk</label>
+					 <label for="jam_keluar" class="col-sm-5">Jam Keluar</label>
+				</div>
+				
+				<div style="margin-left:10px" class="input-group bootstrap-timepicker col-sm-11">
+				  <input type="text" class="form-control" name="JAM_MASUK[]" id="timepicker<?php echo $no;?>" required aria-describedby="basic-addon2">
+				  <span class="input-group-addon" id="basic-addon2"><i class="glyphicon glyphicon-time"></i></span>
+				  
+				  <input type="text" class="form-control" name="JAM_KELUAR[]" id="2timepicker<?php echo $no;?>" required aria-describedby="basic-addon2">
+				  <span class="input-group-addon" id="basic-addon2"><i class="glyphicon glyphicon-time"></i></span>
+				</div>
 
 <br/>
 
